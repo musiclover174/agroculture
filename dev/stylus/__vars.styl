@@ -1,0 +1,120 @@
+$os = "OpenSans"
+
+$orange = #e76f17
+$orangeHov = #e97e2f
+$dark = #0e0e0e
+
+$print = 'print'
+$mPortrait = '(min-width:320px)'
+$mPortraitMedium = '(max-width:400px)'
+$mPortraitMediumMin = '(min-width:401px)'
+$mPortraitMax = '(max-width:479px)'
+$mLandscapeMin = '(min-width:768px)'
+$mLandscape = '(max-width:768px)'
+$mLandscapeMax = '(max-width:768px)'
+$tPortrait = '(min-width:769px)'
+$tPortraitMax = '(max-width:999px)'
+$tLandscape = '(min-width:1000px)'
+$tLandscapeMax = '(max-width:1199px)'
+$desktop = '(min-width:1200px)'
+$desktopMax = '(max-width:1400px)'
+$lDesktopMax = '(max-width:1600px)'
+
+imgCentering()
+  position absolute
+  left 50%
+  top 50%
+  transform translate(-50%, -50%) scale(1)
+  transition 1s transform
+  will-change transform
+  
+imgCenteringMax()
+  position absolute
+  left 50%
+  top 50%
+  max-width 90%
+  max-height 90%
+  transform translate(-50%, -50%) scale(1)
+  transition 1s transform
+  will-change transform
+  
+imgCenteringMax100()
+  position absolute
+  left 50%
+  top 50%
+  max-width 100%
+  max-height 100%
+  transform translate(-50%, -50%) scale(1)
+  transition 1s transform
+  will-change transform
+  
+imgCenteringZoom()
+  transform translate(-50%, -50%) scale(1.02)
+  
+size($w, $h = $w)
+  width $w
+  height $h
+  
+ib($align = top)
+  display inline-block
+  vertical-align $align
+  
+fontify($fs, $fw, $lh)
+  font-size $fs
+  font-weight $fw
+  line-height $lh
+  
+w($val)
+  width $val
+
+h($val)
+  height $val
+  
+t($val)
+  top $val
+  
+r($val)
+  right $val
+  
+l($val)
+  left $val
+  
+b($val)
+  bottom $val
+
+bgc($val)
+  background-color $val
+  
+dn()
+  display none
+  
+db()
+  display block
+  
+pos($val)
+  position $val
+  
+mr($val)
+  margin-right $val
+
+mt($val)
+  margin-top $val
+
+ml($val)
+  margin-left $val
+  
+mb($val)
+  margin-bottom $val
+  
+pr($val)
+  padding-right $val
+
+pt($val)
+  padding-top $val
+
+pl($val)
+  padding-left $val
+  
+pb($val)
+  padding-bottom $val
+  
