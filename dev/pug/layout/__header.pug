@@ -1,0 +1,49 @@
+header.header
+  a(href="#").header__logo
+    img(src="img/logo.png", alt="").header__logo-img
+  .header__edge.header__edge_front
+    nav.header__menu
+      ul.header__menu-list
+        li.header__menu-item
+          a(href="#").header__menu-href.active Компания
+        li.header__menu-item
+          a(href="#").header__menu-href Продукция
+        li.header__menu-item
+          a(href="#").header__menu-href Карьера
+        li.header__menu-item
+          a(href="#").header__menu-href Новости
+        li.header__menu-item
+          a(href="#").header__menu-href Контакты
+    .header__socials
+      a(href="#", target="_blank", data-type="inst").header__socials-elem
+      a(href="#", target="_blank", data-type="fb").header__socials-elem
+    .header__phones
+      a(href="tel:+74991234004").header__phones-elem (499) 123-40-01
+      a(href="tel:+74956492000").header__phones-elem (495) 649-20-00
+  .header__edge.header__edge_rear
+    button(type="button", aria-label="открыть мобильное меню").burger__button.js-burger
+      span.burger__button-meat
+section.burger__popup
+  .burger__menu-inner
+    .burger__menu-col
+      nav.burger__menu
+        ul.burger__menu-list
+          li.burger__menu-item
+            a(href="#").burger__menu-href.active Компания
+          li.burger__menu-item
+            a(href="#").burger__menu-href Продукция
+          li.burger__menu-item
+            a(href="#").burger__menu-href Карьера
+          li.burger__menu-item
+            a(href="#").burger__menu-href Новости
+          li.burger__menu-item
+            a(href="#").burger__menu-href Контакты
+    .burger__menu-col
+      .burger__phones
+        a(href="tel:+74991234004").burger__phones-elem (499) 123-40-01
+        a(href="tel:+74956492000").burger__phones-elem (495) 649-20-00
+      .burger__socials Так же вся новая и актуальная информация публикуется в наш паблик в 
+        a(href="#", target="_blank", data-type="fb").burger__socials-elem Facebook 
+        | и ленту 
+        a(href="#", target="_blank", data-type="inst").burger__socials-elem Twitter
+        | . Подписывайтесь.

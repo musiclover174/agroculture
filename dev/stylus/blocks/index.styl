@@ -1,0 +1,331 @@
+.icar
+  h 100vh
+  .swiper-slide
+    &[data-color="dark"]
+      bgc $dark
+    &[data-color="light"]
+      bgc white
+    h 100%
+    pos relative
+    z-index 1
+    overflow hidden
+    display flex
+    align-items center
+    justify-content flex-start
+    &-active
+      & ^[0]
+        &__bg
+          transition 7s transform
+          transform translate(-50%, -50%) scale(1.08)
+        &__area
+          &-title
+            opacity 1
+            b 0
+            transition-delay .8s
+          &-text
+            opacity 1
+            b 0
+            transition-delay .9s
+          &-href
+            opacity 1
+            b 0
+            transition-delay 1.2s
+      .inews__elem
+        &-imgover
+          w 100%
+        &:nth-child(1) .inews__elem-imgover
+          transition-delay 1s
+        &:nth-child(2) .inews__elem-imgover
+          transition-delay 1.2s
+        &:nth-child(3) .inews__elem-imgover
+          transition-delay 1.4s
+        &-content
+          opacity 1
+          b 0
+          transition-delay .8s
+      .iemp
+        &__title
+          opacity 1
+          b 0
+          transition-delay .8s
+        &__subtitle
+          opacity 1
+          b 0
+          transition-delay 1s
+        &__text
+          opacity 1
+          b 0
+          transition-delay 1.2s
+        &__more
+          opacity 1
+          b 0
+          transition-delay 1.4s
+        &__content:before
+          w 70px
+          transition-delay 1.6s
+        &__btn
+          opacity 1
+          b 0
+          transition .7s opacity 1.8s, .7s bottom 1.8s, .7s background, .7s color, .7s box-shadow
+      &:not(.showmap) .iroad
+        &__title
+          opacity 1
+          b 0
+          transition-delay .8s
+        &__feat
+          opacity 1
+          b 0
+          transition-delay 1s
+        &__text
+          opacity 1
+          b 0
+          transition-delay 1.2s
+        &__where
+          opacity 1
+          b 0
+          transition-delay 1.2s
+        &__content:before
+          w 70px
+          transition-delay 1.4s
+        &__btn
+          opacity 1
+          b 0
+          transition .7s opacity 1.6s, .7s bottom 1.6s, .7s background, .7s color, .7s box-shadow
+      .iveg
+        &__title
+          opacity 1
+          b 0
+          transition-delay .8s
+        &__icon
+          opacity 1
+          t 0
+          transition-delay .8s
+        &__hrefover
+          opacity 1
+          b 0
+          transition-delay 1s
+        &__text
+          opacity 1
+          b 0
+          transition-delay 1.2s
+        &__content:before
+          w 70px
+          transition-delay 1.4s
+        &__tocat
+          opacity 1
+          b 0
+          transition .7s opacity 1.6s, .7s bottom 1.6s, .7s border
+  &__bg
+    opacity .5
+    z-index -1
+    imgCenteringMin()
+  &__area
+    &-over
+      &.changed
+        & ^[-2]
+          &-title:before,
+          &-text:before
+            content attr(data-change)
+          &-back
+            opacity 1
+            visibility visible
+          &-href
+            visibility hidden
+            opacity 0
+          &_more
+            max-height 400px
+            mt 40px
+          &-stage
+            opacity 1
+            r 0
+            transition .7s opacity, .7s right
+            &_second
+              transition-delay .7s
+            &_third
+              transition-delay 1.4s
+    &_more
+      max-height 0
+      overflow hidden
+      transition 1s max-height
+    &__maxwidth
+      max-width 700px
+    &-back
+      cursor pointer
+      pos absolute
+      w 27px
+      h 25px
+      l 30px
+      t 30px
+      opacity 0
+      visibility hidden
+      background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAZCAMAAAD3wqVsAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAh1BMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8SV0uDAAAALHRSTlMAPqs86j0550A25kQz6Ucx6Eku5U0s5FEpVCfjViThWyLgX8MjJVoqUy9MOiH9lbcAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAAeklEQVQoz33S2xqBYBSE4cmuhEo/RRJtJOr+r48zB55vzen7rJM1I/3izUSZL5ZEKz8gWocbou0uIoqTPVHqDkTHLCc6hWei4lISXasb0b1u8FPthFFn3OlR9YxFVjI+3cBo/EV6uTej0cO3vyRiNHqXRt6LubP/fX4AUgwJ4Furtv8AAAAASUVORK5CYII=") no-repeat center
+      transition .5s visible, .5s opacity
+    &-title
+      color white
+      fontify 120px 400 90px
+      mb 40px
+      ml -10px
+      pos relative
+      opacity 0
+      b -20px
+      transition .7s opacity, .7s bottom
+      &:before
+        content attr(data-default)
+    &-text
+      color white
+      fontify 42px 400 46px
+      pos relative
+      b -20px
+      opacity 0
+      transition .7s opacity, .7s bottom
+      &:before
+        content attr(data-default)
+    &-href
+      cursor pointer
+      mt 40px
+      ml 2px
+      color white
+      fontify 14px 700 16px
+      text-transform uppercase
+      letter-spacing .1em
+      pos relative
+      b -20px
+      opacity 0
+      transition .5s visible, .5s opacity, .7s opacity, .7s bottom
+      &:after
+        content ""
+        pos absolute
+        bgc alpha(white, .25)
+        w 100%
+        h 1px
+        b 0
+        l 50%
+        transform translateX(-50%)
+        transition .7s width
+      &:hover:after
+        w 0
+
+    &-stages
+      display flex
+      justify-content space-between
+      align-items flex-end
+    &-stage
+      w 364px
+      text-align center
+      pos relative
+      r -80px
+      opacity 0
+      transition 0s opacity, 0s right
+      &_first
+        w 265px
+        display flex
+        flex-wrap wrap
+    &-col
+      w calc(50% - 10px)
+      display flex
+      flex-direction column
+      & + &
+        ml 20px
+    &-square
+      color white
+      fontify 42px 400 40px
+      mb 10px
+    &-img
+      max-width 100%
+    &-year
+      w 100%
+      color white
+      fontify 16px 400 23px
+      mt 20px
+    &-queue
+      w 100%
+      color white
+      fontify 16px 700 23px
+      mt 8px
+
+
+.ibanner
+  h 100vh
+  .swiper-slide
+    pos relative
+    z-index 1
+    overflow hidden
+    display flex
+    align-items center
+    justify-content flex-start
+    &-active
+      & ^[0]
+        &__bg
+          transition 7s transform
+          transform translate(-50%, -50%) scale(1.08)
+        &__title
+          opacity 1
+          b 0
+          transition-delay .8s
+        &__text
+          opacity 1
+          b 0
+          transition-delay .9s
+        &__more
+          opacity 1
+          b 0
+          transition-delay 1.2s
+        &__content:before
+          w 70px
+          transition-delay 1.4s
+  &__bg
+    opacity .5
+    z-index -1
+    imgCenteringMin()
+  &__maxwidth
+    max-width 700px
+  &__title
+    color white
+    fontify 72px 400 76px
+    pos relative
+    opacity 0
+    b -20px
+    transition .7s opacity, .7s bottom
+  &__content
+    mt 32px
+    pl 106px
+    pos relative
+    &:before
+      content ""
+      pos absolute
+      l 6px
+      t 11px
+      w 0
+      h 1px
+      bgc white
+      transition .7s width
+  &__text
+    color white
+    fontify 16px 400 23px
+    mb 30px
+    max-width 515px
+    pos relative
+    b -20px
+    opacity 0
+    transition .7s opacity, .7s bottom
+  &__more
+    color white
+    fontify 14px 700 16px
+    text-transform uppercase
+    letter-spacing .1em
+    pos relative
+    b -20px
+    opacity 0
+    transition .7s opacity, .7s bottom
+    &:after
+      content ""
+      pos absolute
+      bgc alpha(white, .25)
+      w 100%
+      h 1px
+      b 0
+      l 50%
+      transform translateX(-50%)
+      transition .7s width
+    &:hover:after
+      w 0

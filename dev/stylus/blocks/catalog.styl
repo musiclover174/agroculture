@@ -1,0 +1,330 @@
+.iveg
+  &__over
+    pl 187px
+    pos relative
+    &.hide
+      & ^[0]
+        &__title
+        &__hrefover,
+        &__icon,
+        &__bottom
+          l -20px
+          opacity 0
+          transition .7s opacity, .7s left
+    &.absolute
+      pos absolute
+      left -100%
+  &__back
+    cursor pointer
+    pos absolute
+    w 27px
+    h 25px
+    l 10px
+    t 30px
+    opacity 0
+    background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAZCAMAAAD3wqVsAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAgVBMVEUAAAAYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgAAADNX2UhAAAAKXRSTlMAPqs86j0550A25kQz6Ucx6Eku5U0s5FEpVCfjViThWyLgX8MjJSovOmlHG/UAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAAd0lEQVQoz33SyxKCMBBE0QYRJb4VI0gUBET8/x/UHQvqTm9PpZLMtDQlikVZJEuidLUmytyGaLvbEx2OJ6LzJSe6+htR4UqiexWIHs+aqHm1OKnui1FvnNOb7/u/0wfGgf9nzkX68DzNPZj7M/cujdwXs2fzfv4AsxQJVOH/g6IAAAAASUVORK5CYII=") no-repeat center
+    transition .5s left, .5s opacity
+  &__icon
+    pos absolute
+    t 20px 
+    l 0
+    ml -68px
+    opacity 0
+    transition .7s opacity, .7s top, .7s left
+  &__title
+    pos relative
+    color $dark
+    fontify 42px 400 46px
+    mb 10px
+    max-width 630px
+    b -20px
+    l 0
+    opacity 0
+    transition .7s opacity, .7s bottom, .7s left
+  &__hrefover
+    pos relative
+    mb 50px
+    color $dark
+    fontify 160px 700 164px
+    max-width 1376px
+    ml -6px
+    b -20px
+    l 0
+    opacity 0
+    transition .7s opacity, .7s bottom, .7s left
+  &__href
+    cursor pointer
+    pos relative
+    color $dark
+    fontify 160px 700 164px
+    &:after
+      content ""
+      bgc $dark
+      pos absolute
+      bottom 10px
+      l 0
+      w 100%
+      h 3px
+      transition .7s bottom, .7s opacity
+    &:before
+      content ""
+      pos absolute
+      opacity 0
+      transition .7s opacity, .7s top
+    &[data-type="tomato"]:before
+      size 123px
+      background url('../i/tomato-hover.png') no-repeat center
+      background-size 100% 100%
+      l 47px
+      t 57px
+    &[data-type="tomato"]:hover:before
+      t 37px
+    &:hover
+      background-size 100% 0px
+      &:after
+        b 5px
+        opacity 0
+      &:before
+        opacity 1
+  &__bottom
+    display flex
+    justify-content space-between
+    pos relative
+    l 0
+    transition .7s opacity, .7s left
+    transition-delay 1.2s
+  &__content
+    pl 102px
+    pos relative
+    &:before
+      content ""
+      pos absolute
+      l 6px
+      t 11px
+      w 0
+      h 1px
+      bgc $dark
+      transition .7s width
+  &__text
+    color $dark
+    fontify 16px 400 23px
+    mb 30px
+    max-width 430px
+    pos relative
+    b -20px
+    opacity 0
+    transition .7s opacity, .7s bottom
+  &__catover
+    w 460px
+  &__tocat
+    pos relative
+    color $dark
+    fontify 14px 700 23px
+    text-transform uppercase
+    letter-spacing .1em
+    border-bottom 1px solid alpha($dark, .25)
+    b -20px
+    opacity 0
+    transition .7s opacity, .7s bottom, .7s border
+    &:hover
+      border-color transparent
+  &__type
+    *
+      user-select none
+    &:before
+      content attr(data-percent)
+      color $green
+      fontify 14px 400 20px
+      pos absolute
+      t 30px
+      l 50%
+      transform translateX(-50%)
+    .h-step1
+      pos relative
+      t 0
+      opacity 1
+      transition .7s top, .7s opacity
+    .h-step2
+      pos absolute
+      l -100%
+      b -20px
+      opacity 0
+      transition .7s bottom, .7s opacity
+    &.absolute
+      pos absolute
+      l -100%
+    &.step2-starter
+      .h-step1
+        t -20px
+        opacity 0
+    &.step2
+      & ^[0]__type-col:last-child
+        pt 255px
+      .h-step1
+        pos absolute
+        l -100%
+        t -20px
+        opacity 0
+      .h-step2
+        l 0
+        pos relative
+        b 0
+        opacity 1
+    &.step1-starter
+      .h-step2
+        b -20px
+        opacity 0
+    &:not(.hide)
+      & ^[0]__back
+        opacity 1
+        l 30px
+        transition-delay 1.4s
+      & ^[0]__type
+        &-anim
+          opacity 1
+          t 50%
+          transition-delay 1s
+        &-title
+          opacity 1
+          b 0
+          transition-delay .2s
+        &-square,
+        &-text
+          opacity 1
+          b 0
+          transition-delay .4s
+        &-square-sub,
+        &-future
+          opacity 1
+          b 0
+          transition-delay .6s
+        &-future:before
+          w 70px
+          transition-delay .8s
+        &-hint
+          opacity 1
+          b 0
+          transition-delay 1.2s
+    &-anim
+      pos absolute
+      t 52%
+      l 50%
+      z-index 1
+      transform translate(-54%, -54%)
+      opacity 0
+      transition .7s opacity, .7s top
+      &[data-type="tomato"]
+        size 565px 806px
+        background url('../i/tomato-seq.png') no-repeat 0 0
+    &-title
+      color #181818
+      fontify 240px 700 173px
+      text-align center
+      mb 50px
+      pl 17px
+      pos relative
+      b -20px
+      opacity 0
+      transition .7s opacity, .7s bottom
+    &-cols
+      display flex
+      justify-content space-between
+      align-items stretch
+    &-col
+      w 462px
+      &_spacer
+        w 676px
+        align-self flex-end
+    &-square
+      color $dark
+      fontify 120px 400 144px
+      mb 15px
+      ml -5px
+      pos relative
+      b -20px
+      opacity 0
+      transition .7s opacity, .7s bottom
+      &-sub
+        color $dark
+        fontify 42px 400 46px
+        max-width 410px
+        mb 66px
+        pos relative
+        b -20px
+        opacity 0
+        transition .7s opacity, .7s bottom
+    &-text
+      color $dark
+      fontify 46px 400 46px
+      mb 40px
+      pt 104px
+      pos relative
+      b -20px
+      opacity 0
+      transition .7s opacity, .7s bottom
+    &-future
+      color $dark
+      fontify 16px 400 23px
+      pl 99px
+      pos relative
+      max-width 410px
+      mb 66px
+      b -20px
+      opacity 0
+      transition .7s opacity, .7s bottom
+      &:before
+        content ""
+        pos absolute
+        l 6px
+        t 11px
+        w 0
+        h 1px
+        bgc $dark
+        transition .7s width
+    &-hint
+      color $dark
+      fontify 16px 400 23px
+      pos relative
+      max-width 220px
+      margin 0 auto
+      text-align center
+      b -20px
+      opacity 0
+      transition .7s opacity, .7s bottom
+      &:before
+        content ""
+        pos absolute
+        size 73px 38px
+        t -50px
+        l 50%
+        ml -36px
+        background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAAmCAMAAAC/D0ZhAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABa1BMVEUAAAAYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgAAACZhaHsAAAAd3RSTlMALXCq0O35DHLV0o9VLxIGBG/sjSolzJInTPFx8lv7SlxO/Ds6SCYOAwIfGfSfLtEXE3z+PQmsYgEx588/r6hXHFqcqWrE+godmR7weHMNFsthihh5CLRgBepWWCzlX2SOT5Qo36YbCyCMzvM5RkVdUFHN7ikP1t60UF0AAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAB/0lEQVRIx62W6VviMBCHQ+VGoA3IsUXAqvU+0HXd9VYUz+KteLPriaz39e+b4AcREpL0cT5Mm5nf8z7TNO0MADXNItVZbXa7zVonWYB5czhdbk+91+f3+7z1HrfL6TDHkRUYCJYHggGoyCZADaFwpDIWCYcahEHRHyoprMaigqDGeIKcSMSTQqAmrZmWatGaBECRWCs92RqLcIPkkFIrrYRkXpISrp0PS5wgB2SUr0POI+oMsBQBZ1WorZ2gcwVZpKDr876jE/uu7p5qWW8fu+y+XuT6U/h2YPAn8kO/hqtVkofF+f3Hgz+AkVG8GBvvoukmJumMKS/2028zaVzNLE/lFJvLzCO/sBjl2AEAYIoQXFpewZeo8bFMQR6S3f9lmUhnkV9dWy8P+u0ipI6JUhkbcb1aw0eCqc0tH7puw50SsJ+gYT/d6gLeceVtFy+yOaqOfeasewCk97MHQwzdfpqaOjw6xpcT9G7UPHsH8qRf899/+CFOzxr5K6ecuXPtoiIi9gV/2uVVZcQosEgFg102NgfUawt0G28zlr7r78vsCNcyL4nRpYr8XQp3zhZa6r9Q5wQgqd2QE7fanRAIgPsicVul4oMgCL3qR9LU86gLg/Ak9lR4Lg88F55MTWLIXoxXdx5Nh7kcmg7z7lfjxRynZBYVTayZDJpYVdbE+g7RMjZnpiz6ewAAAABJRU5ErkJggg==") no-repeat center
+    &-mainfeat
+      color $dark
+      fontify 120px 700 124px
+      mb 58px
+    &-name
+      color $dark
+      fontify 16px 400 23px
+      pl 130px
+    &-tocat
+      ib()
+      color $dark
+      fontify 14px 700 16px
+      text-transform uppercase
+      letter-spacing .1em
+      mt -28px
+      ml 3px
+      pos relative
+      &:after
+        content ""
+        pos absolute
+        bgc alpha($dark, .25)
+        w 100%
+        h 1px
+        b 0
+        l 50%
+        transform translateX(-50%)
+        transition .7s width
+      &:hover:after
+        w 0

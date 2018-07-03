@@ -153,7 +153,7 @@
 
   }).init();
 
-  window.agroculture.animator = ({
+  /*window.agroculture.animator = ({
 
     hideBlock: function (block) {
       block.clearQueue().stop().animate({
@@ -274,17 +274,288 @@
       return this;
     }
 
-  }).init();
+  }).init();*/
 
   window.agroculture.obj = ({
 
-    animationInProgress: false,
+    progressUpdate: (val) => {
+      const progressEl = document.querySelector('.js-progress')
+      
+      progressEl.style.width = val + '%'
+    },
+    
+    indexVertCarousel: () => {
+      const headerEl = document.querySelector('.header'),
+            bodyEl = document.querySelector('body'),
+            carElemCount = document.querySelector('.js-icar .swiper-wrapper').children.length,
+            areaOverEl = document.querySelector('.js-area-over'),
+            _self = this
+      
+      let bodyElColor = bodyEl.getAttribute('data-color')
+      
+      const mainVertSwiper = new Swiper ('.js-icar', {
+        loop: false,
+        speed: 800,
+        direction: 'vertical',
+        slidesPerView: 1,
+        spaceBetween: 0,
+        mousewheel: true,
+        touchMoveStopPropagation: false,
+        allowTouchMove: false
+      })
+      
+      mainVertSwiper.on('slideChangeTransitionStart', function () {
+        if (this.activeIndex) {
+          headerEl.classList.add('hidden')
+          window.agroculture.obj.progressUpdate(Math.floor((this.activeIndex + 1) * 100 / carElemCount))
+        } else {
+          headerEl.classList.remove('hidden')
+          window.agroculture.obj.progressUpdate(0)
+        }
+        
+        if (this.activeIndex !== 1) {
+          areaOverEl.classList.remove('changed')
+        }
+        
+        let slideColor = this.slides[this.activeIndex].getAttribute('data-color')
+        if (slideColor != bodyElColor) {
+          bodyElColor = slideColor
+          bodyEl.setAttribute('data-color', slideColor)
+        }
+        
+      });
+      
+    },
+    
+    indexBannerCarousel: () => {
+      const toggleHiddens = document.querySelectorAll('.js-area-toggler'),
+            toggleOver = document.querySelector('.js-area-over')
+      
+      const bannerSwiper = new Swiper ('.js-ibanner', {
+        loop: true,
+        speed: 800,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        parallax: true,
+        navigation: {
+          nextEl: '.js-ibanner .swiper-button-next',
+          prevEl: '.js-ibanner .swiper-button-prev',
+        },
+        autoplay: {
+          delay: 5000
+        }
+      })
+      
+      for (let toggleButton of toggleHiddens) {
+        toggleButton.addEventListener('click', () => {
+          toggleOver.classList.toggle('changed')
+        })
+      }
+      
+    },
+    
+    indexShowMap: () => {
+      const mapButton = document.querySelector('.js-mapshower'),
+            mapAreaOver = document.querySelector('.js-slide-mapper')
+      
+      function init() {
+        var multiRoute = new ymaps.multiRouter.MultiRoute({
+          referencePoints: [
+            [55.727888, 37.564603],
+            [54.832774, 38.294106]
+          ],
+          params: {
+            results: 1
+          }
+        }, {
+          boundsAutoApply: false
+        })
 
+        var myMap = new ymaps.Map('iroad-map', {
+          center: [55.051641, 38.714763],
+          zoom: 9,
+          controls: ['smallMapDefaultSet']
+        })
+
+        myMap.geoObjects.add(multiRoute)
+        myMap.behaviors.disable('scrollZoom')
+    }
+      
+      ymaps.ready(init)
+      
+      mapButton.addEventListener('click', () => {
+        mapAreaOver.classList.toggle('showmap')
+      })
+      
+    },
+    
+    indexVegetables: () => {
+      const vegHrefs = document.querySelectorAll('.js-iveg-href'),
+            vegOver = document.querySelector('.iveg__over'),
+            backHrefs = document.querySelectorAll('.js-iveg-back')
+      
+      let step = 0,
+          vegBlock, vegEl,
+          clientX = 0,
+          vegWidth, vegFrames, vegFrameHeight,
+          minL = Infinity, maxL = 0,
+          startWatcher = false,
+          vegStepEnd = false
+      
+      let vegListener = (event) => {
+        if (startWatcher) {
+          if (event.offsetX < minL)
+            minL = event.offsetX
+          if (event.offsetX > maxL)
+            maxL = event.offsetX
+          
+          let percent = Math.floor((maxL - minL) * 150 / vegWidth)
+          
+          if (percent < 0) percent = 0
+          if (percent > 100) {
+            percent = 100
+            vegStepEnd = true
+          }
+          
+          if (percent > 0 && percent <= 100)
+            vegBlock.setAttribute('data-percent', percent)
+          
+          let newSlide = Math.floor(vegFrames * percent / 100)
+          
+          vegEl.style.backgroundPositionY = `-${newSlide * vegFrameHeight}px`
+        }
+      }
+      
+      let vegToStart = (curSlide) => {
+        if (curSlide === 0) return
+        curSlide--
+        vegEl.style.backgroundPositionY = `-${curSlide * vegFrameHeight}px`
+        setTimeout(() => {
+          vegToStart(curSlide)
+        }, 20)
+      }
+      
+      let watcherSetter = () => {
+        startWatcher = true
+      }
+      
+      let interactiveEnd = () => {
+        minL = Infinity
+        maxL = 0
+        if (!vegStepEnd){
+          vegToStart(Math.abs(parseInt(getComputedStyle(document.querySelector('.iveg__type-anim'))['backgroundPositionY'])) / vegFrameHeight)
+        } else {
+          step++
+          vegBlock.classList.add('step2-starter');
+          setTimeout(() => {
+            vegBlock.classList.remove('step2-starter');
+            vegBlock.classList.add('step2');
+          }, 700)
+          docListenerRemove()
+        }
+        vegBlock.removeAttribute('data-percent')
+        startWatcher = false
+      }
+      
+      let docListenerRemove = () => {
+        ['mousedown', 'touchstart'].forEach(function(e) {
+          document.removeEventListener(e, watcherSetter)
+        });
+          
+        ['mouseup', 'touchend'].forEach(function(e) {
+          document.removeEventListener(e, interactiveEnd);
+        });
+        
+        ['mousemove', 'touchmove'].forEach(function(e) {
+          vegEl.removeEventListener(e, vegListener)
+        })
+      }
+      
+      let docListener = () => {
+        ['mousemove', 'touchmove'].forEach(function(e) {
+          vegEl.addEventListener(e, vegListener)
+        });
+
+        ['mousedown', 'touchstart'].forEach(function(e) {
+          document.addEventListener(e, watcherSetter)
+        });
+
+        ['mouseup', 'touchend'].forEach(function(e) {
+          document.addEventListener(e, interactiveEnd);
+        })
+      }
+      
+      for (let vegHref of vegHrefs) {
+        vegHref.addEventListener('click', () => {
+          const hrefType = vegHref.getAttribute('data-type')
+                
+          vegBlock = document.querySelector(`.iveg__type[data-type="${hrefType}"]`)
+          
+          vegEl = vegBlock.querySelector('.iveg__type-anim')
+          vegWidth = vegEl.clientWidth
+          vegFrames = vegEl.getAttribute('data-frames')
+          vegFrameHeight = vegEl.getAttribute('data-frameheight');
+          
+          docListener()
+          
+          vegOver.classList.add('hide')
+          setTimeout(() => {
+            vegOver.classList.add('absolute')
+            vegBlock.classList.remove('absolute', 'hide')
+            step++
+          }, 700)
+          
+        })
+      }
+      
+      for (let backHref of backHrefs) {
+        backHref.addEventListener('click', () => {
+          if (step === 1) {
+            vegBlock.classList.add('hide')
+            setTimeout(() => {
+              vegBlock.classList.add('absolute')
+              vegOver.classList.remove('absolute', 'hide');
+              docListenerRemove()
+              step--
+            }, 700)
+          }
+          if (step === 2) {
+            step--
+            vegBlock.classList.add('step1-starter');
+            setTimeout(() => {
+              vegBlock.classList.remove('step1-starter');
+              vegBlock.classList.remove('step2');
+            }, 700)
+            vegToStart(vegFrames)
+            docListener()
+            vegStepEnd = false
+          }
+        })
+      }
+      
+    },
+    
     init: function () {
 
-      var _self = this;
+      const burgerEl = document.querySelector('.js-burger'),
+            html = document.querySelector('html')
+      
+      burgerEl.addEventListener('click', (e) => {
+        html.classList.toggle('burgeropen')
+        burgerEl.classList.toggle('open')
+        e.preventDefault()
+      })
+      
+      if (document.querySelector('.js-icar')) this.indexVertCarousel()
+      
+      if (document.querySelector('.js-ibanner')) this.indexBannerCarousel()
+      
+      if (document.querySelector('.js-mapshower')) this.indexShowMap()
+      
+      if (document.querySelector('.js-iveg-href')) this.indexVegetables()
 
-      /*const gallerySwiper = new Swiper ('.elem', {
+      /* 
+      const gallerySwiper = new Swiper ('.js-icar', {
         loop: false,
         speed: 800,
         slidesPerView: 4,
@@ -307,18 +578,19 @@
             spaceBetween: 10
           }
         }
-      }); */
-
+      });
+      */
+      
 			//shave(elem, 50); обрезка текста
 			
       //$('[data-fancybox]').fancybox(); // fancy init
 
-      let eventResize = new Event('resize'); // триггеры событий скролла и ресайза
-      window.dispatchEvent(eventResize);
-      let eventScroll = new Event('scroll');
-      window.dispatchEvent(eventScroll);
+      /*let eventResize = new Event('resize') // триггеры событий скролла и ресайза
+      window.dispatchEvent(eventResize)
+      let eventScroll = new Event('scroll')
+      window.dispatchEvent(eventScroll)*/
 
-      return this;
+      return this
     }
   }).init();
 

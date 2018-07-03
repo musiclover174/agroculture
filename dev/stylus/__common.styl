@@ -3,15 +3,10 @@ body
   font-family $os
 body
   overflow-x: hidden
-
-html.burgeropen
-  overflow hidden
-  .header
-    @media $mPortraitMax
-      overflow visible
   
 .container
-  max-width 1330px
+  w 100%
+  max-width 1600px
   margin 0 auto
   @media $desktopMax
     max-width 1120px
@@ -24,9 +19,6 @@ html.burgeropen
     padding 0 30px
 
 .content
-  pt 124px
-  pos relative
-  z-index 1
   &.cling
     & + .footer
       mt 0
@@ -37,10 +29,6 @@ html.burgeropen
   @media $mPortraitMax
     overflow hidden
     pb 3px
-  &:not(.index)
-    pt 160px
-    @media $mLandscape
-      pt 130px
   h1:not([class])
     color $dark
     fontify 60px 400 64px
@@ -162,20 +150,21 @@ div[class\^="table-scroller"]
 
 .btn
   ib()
-  bgc $orange
+  bgc white
   border 0
-  border-radius 24px
-  color white
+  border-radius 18px
+  color $dark
   outline none
   cursor pointer
-  font-family $os
-  fontify 14px 300 48px
+  fontify 14px 700 36px
   letter-spacing .1em
   text-transform uppercase;
-  padding 0 45px
-  transition .5s background
+  padding 0 20px
+  transition .7s background, .7s color, .7s box-shadow
   &:hover
-    bgc $orangeHov
+    bgc $green
+    color white
+    box-shadow 0 0 15px 0 alpha($green, 0.8)
   @media $tPortraitMax
     fontify 13px 300 38px
     padding 0 25px
@@ -266,6 +255,8 @@ div[class\^="table-scroller"]
       color $orange
   &__col
     w calc(50% - 14px)
+    &_iroad
+      max-width 510px
     @media $mLandscape
       w 100%
       & + &

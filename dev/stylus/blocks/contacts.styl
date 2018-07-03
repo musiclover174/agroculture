@@ -1,0 +1,86 @@
+.iroad
+  &__title
+    pos relative
+    color white
+    fontify 120px 400 124px
+    max-width 540px
+    mb 23px
+    opacity 0
+    b -20px
+    ml -5px
+    transition .7s opacity, .7s bottom
+  &__feat
+    pos relative
+    color white
+    fontify 42px 400 46px
+    mb 37px
+    opacity 0
+    b -20px
+    transition .7s opacity, .7s bottom
+  &__content
+    pl 102px
+    pos relative
+    &:before
+      content ""
+      pos absolute
+      l 6px
+      t 11px
+      w 0
+      h 1px
+      bgc white
+      transition .7s width
+  &__text
+    color white
+    fontify 16px 400 23px
+    mb 30px
+    max-width 430px
+    pos relative
+    b -20px
+    opacity 0
+    transition .7s opacity, .7s bottom
+  &__where
+    color white
+    fontify 14px 700 16px
+    text-transform uppercase
+    letter-spacing .1em
+    pos relative
+    b -20px
+    opacity 0
+    transition .7s opacity, .7s bottom
+    & + &
+      ml 28px
+    &:after
+      content ""
+      pos absolute
+      bgc alpha(white, .25)
+      w 100%
+      h 1px
+      b 0
+      l 50%
+      transform translateX(-50%)
+      transition .7s width
+    &:hover:after
+      w 0
+  &__btn
+    pos relative
+    b -20px
+    opacity 0
+    transition .7s opacity, .7s bottom, .7s background, .7s color, .7s box-shadow
+    &-over
+      mt 177px
+      text-align center
+  &__map
+    pos absolute
+    opacity .4
+    w 100%
+    h 100%
+    t 0
+    l 0
+    opacity 0
+    visibility hidden
+    transition .7s opacity, .7s visibility
+.showmap
+  .iroad__map
+    opacity 1
+    visibility visible
+    z-index 2

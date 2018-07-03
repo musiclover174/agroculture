@@ -2,8 +2,245 @@ doctype html
 html
   head(lang="ru")
     include layout/__head
-  body
+  body(data-color="dark")
     include layout/__header
-    .content
-      
+    section.content
+      .swiper-container.icar.js-icar
+        .swiper-wrapper
+          .swiper-slide(data-color="dark") 
+            .swiper-container.ibanner.js-ibanner
+              .swiper-wrapper
+                .swiper-slide 
+                  //video(autoplay, loop, poster="img/ibanner1.jpg").ibanner__bg
+                    source(src="video/video.mp4", type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"')
+                  img(src="img/ibanner1.jpg", alt="").ibanner__bg
+                  section.container
+                    .ibanner__maxwidth
+                      p.ibanner__title Новый бренд в сфере выращивания овощных культур
+                      section.ibanner__content 
+                        p.ibanner__text Мы обеспечиваем стабильно высокий уровень сбора и качества урожая за счет применения самых современных технологий, экологических методов защиты растений, а также осуществления строгого санитарного контроля.
+                        a(href="#").ibanner__more Подробнее
+                .swiper-slide 
+                  img(src="img/ibanner1.jpg", alt="").ibanner__bg
+                  section.container
+                    .ibanner__maxwidth
+                      p.ibanner__title Новый бренд в сфере выращивания овощных культур1
+                      section.ibanner__content 
+                        p.ibanner__text Мы обеспечиваем стабильно высокий уровень сбора и качества урожая за счет применения самых современных технологий, экологических методов защиты растений, а также осуществления строгого санитарного контроля.12
+                        a(href="#").ibanner__more Подробнее
+              .swiper-button-prev
+              .swiper-button-next
+          .swiper-slide(data-color="dark")
+            img(src="img/iarea.jpg", alt="").icar__bg
+            section.container
+              section.icar__area-over.js-area-over
+                button(type="button").icar__area-back.js-area-toggler
+                section.icar__area.icar__area_start
+                  .icar__area__maxwidth
+                    p(data-default="52 Га", data-change="2014 год").icar__area-title
+                    p(data-default="теплиц уже введены в эксплуатацию, дополнительные 28 Га будут построены к концу 2018 года.", data-change="год основания компании и начала строительства первых тепличных комплексов.").icar__area-text 
+                    button(type="button").icar__area-href.js-area-toggler План развития комплекса
+                section.icar__area.icar__area_more
+                  .icar__area-stages
+                    .icar__area-stage.icar__area-stage_first
+                      .icar__area-col
+                        p.icar__area-square 9 Га
+                        img(src="img/area1.png", alt="").icar__area-img
+                        p.icar__area-year 2015 год
+                      .icar__area-col
+                        p.icar__area-square 22 Га
+                        img(src="img/area1.png", alt="").icar__area-img
+                        p.icar__area-year 2016 год
+                      p.icar__area-queue 1 + 2 очередь строительства
+                    .icar__area-stage.icar__area-stage_second
+                      p.icar__area-square 52 Га
+                      img(src="img/area2.png", alt="").icar__area-img
+                      p.icar__area-year 2017 год
+                      p.icar__area-queue 1 + 2 + 3 очередь строительства
+                    .icar__area-stage.icar__area-stage_third
+                      p.icar__area-square 80 Га
+                      img(src="img/area3.png", alt="").icar__area-img
+                      p.icar__area-year Запуск в 4 квартале 2018 года
+                      p.icar__area-queue 1 + 2 + 3 + 4 очередь строительства
+          .swiper-slide(data-color="light")
+            section.container
+              section.iveg__over
+                img(src="img/iveg-logo.png").iveg__icon
+                p.iveg__title Под брендом «Зелёный стандарт» продаются наши свежие
+                .iveg__hrefover
+                  button(type="button", data-type="tomato").iveg__href.js-iveg-href томаты
+                  | ,
+                  button(type="button", data-type="cucumber").iveg__href.js-iveg-href огурцы
+                  | ,
+                  button(type="button", data-type="peppers").iveg__href.js-iveg-href перцы
+                  | ,
+                  button(type="button", data-type="eggplant").iveg__href.js-iveg-href баклажаны
+                  | .
+                section.iveg__bottom
+                  .iveg__content
+                    p.iveg__text Все наши овощи выращиваются в закрытом грунте с соблюдением всех норм и конечно же проходят строгий саниторный контроль.
+                  aside.iveg__catover
+                    a(href="#").iveg__tocat Весь каталог включает<br>более 20 сортов овощей
+              section(data-type="tomato").iveg__type.hide.absolute
+                button(type="button").iveg__back.js-iveg-back
+                span(data-frames="19", data-frameheight="806", data-type="tomato").iveg__type-anim
+                .h-step1
+                  p.iveg__type-title Томаты
+                .iveg__type-cols
+                  .iveg__type-col
+                    .h-step1
+                      p.iveg__type-square 28 Га
+                      p.iveg__type-square-sub уже выделено в нашем комплексе под выращивание томатов. 
+                    .h-step2
+                      p.iveg__type-mainfeat Свежий, сладкий вкус
+                      p.iveg__type-future Наши томаты идеально подходят для различных салатов, соков и томатных паст, а так же для потребления в свежем виде. И конечно они очень полезны из-за повышенной концентрации ликопина в мякоти. 
+                  .iveg__type-col.iveg__type-col_spacer
+                    .h-step1
+                      p.iveg__type-hint Зажмите левую клавишу мыши и проведите по изображению, как показано на примере.
+                    .h-step2
+                      p.iveg__type-name Томат<br>«Мерлис»
+                  .iveg__type-col
+                    .h-step1
+                      p.iveg__type-text В этом году мы вырастим и поставим на прилавки 21000 тонн томатов 
+                      p.iveg__type-future В 2019 году объем выращенных томатов составит 40600 тонн, а в 2020 году – 60200 тонн.
+                    .h-step2
+                      p.iveg__type-square 7 сортов
+                      p.iveg__type-square-sub Мерлис, Т-34, Тореро, Таганка, Розарио, Органза, Атракси
+                      a(href="#").iveg__type-tocat Перейти в каталог
+              section(data-type="cucumber").iveg__type.hide.absolute
+                button(type="button").iveg__back.js-iveg-back
+                span(data-frames="19", data-frameheight="806", data-type="tomato").iveg__type-anim
+                .h-step1
+                  p.iveg__type-title Огурцы
+                .iveg__type-cols
+                  .iveg__type-col
+                    .h-step1
+                      p.iveg__type-square 28 Га
+                      p.iveg__type-square-sub уже выделено в нашем комплексе под выращивание томатов. 
+                    .h-step2
+                      p.iveg__type-mainfeat Свежий, сладкий вкус
+                      p.iveg__type-future Наши томаты идеально подходят для различных салатов, соков и томатных паст, а так же для потребления в свежем виде. И конечно они очень полезны из-за повышенной концентрации ликопина в мякоти. 
+                  .iveg__type-col.iveg__type-col_spacer
+                    .h-step1
+                      p.iveg__type-hint Зажмите левую клавишу мыши и проведите по изображению, как показано на примере.
+                    .h-step2
+                      p.iveg__type-name Томат<br>«Мерлис»
+                  .iveg__type-col
+                    .h-step1
+                      p.iveg__type-text В этом году мы вырастим и поставим на прилавки 21000 тонн томатов 
+                      p.iveg__type-future В 2019 году объем выращенных томатов составит 40600 тонн, а в 2020 году – 60200 тонн.
+                    .h-step2
+                      p.iveg__type-square 7 сортов
+                      p.iveg__type-square-sub Мерлис, Т-34, Тореро, Таганка, Розарио, Органза, Атракси
+                      a(href="#").iveg__type-tocat Перейти в каталог
+              section(data-type="peppers").iveg__type.hide.absolute
+                button(type="button").iveg__back.js-iveg-back
+                span(data-frames="19", data-frameheight="806", data-type="tomato").iveg__type-anim
+                .h-step1
+                  p.iveg__type-title Перцы
+                .iveg__type-cols
+                  .iveg__type-col
+                    .h-step1
+                      p.iveg__type-square 28 Га
+                      p.iveg__type-square-sub уже выделено в нашем комплексе под выращивание томатов. 
+                    .h-step2
+                      p.iveg__type-mainfeat Свежий, сладкий вкус
+                      p.iveg__type-future Наши томаты идеально подходят для различных салатов, соков и томатных паст, а так же для потребления в свежем виде. И конечно они очень полезны из-за повышенной концентрации ликопина в мякоти. 
+                  .iveg__type-col.iveg__type-col_spacer
+                    .h-step1
+                      p.iveg__type-hint Зажмите левую клавишу мыши и проведите по изображению, как показано на примере.
+                    .h-step2
+                      p.iveg__type-name Томат<br>«Мерлис»
+                  .iveg__type-col
+                    .h-step1
+                      p.iveg__type-text В этом году мы вырастим и поставим на прилавки 21000 тонн томатов 
+                      p.iveg__type-future В 2019 году объем выращенных томатов составит 40600 тонн, а в 2020 году – 60200 тонн.
+                    .h-step2
+                      p.iveg__type-square 7 сортов
+                      p.iveg__type-square-sub Мерлис, Т-34, Тореро, Таганка, Розарио, Органза, Атракси
+                      a(href="#").iveg__type-tocat Перейти в каталог
+              section(data-type="eggplant").iveg__type.hide.absolute
+                button(type="button").iveg__back.js-iveg-back
+                span(data-frames="19", data-frameheight="806", data-type="tomato").iveg__type-anim
+                .h-step1
+                  p.iveg__type-title Баклажаны
+                .iveg__type-cols
+                  .iveg__type-col
+                    .h-step1
+                      p.iveg__type-square 28 Га
+                      p.iveg__type-square-sub уже выделено в нашем комплексе под выращивание томатов. 
+                    .h-step2
+                      p.iveg__type-mainfeat Свежий, сладкий вкус
+                      p.iveg__type-future Наши томаты идеально подходят для различных салатов, соков и томатных паст, а так же для потребления в свежем виде. И конечно они очень полезны из-за повышенной концентрации ликопина в мякоти. 
+                  .iveg__type-col.iveg__type-col_spacer
+                    .h-step1
+                      p.iveg__type-hint Зажмите левую клавишу мыши и проведите по изображению, как показано на примере.
+                    .h-step2
+                      p.iveg__type-name Томат<br>«Мерлис»
+                  .iveg__type-col
+                    .h-step1
+                      p.iveg__type-text В этом году мы вырастим и поставим на прилавки 21000 тонн томатов 
+                      p.iveg__type-future В 2019 году объем выращенных томатов составит 40600 тонн, а в 2020 году – 60200 тонн.
+                    .h-step2
+                      p.iveg__type-square 7 сортов
+                      p.iveg__type-square-sub Мерлис, Т-34, Тореро, Таганка, Розарио, Органза, Атракси
+                      a(href="#").iveg__type-tocat Перейти в каталог
+          .swiper-slide.swiper-no-swiping.js-slide-mapper(data-color="dark")
+            section.iroad__mapover
+              script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU")
+              .iroad__map#iroad-map
+            img(src="img/iroad.jpg", alt="").icar__bg
+            section.container
+              p.iroad__title 3 часа
+              .common__row
+                .common__col.common__col_iroad
+                  p.iroad__feat – транспортировка овощей от грядки до прилавка.
+                  a(href="#").iroad__where Где купить продукцию
+                .common__col.common__col_iroad
+                  p.iroad__feat Комплекс расположен в Каширском районе Московской области
+                  section.iroad__content
+                    p.iroad__text Тепличный комплекс ООО «Агрокультура групп» расположен в 130 километрах от центра Москвы, что позволяет в течение 3 часов доставлять товар конечному потребителю.
+              section.iroad__btn-over
+                button(type="button").btn.iroad__btn.js-mapshower Показать маршрут
+          .swiper-slide(data-color="dark")
+            img(src="img/iemp-bg.jpg", alt="").icar__bg
+            section.container
+              p.iemp__title Более 800 сотрудников
+              p.iemp__subtitle работают на тепличном комплексе
+              section.iemp__content
+                p.iemp__text Основной руководящий состав и штат специалистов сформирован из профессионалов, имеющих профильное высшее образование и релевантный опыт работы. Коллектив хозяйства включает преимущественно местное население.
+                .iemp__hrefs
+                  a(href="#").iemp__more Подробнее о сотрудниках
+                  a(href="#").iemp__more Вакансии
+              section.iemp__btn-over
+                button(type="button").btn.iemp__btn Отправить резюме
+          .swiper-slide(data-color="light")
+            section.container
+              p.inews__title Пресс-центр
+              section.inews__grid
+                article.inews__elem.inews__elem_wide
+                  aside.inews__elem-side
+                    a(href="#").inews__elem-imgover
+                      img(src="img/inews1.jpg", alt="").inews__elem-img
+                  .inews__elem-content
+                    p.inews__elem-date 15 мая 2018
+                    a(href="#").inews__elem-href 
+                      span «Агрокультура Групп» – это максимально эффективная адаптация к изменениям
+                article.inews__elem
+                  aside.inews__elem-side
+                    a(href="#").inews__elem-imgover
+                      img(src="img/inews2.jpg", alt="").inews__elem-img
+                  .inews__elem-content
+                    p.inews__elem-date 12 января 2018
+                    a(href="#").inews__elem-href 
+                      span «Агрокультура Групп» запустил третью очередь теплиц
+                article.inews__elem
+                  aside.inews__elem-side
+                    a(href="#").inews__elem-imgover
+                      img(src="img/inews3.jpg", alt="").inews__elem-img
+                  .inews__elem-content
+                    p.inews__elem-date 6 декабря 2017
+                    a(href="#").inews__elem-href 
+                      span Бренд «Зелёный Стандарт» стал лауреатом премии «Здоровое питание»
+                a(href="#").inews__href Все новости
     include layout/__footer

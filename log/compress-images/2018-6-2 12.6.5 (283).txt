@@ -1,0 +1,10 @@
+File from: [dev/img/iveg-logo.png]
+
+File to: [prod/img/iveg-logo.png]
+
+Compression algorithm: [pngquant]
+
+============== LOG ============== 
+Error: Command failed: D:\work\!nick\Агрокультура\node_modules\pngquant-bin\vendor\pngquant.exe --quality=30-60 -o prod/img/iveg-logo.png dev/img/iveg-logo.png
+  error: 'prod/img/iveg-logo.png' exists; not overwriting
+================================= 

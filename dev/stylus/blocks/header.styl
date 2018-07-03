@@ -1,0 +1,316 @@
+.header
+  pos fixed
+  w 100%
+  t 0
+  l 0
+  padding 30px 30px 0
+  z-index 11
+  display flex
+  justify-content space-between
+  align-items flex-start
+  &.hidden
+    h 0px
+    & ^[0]__edge
+      transform rotateX(90deg)
+      transition-delay 0s
+      &_rear
+        transform rotateX(0deg)
+        transition-delay .7s
+    & ^[0]__logo
+      opacity 0
+      visibility hidden
+      l -500px
+      transition .7s opacity, .7s visibility, 0s left .7s
+  &__logo
+    l 0
+    pos relative
+    transition .7s opacity, .7s visibility, 0s left
+  &__edge
+    display flex
+    will-change transform
+    transition .7s transform
+    transform-origin center
+    transition-delay .7s
+    &_rear
+      pos absolute
+      r 30px
+      t 30px
+      transform rotateX(90deg)
+      transition-delay 0s
+  &__menu
+    mt -2px
+    &-list
+      display flex
+    &-item
+      & + &
+        ml 27px
+    &-href
+      color white
+      fontify 14px 700 16px
+      text-transform uppercase
+      letter-spacing 0.1em
+      pos relative
+      &:after
+        content ""
+        pos absolute
+        bgc alpha(white, .25)
+        w 0
+        h 1px
+        b 0
+        l 50%
+        transform translateX(-50%)
+        transition .7s width
+      &.active:after,
+      &:hover:after
+        w 100%
+  &__phones
+    mt -2px
+    ml 48px
+    &-elem
+      color white
+      fontify 14px 700 16px
+      text-transform uppercase
+      letter-spacing 0.1em
+      & + &
+        ml 28px
+  &__socials
+    display flex
+    ml 48px
+    &-elem
+      transition .7s opacity
+      &:hover
+        opacity .6
+      & + &
+        ml 30px
+      &[data-type="inst"]
+        size 12px
+        background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAP1BMVEX///////////////////////////////////////////////////////////////////////////////////81m6ZbAAAAFHRSTlMAA37ree2Qg4+O+W4SEedvdoHhd8PbWNMAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAAU0lEQVQI122N0Q6AIAhFLxqZolnG/39rkrXW1n3hHMa4IOf1ip8IbqDyzAH3XhdERp9JcpE1sppU9GwdTLJJ/pPPWZJSJJk8r60K+ysB5NrAdtAJRDMH441ZvLkAAAAASUVORK5CYII=") no-repeat center
+      &[data-type="fb"]
+        size 7px 13px
+        background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAANBAMAAACX52mGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAHlBMVEX///////////////////////////////////////8V2MxSAAAACXRSTlMAEardd2bumbuE/Rs4AAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEgAACxIB0t1+/AAAACxJREFUCNdjYBCaOYGBQRNEzDQJABIKDAxKM5MKGGbOnGkAIhogYliJtAIGAA1bDqr8bfauAAAAAElFTkSuQmCC") no-repeat center
+
+body[data-color="dark"]
+  .burger__button
+    &:before,
+    &:after,
+    &-meat
+      bgc white
+
+body[data-color="light"]
+  .burger__button
+    &:before,
+    &:after,
+    &-meat
+      bgc $dark
+      
+
+.burger
+  &__button
+    cursor pointer
+    w 25px
+    h 25px
+    pos relative
+    &:before
+      content ""
+      pos absolute
+      t 0
+      r 0
+      w 25px
+      h 1px
+      transition .5s width, .5s background, .5s transform, .5s top
+    &:after
+      content ""
+      pos absolute
+      b 0
+      r 0
+      w 25px
+      h 1px
+      transition .5s width, .5s background, .5s transform, .5s top  
+    &-meat
+      content ""
+      pos absolute
+      t 50%
+      r 0
+      w 25px
+      h 1px
+      transition .5s width, .5s background, .5s transform, .5s top  
+    &:not(.open):hover
+      &:before
+        animation burger-hover 1s infinite ease-in-out alternate
+      &:after
+        animation burger-hover 1s infinite ease-in-out alternate forwards 400ms
+    &:not(.open):hover &-meat
+      animation burger-hover 1s infinite ease-in-out alternate forwards 200ms
+    &.open
+      &:before
+        transform rotate(45deg)
+        t 12px
+      &:after
+        transform rotate(135deg)
+        b 12px
+      & ^[-1]-meat
+        opacity 0
+  &__popup
+    visibility hidden
+    opacity 0
+    pos fixed
+    t 0 
+    l 0
+    w 100vw
+    h 100vh
+    z-index 9
+    background url('../i/burger-bg.png') no-repeat left top $dark
+    background-size cover
+    display flex
+    align-items center
+    justify-content flex-start
+    transition .7s visibility, .7s opacity
+  &__menu
+    &-inner
+      max-width 1226px
+      w 100%
+      margin 0 auto
+      display flex
+      justify-content space-between
+      align-items stretch
+    &-col
+      w calc(50% - 21px)
+      display flex
+      flex-direction column
+      justify-content space-between
+      align-content space-between
+    &-list
+      display flex
+      flex-direction column
+      pos relative
+      opacity 0
+      b -20px
+      transition .7s bottom, .7s opacity
+    &-item
+      & + &
+        mt 59px
+    &-href
+      color white
+      fontify 72px 400 48px
+      pos relative
+      &:after
+        content ""
+        pos absolute
+        bgc alpha(white, .25)
+        w 0
+        h 3px
+        b 4px
+        l 50%
+        transform translateX(-50%)
+        transition .7s width
+      &.active:after,
+      &:hover:after
+        w 100%
+  &__phones
+    mt -6px
+    overflow hidden
+    pos relative
+    opacity 0
+    b -20px
+    transition .7s bottom, .7s opacity
+    &-elem
+      ib()
+      color white
+      fontify 42px 400 40px
+      float left
+      clear both
+      & ~ &
+        mt 40px
+  &__socials
+    pl 102px
+    pos relative
+    color white
+    fontify 16px 400 23px
+    max-width 334px
+    opacity 0
+    b -20px
+    transition .7s bottom, .7s opacity
+    &:before
+      content ""
+      pos absolute
+      l 6px
+      t 11px
+      w 70px
+      h 1px
+      bgc white
+      transition .7s width
+    &-elem
+      color white
+      fontify 16px 400 23px
+      white-space nowrap
+      pos relative
+      &:after
+        content ""
+        pos absolute
+        bgc alpha(white, .25)
+        h 1px
+        b 0
+        r 0
+        transition .7s background, .7s bottom
+      &:hover:after
+        bgc transparent
+        b -2px
+      &:hover
+        border-color transparent
+      &:before
+        content ""
+        ib()
+        mr 7px
+      &[data-type="inst"]:before
+        size 12px
+        mt 6px
+        background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAP1BMVEX///////////////////////////////////////////////////////////////////////////////////81m6ZbAAAAFHRSTlMAA37ree2Qg4+O+W4SEedvdoHhd8PbWNMAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAAU0lEQVQI122N0Q6AIAhFLxqZolnG/39rkrXW1n3hHMa4IOf1ip8IbqDyzAH3XhdERp9JcpE1sppU9GwdTLJJ/pPPWZJSJJk8r60K+ysB5NrAdtAJRDMH441ZvLkAAAAASUVORK5CYII=") no-repeat center
+      &[data-type="inst"]:after
+        l 19px
+      &[data-type="fb"]:before
+        size 7px 13px
+        mt 5px
+        background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAANBAMAAACX52mGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAHlBMVEX///////////////////////////////////////8V2MxSAAAACXRSTlMAEardd2bumbuE/Rs4AAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEgAACxIB0t1+/AAAACxJREFUCNdjYBCaOYGBQRNEzDQJABIKDAxKM5MKGGbOnGkAIhogYliJtAIGAA1bDqr8bfauAAAAAElFTkSuQmCC") no-repeat center
+      &[data-type="fb"]:after
+        l 14px
+        
+
+@keyframes burger-hover
+  0%
+    w 100%
+  50%
+    w 50%
+  100%
+    w 100%
+      
+html.burgeropen
+  .burger
+    &__button
+      &:before,
+      &:after,
+      &-meat
+        bgc white
+    &__popup
+      visibility visible
+      opacity 1
+    &__menu
+      &-list
+        opacity 1
+        b 0
+        transition-delay .8s
+    &__phones
+      opacity 1
+      b 0
+      transition-delay 1s
+    &__socials
+      opacity 1
+      b 0
+      transition-delay 1.2s
+  .footer
+    opacity 0
+    visibility hidden
+  .header.hidden .header__logo
+    opacity 1
+    visibility visible
+    l 0
+    transition: 0.7s opacity, 0.7s visibility, 0s left;
