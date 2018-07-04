@@ -1,6 +1,14 @@
 (function () {
 
-	window.animation = {};
+  window.xs = window.innerWidth <= 960 ? true : false
+  
+  window.mobile = window.innerWidth <= 480 ? true : false
+  
+  window.xsHeight = window.innerHeight <= 540 ? true : false
+  
+  window.touch = document.querySelector('html').classList.contains('touchevents')
+  
+	window.animation = {}
 	
 	window.animation.fadeIn = (elem, ms, cb) => {
     if (!elem)
@@ -63,7 +71,7 @@
     }, 10);
   }
 	
-  window.agroculture = {};
+  window.agroculture = {}
 
   window.agroculture.form = ({
 
@@ -151,7 +159,7 @@
       return checkResult;
     }
 
-  }).init();
+  }).init()
 
   /*window.agroculture.animator = ({
 
@@ -293,6 +301,17 @@
       
       let bodyElColor = bodyEl.getAttribute('data-color')
       
+      if (window.xs && window.touch) {
+        document.querySelector('.js-icar .swiper-no-swiping').classList.remove('swiper-no-swiping')
+      }
+      
+      /*if (window.xsHeight){
+        document.querySelector('.js-icar').classList.add('horizontal')
+        document.querySelector('html').classList.add('horizontal')
+        document.querySelectorAll('.js-icar .swiper-slide').forEach( item => {
+          item.classList.add('swiper-slide-active')
+        })
+      } else {*/
       const mainVertSwiper = new Swiper ('.js-icar', {
         loop: false,
         speed: 800,
@@ -300,10 +319,10 @@
         slidesPerView: 1,
         spaceBetween: 0,
         mousewheel: true,
-        touchMoveStopPropagation: false,
-        allowTouchMove: false
+        //touchMoveStopPropagation: false,
+        allowTouchMove: window.xs && window.touch
       })
-      
+
       mainVertSwiper.on('slideChangeTransitionStart', function () {
         if (this.activeIndex) {
           headerEl.classList.add('hidden')
@@ -312,19 +331,19 @@
           headerEl.classList.remove('hidden')
           window.agroculture.obj.progressUpdate(0)
         }
-        
+
         if (this.activeIndex !== 1) {
           areaOverEl.classList.remove('changed')
         }
-        
+
         let slideColor = this.slides[this.activeIndex].getAttribute('data-color')
         if (slideColor != bodyElColor) {
           bodyElColor = slideColor
           bodyEl.setAttribute('data-color', slideColor)
         }
-        
+
       });
-      
+      //}
     },
     
     indexBannerCarousel: () => {
@@ -485,52 +504,56 @@
         })
       }
       
-      for (let vegHref of vegHrefs) {
-        vegHref.addEventListener('click', () => {
-          const hrefType = vegHref.getAttribute('data-type')
-                
-          vegBlock = document.querySelector(`.iveg__type[data-type="${hrefType}"]`)
-          
-          vegEl = vegBlock.querySelector('.iveg__type-anim')
-          vegWidth = vegEl.clientWidth
-          vegFrames = vegEl.getAttribute('data-frames')
-          vegFrameHeight = vegEl.getAttribute('data-frameheight');
-          
-          docListener()
-          
-          vegOver.classList.add('hide')
-          setTimeout(() => {
-            vegOver.classList.add('absolute')
-            vegBlock.classList.remove('absolute', 'hide')
-            step++
-          }, 700)
-          
-        })
-      }
-      
-      for (let backHref of backHrefs) {
-        backHref.addEventListener('click', () => {
-          if (step === 1) {
-            vegBlock.classList.add('hide')
-            setTimeout(() => {
-              vegBlock.classList.add('absolute')
-              vegOver.classList.remove('absolute', 'hide');
-              docListenerRemove()
-              step--
-            }, 700)
-          }
-          if (step === 2) {
-            step--
-            vegBlock.classList.add('step1-starter');
-            setTimeout(() => {
-              vegBlock.classList.remove('step1-starter');
-              vegBlock.classList.remove('step2');
-            }, 700)
-            vegToStart(vegFrames)
+      if (window.xs && window.touch) {
+        
+      } else {
+        for (let vegHref of vegHrefs) {
+          vegHref.addEventListener('click', (e) => {
+            const hrefType = vegHref.getAttribute('data-type')
+
+            vegBlock = document.querySelector(`.iveg__type[data-type="${hrefType}"]`)
+
+            vegEl = vegBlock.querySelector('.iveg__type-anim')
+            vegWidth = vegEl.clientWidth
+            vegFrames = vegEl.getAttribute('data-frames')
+            vegFrameHeight = vegEl.getAttribute('data-frameheight');
+
             docListener()
-            vegStepEnd = false
-          }
-        })
+
+            vegOver.classList.add('hide')
+            setTimeout(() => {
+              vegOver.classList.add('absolute')
+              vegBlock.classList.remove('absolute', 'hide')
+              step++
+            }, 700)
+            e.preventDefault()
+          })
+        }
+      
+        for (let backHref of backHrefs) {
+          backHref.addEventListener('click', (e) => {
+            if (step === 1) {
+              vegBlock.classList.add('hide')
+              setTimeout(() => {
+                vegBlock.classList.add('absolute')
+                vegOver.classList.remove('absolute', 'hide');
+                docListenerRemove()
+                step--
+              }, 700)
+            }
+            if (step === 2) {
+              step--
+              vegBlock.classList.add('step1-starter');
+              setTimeout(() => {
+                vegBlock.classList.remove('step1-starter');
+                vegBlock.classList.remove('step2');
+              }, 700)
+              vegToStart(vegFrames)
+              docListener()
+              vegStepEnd = false
+            }
+          })
+        }
       }
       
     },
@@ -554,33 +577,20 @@
       
       if (document.querySelector('.js-iveg-href')) this.indexVegetables()
 
-      /* 
-      const gallerySwiper = new Swiper ('.js-icar', {
-        loop: false,
-        speed: 800,
-        slidesPerView: 4,
-        spaceBetween: 10,
-        navigation: {
-          nextEl: '.js-serv-car ~ .swiper-button-next',
-          prevEl: '.js-serv-car ~ .swiper-button-prev',
-        },
-        breakpoints: {
-          479: {
-            slidesPerView: 2,
-            spaceBetween: 10
-          },
-          700: {
-            slidesPerView: 2,
-            spaceBetween: 10
-          },
-          1199: {
-            slidesPerView: 3,
-            spaceBetween: 10
-          }
-        }
-      });
-      */
+      if (window.touch && window.xsHeight && window.innerHeight < window.innerWidth) {
+        document.querySelector('html').classList.add('lock')
+			}
       
+			window.addEventListener('orientationchange', () => {
+				setTimeout(function(){
+					if (window.touch && window.xsHeight && window.innerHeight < window.innerWidth) {
+						document.querySelector('html').classList.add('lock')
+					} else {
+						document.querySelector('html').classList.remove('lock')
+					}
+				}, 350);
+			});
+
 			//shave(elem, 50); обрезка текста
 			
       //$('[data-fancybox]').fancybox(); // fancy init

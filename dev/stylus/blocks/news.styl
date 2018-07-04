@@ -3,11 +3,19 @@
     color $dark
     fontify 72px 400 64px
     mb 44px
+    @media $lDesktopMedium
+      fontify 60px 400 64px
+    @media $LandscapeMedium
+      fontify 36px 400 42px
+    @media $LandscapeMedium
+      mb 24px
   &__grid
     display flex
     flex-wrap wrap
     justify-content space-between
     pos relative
+    @media $LandscapeMedium
+      justify-content flex-start
   &__href
     pos absolute
     r 0
@@ -16,6 +24,15 @@
     fontify 14px 700 16px
     text-transform uppercase
     letter-spacing 0.1em
+    @media $lDesktopMedium
+      fontify 12px 700 14px
+    @media $desktopMin
+      t -66px
+    @media $LandscapeMedium
+      ib()
+      pos relative
+      t 0
+      mt 40px
     &:after
       content ""
       pos absolute
@@ -30,22 +47,49 @@
     &:hover:after
       w 0
   &__elem
-    w calc(50% - 40px)
+    w calc(50% - 25px)
     display flex
     flex-direction row-reverse
     justify-content space-between
+    @media $desktopMin
+      flex-direction column
+      align-items flex-start
+      justify-content flex-start
+    @media $LandscapeMedium
+      w 100%
+    @media $LandscapeMedium
+      & + &
+        mt 20px
     &_wide
       w 100%
       align-items center
       mb 80px
+      @media $lDesktopMedium
+        mb 54px
+      @media $desktopMin
+        mb 34px
+      @media $LandscapeMedium
+        mb 0
       & ^[-1]-href
         fontify 42px 400 46px
+        @media $lDesktopMax
+          fontify 38px 400 42px
+        @media $lDesktopMedium
+          fontify 36px 400 40px
+        @media $desktopMin
+          fontify 30px 400 34px
+        @media $LandscapeMedium
+          fontify 23px 400 27px
         span
           t 9px
+          @media $desktopMin
+            t 6px
       & ^[-1]-date
         mb -4px
     &-side
       w 47%
+      @media $desktopMin
+        w 100%
     &-imgover
       db()
       pt 46%
@@ -54,6 +98,8 @@
       pos relative
       overflow hidden
       transition .7s width
+      @media $LandscapeMedium
+        dn()
     &-img
       position absolute
       left 0
@@ -74,16 +120,25 @@
       b -20px
       opacity 0
       transition .7s opacity, .7s bottom
+      @media $desktopMin
+        w 100%
+        mt 15px
     &-date
       color $dark
       fontify 14px 700 21px
       text-transform uppercase
       letter-spacing .1em
+      @media $lDesktopMedium
+        fontify 12px 700 21px
     &-href
       color $dark
       fontify 30px 400 34px
       border-bottom 1px solid alpha($dark, .25)
       transition .5s border
+      @media $lDesktopMax
+        fontify 26px 400 30px
+      @media $lDesktopMedium
+        fontify 23px 400 27px
       span
         pos relative
         t 5px

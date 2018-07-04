@@ -21,6 +21,14 @@
       visibility hidden
       l -500px
       transition .7s opacity, .7s visibility, 0s left .7s
+  @media $desktopMin
+    h 0px
+    & ^[0]__edge
+      transform rotateX(90deg)
+      transition-delay 0s
+      &_rear
+        transform rotateX(0deg)
+        transition-delay .7s
   &__logo
     l 0
     pos relative
@@ -44,12 +52,16 @@
     &-item
       & + &
         ml 27px
+        @media $desktopMax
+          ml 17px
     &-href
       color white
       fontify 14px 700 16px
       text-transform uppercase
       letter-spacing 0.1em
       pos relative
+      @media $desktopMedium
+        fontify 12px 700 14px
       &:after
         content ""
         pos absolute
@@ -66,22 +78,32 @@
   &__phones
     mt -2px
     ml 48px
+    @media $desktopMax
+      ml 35px
     &-elem
       color white
       fontify 14px 700 16px
       text-transform uppercase
       letter-spacing 0.1em
+      @media $desktopMedium
+        fontify 12px 700 14px
       & + &
         ml 28px
+        @media $desktopMax
+          ml 17px
   &__socials
     display flex
     ml 48px
+    @media $desktopMax
+      ml 35px
     &-elem
       transition .7s opacity
       &:hover
         opacity .6
       & + &
         ml 30px
+        @media $desktopMax
+          ml 20px
       &[data-type="inst"]
         size 12px
         background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAP1BMVEX///////////////////////////////////////////////////////////////////////////////////81m6ZbAAAAFHRSTlMAA37ree2Qg4+O+W4SEedvdoHhd8PbWNMAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAAU0lEQVQI122N0Q6AIAhFLxqZolnG/39rkrXW1n3hHMa4IOf1ip8IbqDyzAH3XhdERp9JcpE1sppU9GwdTLJJ/pPPWZJSJJk8r60K+ysB5NrAdtAJRDMH441ZvLkAAAAASUVORK5CYII=") no-repeat center
@@ -165,6 +187,9 @@ body[data-color="light"]
     align-items center
     justify-content flex-start
     transition .7s visibility, .7s opacity
+    @media $LandscapeMedium
+      align-items flex-start
+      overflow auto
   &__menu
     &-inner
       max-width 1226px
@@ -173,12 +198,21 @@ body[data-color="light"]
       display flex
       justify-content space-between
       align-items stretch
+      @media $desktopMax
+        max-width 100%
+        padding 0 30px
+      @media $LandscapeMedium
+        padding 0 20px
+      @media $LandscapeMedium
+        flex-direction column
     &-col
       w calc(50% - 21px)
       display flex
       flex-direction column
       justify-content space-between
       align-content space-between
+      @media $LandscapeMedium
+        w 100%
     &-list
       display flex
       flex-direction column
@@ -189,10 +223,20 @@ body[data-color="light"]
     &-item
       & + &
         mt 59px
+        @media $lDesktopMedium
+          mt 44px
+        @media $LandscapeMedium
+          mt 10px
     &-href
       color white
       fontify 72px 400 48px
       pos relative
+      @media $lDesktopMax
+        fontify 66px 400 48px
+      @media $lDesktopMedium
+        fontify 60px 400 48px
+      @media $LandscapeMedium
+        fontify 36px 400 48px
       &:after
         content ""
         pos absolute
@@ -213,14 +257,28 @@ body[data-color="light"]
     opacity 0
     b -20px
     transition .7s bottom, .7s opacity
+    @media $desktopMin
+      mt 0
+    @media $LandscapeMedium
+      mt 35px
     &-elem
       ib()
       color white
       fontify 42px 400 40px
       float left
       clear both
+      @media $lDesktopMax
+        fontify 38px 400 40px
+      @media $lDesktopMedium
+        fontify 36px 400 40px
+      @media $desktopMin
+        fontify 30px 400 40px
+      @media $LandscapeMedium
+        fontify 23px 400 23px
       & ~ &
         mt 40px
+        @media $desktopMin
+          mt 20px
   &__socials
     pl 102px
     pos relative
@@ -230,6 +288,11 @@ body[data-color="light"]
     opacity 0
     b -20px
     transition .7s bottom, .7s opacity
+    @media $lDesktopMedium
+      fontify 14px 400 21px
+    @media $LandscapeMedium
+      pl 0
+      mt 35px
     &:before
       content ""
       pos absolute
@@ -239,11 +302,15 @@ body[data-color="light"]
       h 1px
       bgc white
       transition .7s width
+      @media $LandscapeMedium
+        dn()
     &-elem
       color white
       fontify 16px 400 23px
       white-space nowrap
       pos relative
+      @media $lDesktopMedium
+        fontify 14px 400 21px
       &:after
         content ""
         pos absolute
@@ -293,6 +360,10 @@ html.burgeropen
     &__popup
       visibility visible
       opacity 1
+      @media $LandscapeMedium
+        pt 150px
+      @media $PortraitMin
+        padding 30px 0
     &__menu
       &-list
         opacity 1
@@ -313,4 +384,19 @@ html.burgeropen
     opacity 1
     visibility visible
     l 0
-    transition: 0.7s opacity, 0.7s visibility, 0s left;
+    transition 0.7s opacity, 0.7s visibility, 0s left
+  .header__logo
+    @media $PortraitMin
+      visibility hidden
+      opacity 0
+      l -100%
+    
+html.touchevents
+  .burger__button
+    &:not(.open):hover
+      &:before
+        animation none
+      &:after
+        animation none
+    &:not(.open):hover .burger__button-meat
+      animation none

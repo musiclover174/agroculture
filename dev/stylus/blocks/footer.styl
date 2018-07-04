@@ -13,6 +13,8 @@ body[data-color="light"]
   r 30px
   color white
   fontify 14px 700 21px
+  @media $LandscapeMedium
+    dn()
   
 .progress
   h 6px
@@ -23,3 +25,27 @@ body[data-color="light"]
   w 0
   bgc $green
   transition .5s width
+
+.locker
+  dn()
+  pos fixed
+  justify-content center
+  align-items center
+  flex-direction column
+  t 0
+  l 0
+  r 0
+  b 0
+  padding 20px
+  z-index 99
+  bgc alpha(black, 0.90)
+  &__text
+    color white
+    fontify 16px 400 22px
+    mt 10px
+    
+html.lock 
+  .locker
+    display flex
+  .content
+    opacity 0

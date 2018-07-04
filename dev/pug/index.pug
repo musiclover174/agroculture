@@ -28,8 +28,9 @@ html
                       section.ibanner__content 
                         p.ibanner__text Мы обеспечиваем стабильно высокий уровень сбора и качества урожая за счет применения самых современных технологий, экологических методов защиты растений, а также осуществления строгого санитарного контроля.12
                         a(href="#").ibanner__more Подробнее
-              .swiper-button-prev
-              .swiper-button-next
+              .swiper-buttons
+                .swiper-button-prev
+                .swiper-button-next
           .swiper-slide(data-color="dark")
             img(src="img/iarea.jpg", alt="").icar__bg
             section.container
@@ -68,13 +69,13 @@ html
                 img(src="img/iveg-logo.png").iveg__icon
                 p.iveg__title Под брендом «Зелёный стандарт» продаются наши свежие
                 .iveg__hrefover
-                  button(type="button", data-type="tomato").iveg__href.js-iveg-href томаты
-                  | ,
-                  button(type="button", data-type="cucumber").iveg__href.js-iveg-href огурцы
-                  | ,
-                  button(type="button", data-type="peppers").iveg__href.js-iveg-href перцы
-                  | ,
-                  button(type="button", data-type="eggplant").iveg__href.js-iveg-href баклажаны
+                  a(href="#", data-type="tomato").iveg__href.js-iveg-href томаты
+                  | , 
+                  a(href="#", data-type="cucumber").iveg__href.js-iveg-href огурцы
+                  | , 
+                  a(href="#", data-type="peppers").iveg__href.js-iveg-href перцы
+                  | , 
+                  a(href="#", data-type="eggplant").iveg__href.js-iveg-href баклажаны
                   | .
                 section.iveg__bottom
                   .iveg__content

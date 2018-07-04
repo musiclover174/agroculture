@@ -9,6 +9,18 @@
     b -20px
     ml -5px
     transition .7s opacity, .7s bottom
+    @media $lDesktopMax
+      fontify 110px 400 114px
+    @media $lDesktopMedium
+      fontify 100px 400 104px
+    @media $desktopMax
+      fontify 83px 400 76px
+    @media $desktopMin
+      fontify 80px 400 84px
+    @media $LandscapeMedium
+      fontify 36px 400 40px
+      mb 0
+      ml 0
   &__subtitle
     pos relative
     color white
@@ -16,10 +28,21 @@
     opacity 0
     b -20px
     transition .7s opacity, .7s bottom
+    @media $lDesktopMedium
+      fontify 36px 400 40px
+    @media $desktopMin
+      fontify 30px 400 34px
+    @media $LandscapeMedium
+      fontify 36px 400 40px
   &__content
     mt 66px
     pl 102px
     pos relative
+    @media $LandscapeMedium
+      pl 0
+      mt 36px
+    @media $PortraitMin
+      mt 26px
     &:before
       content ""
       pos absolute
@@ -29,6 +52,8 @@
       h 1px
       bgc white
       transition .7s width
+      @media $LandscapeMedium
+        dn()
   &__text
     color white
     fontify 16px 400 23px
@@ -38,6 +63,14 @@
     b -20px
     opacity 0
     transition .7s opacity, .7s bottom
+    @media $lDesktopMedium
+      fontify 14px 400 21px
+  &__hrefs
+    @media $PortraitMin
+      display flex
+      flex-direction column
+      justify-content flex-start
+      align-items flex-start
   &__more
     color white
     fontify 14px 700 16px
@@ -47,8 +80,13 @@
     b -20px
     opacity 0
     transition .7s opacity, .7s bottom
+    @media $lDesktopMedium
+      fontify 12px 700 14px
     & + &
       ml 28px
+      @media $PortraitMin
+        ml 0
+        mt 9px
     &:after
       content ""
       pos absolute
@@ -69,3 +107,15 @@
     &-over
       mt 177px
       text-align center
+      @media $lDesktopMax
+        mt 77px
+      @media $lDesktopMedium
+        mb 50px
+      @media $desktopMin
+        mb 0
+      @media $LandscapeMedium
+        text-align left
+        mb 0
+        mt 37px
+      @media $PortraitMin
+        mt 25px

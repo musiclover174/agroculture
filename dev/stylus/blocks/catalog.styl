@@ -2,6 +2,8 @@
   &__over
     pl 187px
     pos relative
+    @media $desktopMin
+      pl 0
     &.hide
       & ^[0]
         &__title
@@ -31,6 +33,16 @@
     ml -68px
     opacity 0
     transition .7s opacity, .7s top, .7s left
+    @media $lDesktopMax
+      ml 0
+    @media $desktopMin
+      pos static
+      db()
+      ml 0
+      mb 30px
+    @media $LandscapeMedium
+      mb 15px
+      w 103px
   &__title
     pos relative
     color $dark
@@ -41,6 +53,16 @@
     l 0
     opacity 0
     transition .7s opacity, .7s bottom, .7s left
+    @media $lDesktopMax
+      fontify 38px 400 42px
+    @media $lDesktopMedium
+      fontify 36px 400 40px
+      mb 17px
+    @media $LandscapeMedium
+      fontify 23px 400 27px
+      max-width 240px
+    @media $PortraitMin
+      mb 10px
   &__hrefover
     pos relative
     mb 50px
@@ -52,33 +74,82 @@
     l 0
     opacity 0
     transition .7s opacity, .7s bottom, .7s left
+    @media $lDesktopMax
+      fontify 130px 700 133px
+    @media $lDesktopMedium
+      fontify 114px 700 118px
+    @media $desktopMax
+      fontify 84px 700 93px
+      max-width 730px
+    @media $desktopMin
+      max-width 460px
+    @media $LandscapeMedium
+      fontify 0px 700 52px
+      overflow hidden
+      mb 30px
+      ml 0
+    @media $PortraitMin
+      line-height 43px
   &__href
+    ib()
     cursor pointer
     pos relative
     color $dark
     fontify 160px 700 164px
+    @media $lDesktopMax
+      fontify 130px 700 133px
+    @media $lDesktopMedium
+      fontify 114px 700 118px
+    @media $desktopMax
+      fontify 84px 700 93px
+    @media $LandscapeMedium
+      fontify 48px 700 52px
+      float left
+      clear both
+      & + &
+        mt 10px
+        @media $PortraitMin
+          mt 5px
+    @media $PortraitMin
+      fontify 36px 700 43px
     &:after
       content ""
       bgc $dark
       pos absolute
-      bottom 10px
+      b 10px
       l 0
       w 100%
       h 3px
       transition .7s bottom, .7s opacity
+      @media $LandscapeMedium
+        b 2px
+        h 2px
     &:before
       content ""
       pos absolute
       opacity 0
       transition .7s opacity, .7s top
+      @media $LandscapeMedium
+        dn()
     &[data-type="tomato"]:before
       size 123px
       background url('../i/tomato-hover.png') no-repeat center
       background-size 100% 100%
-      l 47px
-      t 57px
+      l 31px
+      t 48px
+      @media $lDesktopMax
+        size 110px
+      @media $lDesktopMedium
+        size 87px
+      @media $desktopMin
+        size 67px
+        l 23px
     &[data-type="tomato"]:hover:before
       t 37px
+      @media $lDesktopMax
+        t 28px
+      @media $desktopMin
+        t 26px
     &:hover
       background-size 100% 0px
       &:after
@@ -93,9 +164,15 @@
     l 0
     transition .7s opacity, .7s left
     transition-delay 1.2s
+    @media $desktopMax
+      justify-content flex-start
   &__content
     pl 102px
     pos relative
+    @media $desktopMax
+      max-width 320px
+    @media $LandscapeMedium
+      dn()
     &:before
       content ""
       pos absolute
@@ -114,8 +191,15 @@
     b -20px
     opacity 0
     transition .7s opacity, .7s bottom
+    @media $lDesktopMedium
+      fontify 14px 400 21px
   &__catover
     w 460px
+    @media $desktopMax
+      w auto
+      ml 50px
+    @media $LandscapeMedium
+      ml 0
   &__tocat
     pos relative
     color $dark
@@ -126,6 +210,8 @@
     b -20px
     opacity 0
     transition .7s opacity, .7s bottom, .7s border
+    @media $lDesktopMedium
+      fontify 12px 700 21px
     &:hover
       border-color transparent
   &__type
@@ -146,13 +232,13 @@
       transition .7s top, .7s opacity
     .h-step2
       pos absolute
-      l -100%
+      l -200%
       b -20px
       opacity 0
       transition .7s bottom, .7s opacity
     &.absolute
       pos absolute
-      l -100%
+      l -200%
     &.step2-starter
       .h-step1
         t -20px
@@ -160,9 +246,11 @@
     &.step2
       & ^[0]__type-col:last-child
         pt 255px
+        @media $desktopMax
+          pt 155px
       .h-step1
         pos absolute
-        l -100%
+        l -200%
         t -20px
         opacity 0
       .h-step2
@@ -213,6 +301,12 @@
       transform translate(-54%, -54%)
       opacity 0
       transition .7s opacity, .7s top
+      @media $lDesktopMax
+        transform translate(-50%, -50%) scale(.9)
+      @media $lDesktopMedium
+        transform translate(-50%, -50%) scale(.8)
+      @media $desktopMax
+        transform translate(-50%, -50%) scale(.7)
       &[data-type="tomato"]
         size 565px 806px
         background url('../i/tomato-seq.png') no-repeat 0 0
@@ -225,6 +319,10 @@
       pos relative
       b -20px
       opacity 0
+      @media $lDesktopMax
+        fontify 200px 700 144px
+      @media $desktopMax
+        fontify 140px 700 106px
       transition .7s opacity, .7s bottom
     &-cols
       display flex
@@ -244,6 +342,10 @@
       b -20px
       opacity 0
       transition .7s opacity, .7s bottom
+      @media $lDesktopMax
+        fontify 100px 400 124px
+      @media $desktopMax
+        fontify 76px 400 82px
       &-sub
         color $dark
         fontify 42px 400 46px
@@ -253,6 +355,12 @@
         b -20px
         opacity 0
         transition .7s opacity, .7s bottom
+        @media $lDesktopMax
+          fontify 36px 400 40px
+        @media $lDesktopMedium
+          mb 45px
+        @media $desktopMax
+          fontify 28px 400 35px
     &-text
       color $dark
       fontify 46px 400 46px
@@ -262,6 +370,13 @@
       b -20px
       opacity 0
       transition .7s opacity, .7s bottom
+      @media $lDesktopMax
+        fontify 36px 400 40px
+      @media $lDesktopMedium
+        pt 94px
+      @media $desktopMax
+        fontify 28px 400 35px
+        pt 64px
     &-future
       color $dark
       fontify 16px 400 23px
@@ -272,6 +387,12 @@
       b -20px
       opacity 0
       transition .7s opacity, .7s bottom
+      @media $lDesktopMedium
+        mb 45px
+      @media $lDesktopMedium
+        fontify 14px 400 21px
+      @media $desktopMedium
+        pl 0
       &:before
         content ""
         pos absolute
@@ -281,6 +402,8 @@
         h 1px
         bgc $dark
         transition .7s width
+        @media $desktopMedium
+          dn()
     &-hint
       color $dark
       fontify 16px 400 23px
@@ -291,6 +414,8 @@
       b -20px
       opacity 0
       transition .7s opacity, .7s bottom
+      @media $lDesktopMedium
+        fontify 14px 400 21px
       &:before
         content ""
         pos absolute
@@ -303,10 +428,19 @@
       color $dark
       fontify 120px 700 124px
       mb 58px
+      @media $lDesktopMax
+        fontify 100px 700 104px
+      @media $desktopMax
+        fontify 76px 400 72px
+        mb 38px
     &-name
       color $dark
       fontify 16px 400 23px
       pl 130px
+      @media $lDesktopMedium
+        fontify 14px 400 21px
+      @media $desktopMax
+        pl 80px
     &-tocat
       ib()
       color $dark

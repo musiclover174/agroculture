@@ -135,6 +135,13 @@
           &_more
             max-height 400px
             mt 40px
+            @media $lDesktopMax
+              mt 0px
+            @media $lDesktopMedium
+              mt -65px
+            @media $desktopMin
+              mt -30px
+              max-height 800px
           &-stage
             opacity 1
             r 0
@@ -169,6 +176,15 @@
       opacity 0
       b -20px
       transition .7s opacity, .7s bottom
+      @media $lDesktopMedium
+        fontify 100px 400 90px
+        mb 30px
+      @media $desktopMin
+        fontify 80px 400 84px
+      @media $LandscapeMedium
+        fontify 60px 400 64px
+        ml 0
+        mb 20px
       &:before
         content attr(data-default)
     &-text
@@ -178,6 +194,11 @@
       b -20px
       opacity 0
       transition .7s opacity, .7s bottom
+      @media $lDesktopMedium
+        fontify 36px 400 40px
+      @media $desktopMin
+        fontify 30px 400 34px
+        max-width 490px
       &:before
         content attr(data-default)
     &-href
@@ -192,6 +213,10 @@
       b -20px
       opacity 0
       transition .5s visible, .5s opacity, .7s opacity, .7s bottom
+      @media $lDesktopMedium
+        fontify 12px 700 16px
+      @media $LandscapeMedium
+        dn()
       &:after
         content ""
         pos absolute
@@ -209,6 +234,9 @@
       display flex
       justify-content space-between
       align-items flex-end
+      @media $desktopMin
+        flex-direction column
+        align-items flex-start
     &-stage
       w 364px
       text-align center
@@ -220,6 +248,12 @@
         w 265px
         display flex
         flex-wrap wrap
+      &_second
+        @media $desktopMin
+          align-self flex-end
+      @media $desktopMin
+        & + &
+          mt -100px
     &-col
       w calc(50% - 10px)
       display flex
@@ -230,6 +264,11 @@
       color white
       fontify 42px 400 40px
       mb 10px
+      @media $lDesktopMedium
+        fontify 36px 400 40px
+        mb 8px
+      @media $desktopMin
+        fontify 30px 400 34px
     &-img
       max-width 100%
     &-year
@@ -237,11 +276,15 @@
       color white
       fontify 16px 400 23px
       mt 20px
+      @media $lDesktopMedium
+        fontify 14px 400 21px
     &-queue
       w 100%
       color white
       fontify 16px 700 23px
       mt 8px
+      @media $lDesktopMedium
+        fontify 14px 400 21px
 
 
 .ibanner
@@ -286,10 +329,18 @@
     opacity 0
     b -20px
     transition .7s opacity, .7s bottom
+    @media $lDesktopMedium
+      fontify 60px 400 64px
+    @media $desktopMin
+      max-width 540px
+    @media $LandscapeMedium
+      fontify 36px 400 40px
   &__content
     mt 32px
     pl 106px
     pos relative
+    @media $LandscapeMedium
+      pl 0
     &:before
       content ""
       pos absolute
@@ -299,6 +350,8 @@
       h 1px
       bgc white
       transition .7s width
+      @media $LandscapeMedium
+        dn()
   &__text
     color white
     fontify 16px 400 23px
@@ -308,6 +361,12 @@
     b -20px
     opacity 0
     transition .7s opacity, .7s bottom
+    @media $lDesktopMedium
+      fontify 14px 400 21px
+    @media $desktopMin
+      max-width 315px
+    @media $PortraitMin
+      dn()
   &__more
     color white
     fontify 14px 700 16px
@@ -317,6 +376,8 @@
     b -20px
     opacity 0
     transition .7s opacity, .7s bottom
+    @media $lDesktopMedium
+      fontify 12px 700 16px
     &:after
       content ""
       pos absolute

@@ -8,27 +8,19 @@ body
   w 100%
   max-width 1600px
   margin 0 auto
+  @media $lDesktopMax
+    max-width 1400px
+  @media $lDesktopMedium
+    max-width 1250px
+  @media $lDesktopSmall
+    max-width 1136px
   @media $desktopMax
-    max-width 1120px
-  @media $tLandscapeMax
-    max-width 940px
-  @media $tPortraitMax
-    max-width 700px
-  @media $mLandscape
     max-width 100%
     padding 0 30px
-
+  @media $LandscapeMedium
+    padding 0 20px
+    
 .content
-  &.cling
-    & + .footer
-      mt 0
-    @media $mPortraitMax
-      pb 0
-  @media $mLandscape
-    pt 72px
-  @media $mPortraitMax
-    overflow hidden
-    pb 3px
   h1:not([class])
     color $dark
     fontify 60px 400 64px
@@ -161,25 +153,18 @@ div[class\^="table-scroller"]
   text-transform uppercase;
   padding 0 20px
   transition .7s background, .7s color, .7s box-shadow
+  @media $lDesktopMedium
+    fontify 12px 700 34px
   &:hover
     bgc $green
     color white
     box-shadow 0 0 15px 0 alpha($green, 0.8)
-  @media $tPortraitMax
-    fontify 13px 300 38px
-    padding 0 25px
     
 .common
   &__title
     color $dark
     fontify 44px 400 54px
     mb 25px
-    @media $desktopMax
-      fontify 38px 400 46px
-    @media $tPortraitMax
-      fontify 32px 400 36px
-    @media $mPortraitMax
-      fontify 24px 400 28px
   &__back
     ib()
     pos relative
@@ -257,17 +242,15 @@ div[class\^="table-scroller"]
     w calc(50% - 14px)
     &_iroad
       max-width 510px
-    @media $mLandscape
-      w 100%
-      & + &
-        mt 20px
+      @media $LandscapeMedium
+        w 100%
+        &:first-child
+          dn()
   &__row
     display flex
     justify-content space-between
     pos relative
     w 100%
-    @media $mLandscape
-      flex-direction column
     & + &
       mt 20px
   &__fileover
@@ -373,12 +356,6 @@ div[class\^="table-scroller"]
   &.visible
     visibility visible
     opacity 1
-      
-.text
-  &_short
-    max-width 877px
-    @media $tLandscapeMax
-      max-width 100%
       
 .breadcrumbs
   mb 18px
