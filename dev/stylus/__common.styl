@@ -3,6 +3,28 @@ body
   font-family $os
 body
   overflow-x: hidden
+  &.inner
+    pos relative
+    bgc $dark
+    .content
+      pt 190px
+    .container
+      @media $lDesktopMedium
+        max-width 100%
+        padding 0 30px
+    .header
+      pos absolute
+    &:before
+      content ""
+      position fixed
+      l 0
+      t 0
+      w 100vw
+      h 100vh
+      z-index -1
+      opacity .5
+      background url('../i/inner-bg.jpg') no-repeat center
+      background-size cover
   
 .container
   w 100%
@@ -22,68 +44,72 @@ body
     
 .content
   h1:not([class])
-    color $dark
-    fontify 60px 400 64px
-    margin 43px 0 37px
-    @media $tLandscapeMax
-      fontify 50px 400 54px
-    @media $mLandscapeMax
-      fontify 32px 400 36px
-    @media $mPortraitMax
-      fontify 28px 400 36px
+    color white
+    max-width 830px
+    fontify 72px 400 76px
+    margin 63px 0 35px
+    @media $lDesktopMedium
+      fontify 60px 400 64px
+      max-width 720px
+    @media $desktopMin
+      fontify 48px 400 52px
+    @media $LandscapeMedium
+      fontify 36px 400 42px
   h2:not([class])
     color $dark
-    fontify 44px 400 48px
-    margin 43px 0 28px
-    @media $tLandscapeMax
-      fontify 38px 400 44px
-    @media $mLandscapeMax
-      fontify 26px 400 32px
+    fontify 42px 400 46px
+    margin 63px 0 28px
+    @media $desktopMax
+      fontify 38px 400 42px
+    @media $lDesktopSmall
+      fontify 36px 400 40px
+    @media $LandscapeMedium
+      fontify 30px 400 34px
+      margin 45px 0 28px
   h3:not([class])
     color $dark
     fontify 30px 400 36px
-    margin 43px 0 28px
-    @media $tLandscapeMax
-      fontify 24px 400 34px
-    @media $mLandscapeMax
-      fontify 22px 400 28px
+    margin 65px 0 38px
+    @media $LandscapeMedium
+      fontify 26px 400 34px
+      margin 45px 0 28px
   h4:not([class])
     color $dark
     fontify 24px 400 34px
     margin 43px 0 16px
-    @media $mLandscapeMax
-      fontify 22px 400 28px
   img:not([class])
-    margin 17px 0
+    margin 5px 0
     max-width 100%
-  img:not([class]) + *:not(img)
-    mt 0px
   ul:not([class])
     list-style  none
-    margin  18px 0
+    margin  23px 0
   ul:not([class]) li
     pl 30px
     pos relative
-    fontify 14px 400 22px
+    fontify 20px 400 27px
+    @media $lDesktopSmall
+      fontify 17px 400 24px
   ul:not([class]) li + li
-    mt 18px
+    mt 25px
   ul:not([class]) li:before
     content ""
     pos absolute
     l 0
-    t 10px
-    size 14px 2px
-    bgc $orange
+    t 13px
+    size 14px 1px
+    bgc $dark
   ol:not([class])
     list-style none
-    margin 18px 0
+    margin 23px 0
     counter-reset myCounter
   ol:not([class]) li
     pl 30px
     pos relative
-    fontify 14px 400 22px
+    fontify 20px 400 27px
+    @media $lDesktopSmall
+      fontify 17px 400 24px
   ol:not([class]) li + li
-    mt 18px
+    mt 24px
   ol:not([class]) li:before
     counter-increment myCounter
     content counter(myCounter)"."	
@@ -93,11 +119,13 @@ body
     w 30px
     pr 9px
     color $orange
-    fontify 14px 400 22px
+    fontify 20px 400 27px
   p:not([class])
     color $dark
-    fontify 14px 400 22px
-    margin 18px 0
+    fontify 20px 400 27px
+    margin 23px 0
+    @media $lDesktopSmall
+      fontify 17px 400 24px
   a:not([class])
     color $orange
     border-bottom 1px solid
@@ -111,19 +139,20 @@ body
     margin-bottom 0 !important
 
   table
-    margin 23px 0
+    margin 30px 0
+    border 2px solid #9db038
   table th
     text-align left
-    padding 18px 20px
-    color white
-    bgc $orange
-    fontify 14px 400 16px 
-  table td
-    padding 14px 20px
+    padding 16px 24px
     color $dark
-    fontify 12px 400 22px 
-  table tr:nth-child(2n)
-    bgc whitesmoke
+    bgc $orange
+    fontify 15px 400 21px
+    border 1px solid #f0f3e1
+  table td
+    padding 18px 24px
+    color $dark
+    fontify 15px 400 21px
+    border 1px solid #f0f3e1
 
 input::-webkit-input-placeholder
   color alpha(white, .5)
@@ -135,9 +164,7 @@ input:-ms-input-placeholder
 div[class\^="table-scroller"]
   overflow auto
   pos relative
-  &.default
-    w calc(100% + 144px)
-  @media $tLandscapeMax
+  @media $desktopMax
     w 100%
 
 .btn
@@ -168,21 +195,26 @@ div[class\^="table-scroller"]
   &__back
     ib()
     pos relative
-    mt 20px
-    ml 33px
+    mt 75px
+    ml 56px
     color $dark
-    fontify 14px 500 18px
-    border-bottom 2px solid $orange
+    fontify 23px 400 21px
+    border-bottom 1px solid alpha($dark, .25)
     transition .5s border
+    @media $LandscapeMedium
+      fontify 17px 400 21px
+      ml 41px
     &:hover
       border-color transparent
     &:before
       content ""
       pos absolute
-      l -33px
-      t 2px
-      size 24px 14px
-      background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAOCAMAAAACJixMAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAYFBMVEUODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg7////uD/eTAAAAHnRSTlMAR7gNT/lwWPqJX/x/af51dGuIcm1od4FXigFO+Lahd6hkAAAAAWJLR0QfBQ0QvQAAAAlwSFlzAAALEgAACxIB0t1+/AAAAFZJREFUGNN1kDcSgEAMA0W+I5icQf9/JjeUjNhyt7EFvERxAkWaMVe+cPTKlxVr5Rtjq3xn1ivvqcHwFzCaTfIHzMZFl3DuqsvmuB+ynJeeJIx4f0d8AJUECH5++C7JAAAAAElFTkSuQmCC") no-repeat center
+      l -56px
+      t -1px
+      size 27px 25px
+      background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAZCAMAAAD3wqVsAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAilBMVEUAAAAYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgAAAB/9PyuAAAALHRSTlMAPqs86j0550A25kQz6Ucx6Eku5U0s5FEpVCfjViThWyLgX8MjJVoqUy9MOiH9lbcAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAAeklEQVQoz33S2xqBYBSE4cmuhEo/RRJtJOr+r48zB55vzen7rJM1I/3izUSZL5ZEKz8gWocbou0uIoqTPVHqDkTHLCc6hWei4lISXasb0b1u8FPthFFn3OlR9YxFVjI+3cBo/EV6uTej0cO3vyRiNHqXRt6LubP/fX4AUgwJ4Furtv8AAAAASUVORK5CYII=") no-repeat center
+      @media $LandscapeMedium
+        l -41px
   &__input
     w 100%
     h 48px
@@ -294,7 +326,55 @@ div[class\^="table-scroller"]
       size 9px
       background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJBAMAAAASvxsjAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAALVBMVEUiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiL////wlQZJAAAADXRSTlMA0Do74eI5bGtqOM7MEv0urwAAAAFiS0dEDm+9ME8AAAAJcEhZcwAACxIAAAsSAdLdfvwAAAA3SURBVAjXYxBiYGAWYFBRYDBNYGByYg5jYGBQLU0Akhw3GUDsKQoMDExRTE4MDKYLQMp2AbkHAKcGB4WerKhTAAAAAElFTkSuQmCC") no-repeat center
       
-
+.page
+  &__top
+    mb 65px
+    padding 0 85px
+    &_pzero
+      padding 0
+    @media $desktopMax
+      padding 0 50px
+    @media $LandscapeMedium
+      padding 0
+      mb 45px
+  &__withside
+    display flex
+    flex-direction row-reverse
+    align-items flex-start
+    justify-content space-between
+    @media $LandscapeMedium
+      db()
+  &__content
+    bgc white
+    padding 74px 85px 24px
+    @media $desktopMax
+      padding 40px 50px 24px
+    @media $LandscapeMedium
+      padding 40px 30px 24px
+      ml -30px
+      w calc(100% + 60px)
+  &__aside
+    w 430px
+    @media $lDesktopMedium
+      w 385px
+    @media $desktopMedium
+      w 315px
+    @media $desktopMin
+      dn()
+    &-sticky
+      padding 0 20px 0 80px
+      @media $lDesktopMedium
+        padding 0 20px 0 50px
+  &__aside + &__content
+    w calc(100% - 430px)
+    @media $lDesktopMedium
+      w calc(100% - 385px)
+    @media $desktopMedium
+      w calc(100% - 315px)
+    @media $desktopMin
+      w 100%
+    @media $LandscapeMedium
+      w calc(100% + 60px)
 
 .fakecheckbox
   ib()
@@ -359,18 +439,32 @@ div[class\^="table-scroller"]
       
 .breadcrumbs
   mb 18px
+  color white
+  pl 106px
+  pos relative
+  @media $LandscapeMedium
+    mt -20px
+    pl 0
+  &:before
+    content ""
+    pos absolute
+    l 6px
+    t 11px
+    w 70px
+    h 1px
+    bgc white
+    @media $LandscapeMedium
+      dn()
   &__href
-    color alpha($dark, .8)
-    fontify 12px 400 18px
-    border-bottom 1px solid alpha(#5d5d5d, .25)
+    color white
+    fontify 14px 400 18px
+    border-bottom 1px solid white
     transition .5s border
     &:hover
       border-color transparent
   &__delim
-    padding 0 9px
+    padding 0 11px
     fontify 12px 400 18px
-  & + h1:not([class])
-    mt 0
 
 input.warning,
 textarea.warning
@@ -390,3 +484,8 @@ textarea.warning
     color $dark
   .tippy-arrow
     border-top-color white
+    
+@keyframes arrAnimation {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 -756px; }
+}

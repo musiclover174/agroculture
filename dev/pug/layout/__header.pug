@@ -24,10 +24,14 @@ header.header
     button(type="button", aria-label="открыть мобильное меню").burger__button.js-burger
       span.burger__button-meat
 section.burger__popup
+  img(src="img/burger-bg.jpg").burger__bg
   .burger__menu-inner
     .burger__menu-col
       nav.burger__menu
         ul.burger__menu-list
+          li.burger__menu-item.burger__menu-item_mobile
+            a(href="#").burger__menu-logo
+              img(src="img/logo.png", alt="")
           li.burger__menu-item
             a(href="#").burger__menu-href.active Компания
           li.burger__menu-item
@@ -45,5 +49,5 @@ section.burger__popup
       .burger__socials Так же вся новая и актуальная информация публикуется в наш паблик в 
         a(href="#", target="_blank", data-type="fb").burger__socials-elem Facebook 
         | и ленту 
-        a(href="#", target="_blank", data-type="inst").burger__socials-elem Twitter
+        a(href="#", target="_blank", data-type="inst").burger__socials-elem Instagram
         | . Подписывайтесь.

@@ -1,4 +1,4 @@
-.inews
+.news
   &__title
     color $dark
     fontify 72px 400 64px
@@ -16,6 +16,55 @@
     pos relative
     @media $LandscapeMedium
       justify-content flex-start
+    &_page
+      ml -50px
+      w calc(100% + 50px)
+      justify-content flex-start
+      @media $LandscapeMedium
+        ml 0
+        w 100%
+      & ^[0]__elem
+        w calc(25% - 50px)
+        ml 50px
+        mb 80px
+        @media $desktopMax
+          w calc(100% / 3 - 50px)
+        @media $desktopMin
+          w calc(50% - 50px)
+          mb 50px
+        @media $LandscapeMedium
+          w 100%
+          ml 0
+          & + ^[0]__elem
+            mt 0
+        &:not(^[0]__elem_wide)
+          flex-direction column
+          align-items flex-start
+          justify-content flex-start
+          & ^[0]__elem
+            &-side
+              w 100%
+            &-content
+              w 100%
+              mt 24px
+        &_wide
+          w 100%
+        &-imgover
+          transition-delay 0s !important
+          &.visible
+            w 100%
+          @media $LandscapeMedium
+            db()
+        &:nth-child(1) .news__elem-imgover
+          transition-delay 1s
+        &:nth-child(2) .news__elem-imgover
+          transition-delay 1.2s
+        &:nth-child(3) .news__elem-imgover
+          transition-delay 1.4s
+        &-content
+          opacity 1
+          b 0
+          transition-delay .8s
   &__href
     pos absolute
     r 0
@@ -87,7 +136,7 @@
       & ^[-1]-date
         mb -4px
     &-side
-      w 47%
+      w calc(50% - 25px)
       @media $desktopMin
         w 100%
     &-imgover
@@ -114,7 +163,7 @@
         opacity 1
         transform translate(0, -50%) scale(1.08)
     &-content
-      w 48%
+      w calc(50% - 25px)
       mt -5px
       pos relative
       b -20px
@@ -144,3 +193,38 @@
         t 5px
       &:hover
         border-color transparent
+
+
+  &__another
+    &-row
+      & + &
+        mt 70px
+    &-title
+      color white
+      fontify 14px 700 21px
+      text-transform uppercase
+      letter-spacing .1em
+      mb 5px
+      @media $lDesktopMedium
+        fontify 12px 700 21px
+    &-href
+      color white
+      fontify 30px 400 34px
+      border-bottom 1px solid alpha(white, .25)
+      transition .5s border
+      @media $lDesktopMax
+        fontify 26px 400 30px
+      @media $lDesktopMedium
+        fontify 23px 400 27px
+      span
+        pos relative
+        t 5px
+      &:hover
+        border-color transparent
+  &__inner
+    &-date
+      color $dark
+      fontify 14px 700 21px
+      text-transform uppercase
+      letter-spacing .1em
+      mt 40px

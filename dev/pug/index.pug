@@ -217,31 +217,15 @@ html
                 button(type="button").btn.iemp__btn Отправить резюме
           .swiper-slide(data-color="light")
             section.container
-              p.inews__title Пресс-центр
-              section.inews__grid
-                article.inews__elem.inews__elem_wide
-                  aside.inews__elem-side
-                    a(href="#").inews__elem-imgover
-                      img(src="img/inews1.jpg", alt="").inews__elem-img
-                  .inews__elem-content
-                    p.inews__elem-date 15 мая 2018
-                    a(href="#").inews__elem-href 
-                      span «Агрокультура Групп» – это максимально эффективная адаптация к изменениям
-                article.inews__elem
-                  aside.inews__elem-side
-                    a(href="#").inews__elem-imgover
-                      img(src="img/inews2.jpg", alt="").inews__elem-img
-                  .inews__elem-content
-                    p.inews__elem-date 12 января 2018
-                    a(href="#").inews__elem-href 
-                      span «Агрокультура Групп» запустил третью очередь теплиц
-                article.inews__elem
-                  aside.inews__elem-side
-                    a(href="#").inews__elem-imgover
-                      img(src="img/inews3.jpg", alt="").inews__elem-img
-                  .inews__elem-content
-                    p.inews__elem-date 6 декабря 2017
-                    a(href="#").inews__elem-href 
-                      span Бренд «Зелёный Стандарт» стал лауреатом премии «Здоровое питание»
-                a(href="#").inews__href Все новости
+              p.news__title Пресс-центр
+              include blocks/news-elem
+
+              -var newsArray = []
+              -newsArray.push({img: 'img/inews1.jpg', date: "15 мая 2018", href: "«Агрокультура Групп» – это максимально эффективная адаптация к изменениям", mainNews: 'true'})
+              -newsArray.push({img: 'img/inews2.jpg', date: "12 января 2018", href: "«Агрокультура Групп» запустил третью очередь теплиц"})
+              -newsArray.push({img: 'img/inews3.jpg', date: "6 декабря 2017", href: "Бренд «Зелёный Стандарт» стал лауреатом премии «Здоровое питание»"})
+
+              section.news__grid
+                for news in newsArray
+                  +newsElem(news)
     include layout/__footer

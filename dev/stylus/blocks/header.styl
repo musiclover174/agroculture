@@ -60,6 +60,7 @@
       text-transform uppercase
       letter-spacing 0.1em
       pos relative
+      transition .7s color
       @media $desktopMedium
         fontify 12px 700 14px
       &:after
@@ -72,7 +73,8 @@
         l 50%
         transform translateX(-50%)
         transition .7s width
-      &.active:after,
+      &.active
+        color $yellow
       &:hover:after
         w 100%
   &__phones
@@ -127,6 +129,16 @@ body[data-color="light"]
       
 
 .burger
+  &__bg
+    pos absolute
+    l  50%
+    t 50%
+    transform translate(-50%, -50%) scale(1.06)
+    transition 1s transform
+    will-change transform
+    opacity .5
+    @media $desktopMin
+      dn()
   &__button
     cursor pointer
     w 25px
@@ -155,6 +167,7 @@ body[data-color="light"]
       r 0
       w 25px
       h 1px
+      mt -1px
       transition .5s width, .5s background, .5s transform, .5s top  
     &:not(.open):hover
       &:before
@@ -165,13 +178,19 @@ body[data-color="light"]
       animation burger-hover 1s infinite ease-in-out alternate forwards 200ms
     &.open
       &:before
-        transform rotate(45deg)
-        t 12px
+        animation burger-top 1s ease-in-out forwards
       &:after
-        transform rotate(135deg)
-        b 12px
+        animation burger-bottom 1s ease-in-out forwards
       & ^[-1]-meat
         opacity 0
+    &.open.remove
+      &:before
+        animation burger-top-invert 1s ease-in-out forwards
+      &:after
+        animation burger-bottom-invert 1s ease-in-out forwards
+      & ^[-1]-meat
+        opacity 1
+        transition .4s opacity .6s
   &__popup
     visibility hidden
     opacity 0
@@ -181,8 +200,7 @@ body[data-color="light"]
     w 100vw
     h 100vh
     z-index 9
-    background url('../i/burger-bg.png') no-repeat left top $dark
-    background-size cover
+    background $dark
     display flex
     align-items center
     justify-content flex-start
@@ -190,6 +208,9 @@ body[data-color="light"]
     @media $LandscapeMedium
       align-items flex-start
       overflow auto
+    @media $desktopMin
+      background url('../i/burger-bg.png') no-repeat center $dark
+      background-size cover
   &__menu
     &-inner
       max-width 1226px
@@ -227,10 +248,17 @@ body[data-color="light"]
           mt 44px
         @media $LandscapeMedium
           mt 10px
+      &_mobile
+        @media (min-width:651px)
+          dn()
+          & + .burger__menu-item
+            mt 0
     &-href
       color white
       fontify 72px 400 48px
       pos relative
+      l 0
+      transition .7s color, .7s left
       @media $lDesktopMax
         fontify 66px 400 48px
       @media $lDesktopMedium
@@ -247,9 +275,10 @@ body[data-color="light"]
         l 50%
         transform translateX(-50%)
         transition .7s width
-      &.active:after,
-      &:hover:after
-        w 100%
+      &.active
+        color $yellow
+      &:hover
+        l 15px
   &__phones
     mt -6px
     overflow hidden
@@ -342,6 +371,7 @@ body[data-color="light"]
         l 14px
         
 
+
 @keyframes burger-hover
   0%
     w 100%
@@ -350,6 +380,54 @@ body[data-color="light"]
   100%
     w 100%
       
+@keyframes burger-top
+  0%
+    t 0
+  40%
+    t 12px
+  60%
+    t 12px
+    transform rotate(0)
+  100%
+    t 12px
+    transform rotate(45deg)
+    
+@keyframes burger-bottom
+  0%
+    b 0
+  40%
+    b 12px
+  60%
+    b 12px
+    transform rotate(0)
+  100%
+    b 12px
+    transform rotate(-45deg)
+
+@keyframes burger-top-invert
+  0%
+    t 12px
+    transform rotate(45deg)
+  40%
+    t 12px
+    transform rotate(0)
+  60%
+    t 12px
+  100%
+    t 0
+    
+@keyframes burger-bottom-invert
+  0%
+    b 12px
+    transform rotate(-45deg)
+  40%
+    b 12px
+    transform rotate(0)
+  60%
+    b 12px
+  100%
+    b 0
+    
 html.burgeropen
   .burger
     &__button
@@ -362,8 +440,10 @@ html.burgeropen
       opacity 1
       @media $LandscapeMedium
         pt 150px
-      @media $PortraitMin
+      @media $desktopMin
         padding 30px 0
+    &__bg
+      transform translate(-50%, -50%) scale(1)
     &__menu
       &-list
         opacity 1
@@ -390,6 +470,8 @@ html.burgeropen
       visibility hidden
       opacity 0
       l -100%
+    @media $LandscapeMedium
+      dn()
     
 html.touchevents
   .burger__button

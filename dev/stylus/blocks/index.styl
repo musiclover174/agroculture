@@ -1,5 +1,7 @@
 .icar
   h 100vh
+  > .swiper-wrapper
+    transition-timing-function cubic-bezier(0.86, 0, 0.07, 1)
   .swiper-slide
     &[data-color="dark"]
       bgc $dark
@@ -30,14 +32,14 @@
             opacity 1
             b 0
             transition-delay 1.2s
-      .inews__elem
+      .news__elem
         &-imgover
           w 100%
-        &:nth-child(1) .inews__elem-imgover
+        &:nth-child(1) .news__elem-imgover
           transition-delay 1s
-        &:nth-child(2) .inews__elem-imgover
+        &:nth-child(2) .news__elem-imgover
           transition-delay 1.2s
-        &:nth-child(3) .inews__elem-imgover
+        &:nth-child(3) .news__elem-imgover
           transition-delay 1.4s
         &-content
           opacity 1
@@ -165,8 +167,10 @@
       t 30px
       opacity 0
       visibility hidden
-      background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAZCAMAAAD3wqVsAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAh1BMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8SV0uDAAAALHRSTlMAPqs86j0550A25kQz6Ucx6Eku5U0s5FEpVCfjViThWyLgX8MjJVoqUy9MOiH9lbcAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAAeklEQVQoz33S2xqBYBSE4cmuhEo/RRJtJOr+r48zB55vzen7rJM1I/3izUSZL5ZEKz8gWocbou0uIoqTPVHqDkTHLCc6hWei4lISXasb0b1u8FPthFFn3OlR9YxFVjI+3cBo/EV6uTej0cO3vyRiNHqXRt6LubP/fX4AUgwJ4Furtv8AAAAASUVORK5CYII=") no-repeat center
+      background url('../i/arleft_white.png') no-repeat 0 -756px
       transition .5s visible, .5s opacity
+      &:hover
+        animation arrAnimation 1s steps(28)
     &-title
       color white
       fontify 120px 400 90px

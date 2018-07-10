@@ -160,29 +160,28 @@
 .swiper-button-next 
   position: absolute;
   top: 50%;
-  width: 47px;
-  height: 44px;
-  margin-top: -22px;
+  width: 27px;
+  height: 27px;
+  margin-top: -23px;
   z-index: 10;
   cursor: pointer;
   border-radius 50%
   bgc transparent
   outline none
   background-repeat no-repeat
-  background-position center
+  background-position: 0 -756px
   transition .5s background
   @media $desktopMax
     top 0
     mt 0
 
-
 .swiper-buttons
   @media $desktopMax
     pos absolute
-    b 20px
-    l 20px
+    b 30px
+    l 30px
     w 100px
-    h 44px
+    h 27px
 
 .swiper-button-prev_dark,
 .swiper-button-next_dark{
@@ -195,7 +194,7 @@
 }
 .swiper-button-prev:hover,
 .swiper-button-next:hover{
-  bgc alpha(#fff, .15)
+  animation arrAnimation 1s steps(28)
 }
 .swiper-button-prev.swiper-button-disabled,
 .swiper-button-next.swiper-button-disabled {
@@ -204,13 +203,13 @@
   pointer-events: none;
 }
 .swiper-button-prev
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAZCAMAAAD3wqVsAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAh1BMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8SV0uDAAAALHRSTlMAPqs86j0550A25kQz6Ucx6Eku5U0s5FEpVCfjViThWyLgX8MjJVoqUy9MOiH9lbcAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAAeklEQVQoz33S2xqBYBSE4cmuhEo/RRJtJOr+r48zB55vzen7rJM1I/3izUSZL5ZEKz8gWocbou0uIoqTPVHqDkTHLCc6hWei4lISXasb0b1u8FPthFFn3OlR9YxFVjI+3cBo/EV6uTej0cO3vyRiNHqXRt6LubP/fX4AUgwJ4Furtv8AAAAASUVORK5CYII=");
+  background-image: url('../i/arleft_white.png')
   l 20px
   @media $desktopMax
     l 0
 
 .swiper-button-next
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAZCAMAAAD3wqVsAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAh1BMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8SV0uDAAAALHRSTlMAqj496TxA5zlE5jZH6DNJMU3lLlHkLFQpVuMnW+EkYOAjxF9a4iUqTC8/6mB2AqEAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAAeUlEQVQoz53SyRKCMBBF0QDKEA1gIODMKCDy/98nWxY3C972VFd1dT8hNnFcgfEOR0Y/CBkjeWI8q5gxCVLGi84Yc1MwlvLKeLs/GJ+vN2NVN2LBtDjXrXOQ/jPgngb3LPW44y6T/hIlKiWy/M/y95n74v24Z5t+/gG1LAnLYYx/nAAAAABJRU5ErkJggg==");
+  background-image: url('../i/arright_white.png')
   r 20px
   @media $desktopMax
     r 0

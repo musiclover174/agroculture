@@ -24,8 +24,10 @@
     l 10px
     t 30px
     opacity 0
-    background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAZCAMAAAD3wqVsAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAgVBMVEUAAAAYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgAAADNX2UhAAAAKXRSTlMAPqs86j0550A25kQz6Ucx6Eku5U0s5FEpVCfjViThWyLgX8MjJSovOmlHG/UAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAAd0lEQVQoz33SyxKCMBBE0QYRJb4VI0gUBET8/x/UHQvqTm9PpZLMtDQlikVZJEuidLUmytyGaLvbEx2OJ6LzJSe6+htR4UqiexWIHs+aqHm1OKnui1FvnNOb7/u/0wfGgf9nzkX68DzNPZj7M/cujdwXs2fzfv4AsxQJVOH/g6IAAAAASUVORK5CYII=") no-repeat center
+    background url('../i/arleft_black.png') no-repeat 0 -756px
     transition .5s left, .5s opacity
+    &:hover
+      animation arrAnimation 1s steps(28)
   &__icon
     pos absolute
     t 20px 
@@ -78,9 +80,12 @@
       fontify 130px 700 133px
     @media $lDesktopMedium
       fontify 114px 700 118px
+    @media $lDesktopSmall
+      w calc(100% + 40px)
     @media $desktopMax
       fontify 84px 700 93px
       max-width 730px
+      w 100%
     @media $desktopMin
       max-width 460px
     @media $LandscapeMedium
@@ -135,13 +140,14 @@
       size 123px
       background url('../i/tomato-hover.png') no-repeat center
       background-size 100% 100%
-      l 31px
+      l 45px
       t 48px
       @media $lDesktopMax
         size 110px
+        l 34px
       @media $lDesktopMedium
         size 87px
-      @media $desktopMin
+      @media $desktopMax
         size 67px
         l 23px
     &[data-type="tomato"]:hover:before
@@ -150,6 +156,66 @@
         t 28px
       @media $desktopMin
         t 26px
+    &[data-type="cucumber"]:before
+      size 75px 173px
+      background url('../i/cucumber-hover.png') no-repeat center
+      background-size 100% 100%
+      l 150px
+      t 37px
+      @media $lDesktopMax
+        size 56px 130px
+        l 124px
+      @media $lDesktopMedium
+        size 48px 110px
+        l 110px
+      @media $desktopMax
+        size 39px 90px
+        l 77px
+    &[data-type="cucumber"]:hover:before
+      t 27px
+      @media $lDesktopMax
+        t 28px
+      @media $desktopMax
+        t 26px
+    &[data-type="peppers"]:before
+      size 113px 122px
+      background url('../i/pepper-hover.png') no-repeat center
+      background-size 100% 100%
+      l 150px
+      t 37px
+      @media $lDesktopMax
+        size 93px 100px
+        l 124px
+      @media $lDesktopMedium
+        size 74px 80px
+        l 110px
+      @media $desktopMax
+        size 56px 60px
+        l 84px
+    &[data-type="peppers"]:hover:before
+      t 27px
+      @media $lDesktopMax
+        t 28px
+      @media $desktopMax
+        t 26px
+    &[data-type="eggplant"]:before
+      size 77px 179px
+      background url('../i/eggplant-hover.png') no-repeat center
+      background-size 100% 100%
+      r -28px
+      t 13px
+      @media $lDesktopMax
+        size 56px 130px
+        r -16px
+      @media $lDesktopMedium
+        size 47px 110px
+      @media $desktopMax
+        size 39px 90px
+        r -12px
+    &[data-type="eggplant"]:hover:before
+      t 3px
+      @media $desktopMax
+        t 1px
     &:hover
       background-size 100% 0px
       &:after
@@ -343,7 +409,8 @@
       opacity 0
       transition .7s opacity, .7s bottom
       @media $lDesktopMax
-        fontify 100px 400 124px
+        fontify 100px 400 82px
+        mb 35px
       @media $desktopMax
         fontify 76px 400 82px
       &-sub
@@ -419,11 +486,11 @@
       &:before
         content ""
         pos absolute
-        size 73px 38px
+        size 80px 38px
         t -50px
         l 50%
-        ml -36px
-        background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAAmCAMAAAC/D0ZhAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABa1BMVEUAAAAYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgAAACZhaHsAAAAd3RSTlMALXCq0O35DHLV0o9VLxIGBG/sjSolzJInTPFx8lv7SlxO/Ds6SCYOAwIfGfSfLtEXE3z+PQmsYgEx588/r6hXHFqcqWrE+godmR7weHMNFsthihh5CLRgBepWWCzlX2SOT5Qo36YbCyCMzvM5RkVdUFHN7ikP1t60UF0AAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAB/0lEQVRIx62W6VviMBCHQ+VGoA3IsUXAqvU+0HXd9VYUz+KteLPriaz39e+b4AcREpL0cT5Mm5nf8z7TNO0MADXNItVZbXa7zVonWYB5czhdbk+91+f3+7z1HrfL6TDHkRUYCJYHggGoyCZADaFwpDIWCYcahEHRHyoprMaigqDGeIKcSMSTQqAmrZmWatGaBECRWCs92RqLcIPkkFIrrYRkXpISrp0PS5wgB2SUr0POI+oMsBQBZ1WorZ2gcwVZpKDr876jE/uu7p5qWW8fu+y+XuT6U/h2YPAn8kO/hqtVkofF+f3Hgz+AkVG8GBvvoukmJumMKS/2028zaVzNLE/lFJvLzCO/sBjl2AEAYIoQXFpewZeo8bFMQR6S3f9lmUhnkV9dWy8P+u0ipI6JUhkbcb1aw0eCqc0tH7puw50SsJ+gYT/d6gLeceVtFy+yOaqOfeasewCk97MHQwzdfpqaOjw6xpcT9G7UPHsH8qRf899/+CFOzxr5K6ecuXPtoiIi9gV/2uVVZcQosEgFg102NgfUawt0G28zlr7r78vsCNcyL4nRpYr8XQp3zhZa6r9Q5wQgqd2QE7fanRAIgPsicVul4oMgCL3qR9LU86gLg/Ak9lR4Lg88F55MTWLIXoxXdx5Nh7kcmg7z7lfjxRynZBYVTayZDJpYVdbE+g7RMjZnpiz6ewAAAABJRU5ErkJggg==") no-repeat center
+        ml -40px
+        background url('../i/cut-icon.gif') no-repeat center
     &-mainfeat
       color $dark
       fontify 120px 700 124px

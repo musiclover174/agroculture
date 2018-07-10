@@ -1,0 +1,35 @@
+doctype html
+html
+  head(lang="ru")
+    include layout/__head
+  body(data-color="dark").inner
+    include layout/__header
+    section.content
+      section.container
+        section.page__top.page__top_pzero
+          h1 Новости
+          section.breadcrumbs
+            a(href="#").breadcrumbs__href Главная
+            span.breadcrumbs__delim /
+      section.page__content
+        section.container
+          include blocks/news-elem
+
+          -var newsArray = []
+          -newsArray.push({img: 'img/inews1.jpg', date: "15 мая 2018", href: "«Агрокультура Групп» – это максимально эффективная адаптация к изменениям", mainNews: 'true'})
+          -newsArray.push({img: 'img/inews2.jpg', date: "12 января 2018", href: "«Агрокультура Групп» запустил третью очередь теплиц"})
+          -newsArray.push({img: 'img/inews3.jpg', date: "6 декабря 2017", href: "Бренд «Зелёный Стандарт» стал лауреатом премии «Здоровое питание»"})
+          -newsArray.push({img: 'img/inews4.jpg', date: "23 ноября 2018", href: "Прививка томата в тепличном комплексе «Агрокультура Групп»"})
+          -newsArray.push({img: 'img/inews5.jpg', date: "19 ноября 2017", href: "Продукция «Агрокультура Групп» как образец импортозамещения"})
+          -newsArray.push({img: 'img/inews6.jpg', date: "9 октября 2018", href: "Уникальный проект Philips Lighting для российских аграриев"})
+          -newsArray.push({img: 'img/inews7.jpg', date: "3 октября 2017", href: "Специализированная выставка «Защищенный грунт России»"})
+          -newsArray.push({img: 'img/inews8.jpg', date: "27 сентября 2018", href: "«Агрокультура Групп» — Работодатель года 2016"})
+          -newsArray.push({img: 'img/inews9.jpg', date: "22 сентября 2018", href: "Продукция «Агрокультура Групп» вошла в список 100 лучших товаров России"})
+
+          section.news__grid.news__grid_page
+            for news in newsArray
+              +newsElem(news)
+          
+          include blocks/pagination 
+          
+          include layout/__footer_inner

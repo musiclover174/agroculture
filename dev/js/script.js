@@ -71,6 +71,16 @@
     }, 10);
   }
 	
+  window.animation.visChecker = (el) => {
+    let rect = el.getBoundingClientRect()
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && 
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth) 
+    )
+  }
+  
   window.agroculture = {}
 
   window.agroculture.form = ({
@@ -161,129 +171,6 @@
 
   }).init()
 
-  /*window.agroculture.animator = ({
-
-    hideBlock: function (block) {
-      block.clearQueue().stop().animate({
-        'opacity': 0
-      }, 400, function () {
-        block.removeAttr('style').removeClass('visible');
-      });
-    },
-
-    showBlock: function (block, dir, duration, pause) {
-      if (dir === undefined) {
-        dir = 'btt';
-      }
-      if (duration === undefined) {
-        duration = 1200;
-      }
-      if (pause === undefined) {
-        pause = 0;
-      }
-
-      if (/Mobi/.test(navigator.userAgent)) {
-        pause = 0;
-        duration = 400;
-      }
-
-      setTimeout(function () {
-        switch (dir) {
-          case 'rtl':
-            block.animate({
-              'right': 0,
-              'opacity': 1
-            }, duration, 'linear', function () {
-              $(this).addClass('visible');
-            });
-            break;
-          case 'ltr':
-            block.animate({
-              'left': 0,
-              'opacity': 1
-            }, duration, 'linear', function () {
-              $(this).addClass('visible');
-            });
-            break;
-          case 'ttb':
-            block.animate({
-              'top': 0,
-              'opacity': 1
-            }, duration, 'linear', function () {
-              $(this).addClass('visible');
-            });
-            break;
-          case 'btt':
-            block.animate({
-              'bottom': 0,
-              'opacity': 1
-            }, duration, 'linear', function () {
-              $(this).addClass('visible');
-            });
-            break;
-          case 'fi':
-            block.animate({
-              'opacity': 1
-            }, duration, 'linear', function () {
-              $(this).addClass('visible');
-            });
-            break;
-          default:
-            break;
-        }
-      }, pause);
-    },
-
-    startCheckVis: function () {
-      var _th = this;
-      var visArea = $(window).scrollTop() + $(window).height();
-
-      $('.animator').each(function () {
-        if ($(this).offset().top >= visArea)
-          $(this).removeClass('visible');
-      });
-    },
-
-    checkVisibility: function (block) {
-
-      var visArea = $(window).scrollTop() + $(window).height() * .7;
-
-      if (block.offset().top < visArea)
-        return true;
-      else
-        return false;
-
-    },
-
-    scrollVis: function () {
-      var _th = this;
-
-      $('.animator').each(function () {
-        if (!$(this).hasClass('visible')) {
-          if (_th.checkVisibility($(this)))
-            _th.showBlock($(this), $(this).data('dir'), $(this).data('duration'), $(this).data('pause'));
-        } else {
-          if (!_th.checkVisibility($(this)))
-            _th.hideBlock($(this));
-        }
-      });
-    },
-
-
-    init: function () {
-      var _th = this;
-
-      _th.startCheckVis();
-
-      $(window).scroll(function () {
-        _th.scrollVis();
-      });
-
-      return this;
-    }
-
-  }).init();*/
-
   window.agroculture.obj = ({
 
     progressUpdate: (val) => {
@@ -305,21 +192,13 @@
         document.querySelector('.js-icar .swiper-no-swiping').classList.remove('swiper-no-swiping')
       }
       
-      /*if (window.xsHeight){
-        document.querySelector('.js-icar').classList.add('horizontal')
-        document.querySelector('html').classList.add('horizontal')
-        document.querySelectorAll('.js-icar .swiper-slide').forEach( item => {
-          item.classList.add('swiper-slide-active')
-        })
-      } else {*/
       const mainVertSwiper = new Swiper ('.js-icar', {
         loop: false,
-        speed: 800,
+        speed: 1500,
         direction: 'vertical',
         slidesPerView: 1,
         spaceBetween: 0,
         mousewheel: true,
-        //touchMoveStopPropagation: false,
         allowTouchMove: window.xs && window.touch
       })
 
@@ -343,7 +222,6 @@
         }
 
       });
-      //}
     },
     
     indexBannerCarousel: () => {
@@ -451,7 +329,7 @@
         vegEl.style.backgroundPositionY = `-${curSlide * vegFrameHeight}px`
         setTimeout(() => {
           vegToStart(curSlide)
-        }, 20)
+        }, 10)
       }
       
       let watcherSetter = () => {
@@ -558,14 +436,48 @@
       
     },
     
+    resizeWatcher: () => {
+      const tableSel = document.querySelectorAll('table'),
+            scrollArray = [];
+      if (tableSel.length){
+        tableSel.forEach((item, i) => {
+          let orgHtml = item.outerHTML,
+              def = 'default';
+          
+          if (item.getAttribute('class')) def = '';
+          
+          item.outerHTML = `<div class='table-scroller${i} ${def}'>${orgHtml}</div>`;
+          let ps = new PerfectScrollbar(`.table-scroller${i}`, {
+            wheelPropagation: true
+          });
+          scrollArray.push(ps);
+        });
+        window.addEventListener('resize', () => {
+          if (scrollArray.length)
+            scrollArray.forEach((item, i) => {
+              item.update()
+            });
+        });
+      }
+      
+    },
+    
     init: function () {
 
       const burgerEl = document.querySelector('.js-burger'),
-            html = document.querySelector('html')
+            html = document.querySelector('html'),
+            elemsToCheck = ['.news__grid_page .news__elem-imgover']
       
       burgerEl.addEventListener('click', (e) => {
         html.classList.toggle('burgeropen')
-        burgerEl.classList.toggle('open')
+        if (burgerEl.classList.contains('open')) {
+          burgerEl.classList.add('remove')
+          setTimeout(() => {
+            burgerEl.classList.remove('open', 'remove')
+          }, 1000)
+        } else {
+          burgerEl.classList.add('open')
+        }
         e.preventDefault()
       })
       
@@ -577,9 +489,24 @@
       
       if (document.querySelector('.js-iveg-href')) this.indexVegetables()
 
+      if (document.querySelector('.js-aside-sticky')) {
+        const sidebar = new StickySidebar('.js-aside-sticky',{
+          containerSelector: '.page__withside',
+          innerWrapperSelector: '.page__aside-sticky',
+          topSpacing: 20,
+          bottomSpacing: 0
+        });
+      }
+      
       if (window.touch && window.xsHeight && window.innerHeight < window.innerWidth) {
         document.querySelector('html').classList.add('lock')
 			}
+      
+      window.addEventListener('resize', () => {
+        window.xs = window.innerWidth <= 960 ? true : false
+        window.mobile = window.innerWidth <= 480 ? true : false
+        window.xsHeight = window.innerHeight <= 540 ? true : false
+      })
       
 			window.addEventListener('orientationchange', () => {
 				setTimeout(function(){
@@ -588,18 +515,30 @@
 					} else {
 						document.querySelector('html').classList.remove('lock')
 					}
-				}, 350);
-			});
-
+				}, 500);
+			})
+      
+      window.addEventListener('scroll', () => {
+        elemsToCheck.forEach(item => {
+          document.querySelectorAll(item).forEach(elem => {
+            if (window.animation.visChecker(elem)) {
+              elem.classList.add('visible')
+            }
+          })
+        })
+      })
+      
 			//shave(elem, 50); обрезка текста
 			
       //$('[data-fancybox]').fancybox(); // fancy init
 
-      /*let eventResize = new Event('resize') // триггеры событий скролла и ресайза
-      window.dispatchEvent(eventResize)
-      let eventScroll = new Event('scroll')
-      window.dispatchEvent(eventScroll)*/
-
+      this.resizeWatcher();
+      
+      let eventResize = new Event('resize');
+      window.dispatchEvent(eventResize);
+      let eventScroll = new Event('scroll');
+      window.dispatchEvent(eventScroll);
+      
       return this
     }
   }).init();

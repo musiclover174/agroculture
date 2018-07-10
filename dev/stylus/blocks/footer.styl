@@ -13,8 +13,49 @@ body[data-color="light"]
   r 30px
   color white
   fontify 14px 700 21px
+  &_inner
+    pos relative
+    b 0
+    l 0
+    r auto
+    display flex
+    justify-content space-between
+    align-items flex-start
+    mt 85px
+    @media $PortraitMedium
+      flex-direction column
+      mt 50px
+  &__copy
+    color $dark
+    fontify 12px 700 21px
+  &__dextra
+    color silver
+    font-family Verdana
+    fontify 9px 400 14px
+    text-transform uppercase
+    letter-spacing .18em
+    pos relative
+    @media $PortraitMedium
+      ml 85px
+      mt 10px
+    span
+      pos absolute
+      t 2px
+      r calc(100% + 10px)
+      bgc #dfdfdf
+      color white
+      font-family Arial
+      fontify 12px 900 21px
+      text-transform uppercase
+      letter-spacing .1em
+      padding 0 6px
+      border-radius 3px
+      transition .7s background
+    &:hover span
+      bgc $green
   @media $LandscapeMedium
-    dn()
+    &:not(&_inner)
+      dn()
   
 .progress
   h 6px
