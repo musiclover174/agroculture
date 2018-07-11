@@ -2,7 +2,7 @@ doctype html
 html
   head(lang="ru")
     include layout/__head
-  body(data-color="dark").inner
+  body(data-color="light").inner
     include layout/__header
     section.content
       section.container
@@ -34,4 +34,8 @@ html
             p С ростом площадей увеличились численность персонала, объемы продаж, а перед руководством предприятия, впрочем вполне предсказуемо, встала сложная задача со многими неизвестными: как эффективно выстроить работу производственного комплекса, раскинувшегося на десятки гектаров, в непрерывно меняющихся рыночных условиях?
             p.news__inner-date 15 мая 2018
             a(href="#").common__back Вернуться к списку новостей
-            include layout/__footer_inner
+            include blocks/footer
+            -var data = {}
+            +footer(data)
+            
+    include layout/__scripts

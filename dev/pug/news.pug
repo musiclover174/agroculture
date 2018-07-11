@@ -2,7 +2,7 @@ doctype html
 html
   head(lang="ru")
     include layout/__head
-  body(data-color="dark").inner
+  body(data-color="light").inner
     include layout/__header
     section.content
       section.container
@@ -11,7 +11,7 @@ html
           section.breadcrumbs
             a(href="#").breadcrumbs__href Главная
             span.breadcrumbs__delim /
-      section.page__content
+      section.page__whitebg
         section.container
           include blocks/news-elem
 
@@ -32,4 +32,8 @@ html
           
           include blocks/pagination 
           
-          include layout/__footer_inner
+          include blocks/footer
+          -var data = {}
+          +footer(data)
+          
+    include layout/__scripts

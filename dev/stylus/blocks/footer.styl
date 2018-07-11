@@ -11,8 +11,12 @@ body[data-color="light"]
   z-index 11
   b 25px
   r 30px
+  l 30px
   color white
   fontify 14px 700 21px
+  display flex
+  justify-content space-between
+  align-items flex-start
   &_inner
     pos relative
     b 0
@@ -26,11 +30,11 @@ body[data-color="light"]
       flex-direction column
       mt 50px
   &__copy
-    color $dark
+    color inherit
     fontify 12px 700 21px
   &__dextra
     color silver
-    font-family Verdana
+    font-family Verdana, Geneva, sans-serif
     fontify 9px 400 14px
     text-transform uppercase
     letter-spacing .18em
@@ -42,7 +46,7 @@ body[data-color="light"]
       pos absolute
       t 2px
       r calc(100% + 10px)
-      bgc #dfdfdf
+      bgc rgba(0, 0, 0, .2)
       color white
       font-family Arial
       fontify 12px 900 21px

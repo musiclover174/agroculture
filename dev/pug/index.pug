@@ -228,4 +228,8 @@ html
               section.news__grid
                 for news in newsArray
                   +newsElem(news)
-    include layout/__footer
+    include blocks/footer
+    -var data = {index: 'true'}
+    +footer(data)
+    
+    include layout/__scripts

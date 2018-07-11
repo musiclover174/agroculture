@@ -2,7 +2,7 @@ doctype html
 html
   head(lang="ru")
     include layout/__head
-  body(data-color="dark").inner
+  body(data-color="light").inner
     include layout/__header
     section.content
       section.container
@@ -67,4 +67,8 @@ html
                   td 1470
                   td Январь 2016
             p Основной руководящий состав и штат специалистов сформирован из профессионалов, имеющих профильное высшее образование и релевантный опыт работы. Коллектив хозяйства включает преимущественно местное население.
-            include layout/__footer_inner
+            include blocks/footer
+            -var data = {}
+            +footer(data)
+            
+    include layout/__scripts

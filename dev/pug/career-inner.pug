@@ -1,0 +1,100 @@
+doctype html
+html
+  head(lang="ru")
+    include layout/__head
+  body(data-color="dark").inner
+    include layout/__header
+    section.content
+      section.container
+        section.page__top
+          h1 Заправщик минеральных удобрений
+          section.breadcrumbs
+            a(href="#").breadcrumbs__href Главная
+            span.breadcrumbs__delim /
+            a(href="#").breadcrumbs__href Карьера
+            span.breadcrumbs__delim /
+        section.page__withside
+          aside.page__aside
+          section.page__content
+            section.career__elem
+              .career__elem-row
+                span.career__elem-title Заработная плата
+                .career__elem-value 
+                  p По договоренности
+              .career__elem-row
+                span.career__elem-title Город
+                .career__elem-value 
+                  p Кашира
+              .career__elem-row
+                span.career__elem-title Место работы
+                .career__elem-value 
+                  p На территории работодателя
+              .career__elem-row
+                span.career__elem-title График работы
+                .career__elem-value 
+                  p Полный рабочий день
+              .career__elem-row
+                span.career__elem-title Условия
+                .career__elem-value 
+                  ul
+                    li Оформление по ТК РФ,
+                    li рабочая неделя 5/2,
+                    li полный рабочий день,
+                    li корпоративный транспорт,
+                    li проживание в общежитии,
+                    li обучение в процессе работы.
+              .career__elem-row
+                span.career__elem-title Обязанности
+                .career__elem-value 
+                  ul
+                    li Осуществлять по строго разработанной схеме заправку бака удобрениями и кислотами,
+                    li обслуживать систему полива в растворных узлах и теплицах,
+                    li осуществлять контроль за оборудованием в растворных узлах, осуществлять контроль за порядком в сервисной зоне,
+                    li выполнять поставленные задачи агронома по питанию.
+              .career__elem-row
+                span.career__elem-title Образование
+                .career__elem-value 
+                  p Среднее
+              .career__elem-row
+                span.career__elem-title Опыт работы
+                .career__elem-value 
+                  p Не важен
+        section.page__withside
+          aside.page__aside
+          section.page__content.page__content_transparent
+            form.career__form
+              p.career__form-title Отправить резюме
+              p.career__form-subtitle Обратите внимание, поля со звездочками * — обязательны для заполнения.
+              .common__row
+                .common__col.common__col_wide
+                  .common__row
+                    input(type="text", data-req="req").common__input
+                    label.common__placeholder ФИО
+                      span *
+                .common__col.common__col_short
+                  .common__row
+                    input(type="text", data-req="req").common__input.js-phone
+                    label.common__placeholder Телефон
+                      span *
+              .common__row
+                input(type="text").common__input
+                label.common__placeholder Текст сообщения
+              .common__row
+                .common__fileover
+                  input(type="file", name="", data-req="req", data-type="file").common__file#file1.js-common-fileinput
+                  label(for="file1", data-default="Прикрепить файл").common__filename.js-common-file Прикрепить файл
+                  button(type="button").common__filedelete.js-common-filedelete
+              .common__row
+                .fakecheckbox
+                  input(type="checkbox", value="", name="agreement", checked)#agreement1.fakecheckbox__truecheck
+                  label(for="agreement1").fakecheckbox__label Даю согласие на 
+                    a(href="#") обработку персональных данных
+              .common__row
+                button(type="submit").btn.common__sbm Отправить резюме
+                
+            a(href="#").common__back.common__back_white Вернуться к списку вакансий
+            include blocks/footer
+            -var data = {empty: 'true'}
+            +footer(data)
+            
+    include layout/__scripts

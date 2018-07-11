@@ -1,0 +1,12 @@
+mixin footer(data)
+  - var cl = 'footer footer_inner'
+  if (data.index)
+    - cl = 'footer'
+  if (!data.empty)
+    footer(class=cl)
+      p.footer__copy © ООО «Агрокультура Групп»
+      a(href="https://www.dextra.ru/", target="_blank").footer__dextra
+        span dextra
+        | Разработка<br>сайта
+  if (data.empty)
+    footer(class=cl)

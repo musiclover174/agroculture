@@ -88,6 +88,7 @@
     init: function () {
 
       const _th = this,
+            inputs = document.querySelectorAll('.common__input, .common__textarea'),
 						forms = document.querySelectorAll('form'),
 						selectors = document.querySelectorAll('.js-select'),
             choicesArr = [],
@@ -95,11 +96,52 @@
 
       $('.js-phone').mask('+7(999) 999-9999');
 
-      forms.forEach( form => { // валидация форм
+      function emptyCheck(event){
+        event.target.value.trim() === '' ? 
+          event.target.classList.remove('notempty') :
+          event.target.classList.add('notempty')
+      }
+      
+      inputs.forEach( item => {
+        item.addEventListener('keyup', emptyCheck)
+        item.addEventListener('blur', emptyCheck)
+      })
+      
+      if (document.querySelectorAll('.js-common-file').length) {
+        let commonFile = document.querySelectorAll('.js-common-fileinput'),
+            commonFileDelete = document.querySelectorAll('.js-common-filedelete')
+        
+        commonFile.forEach(fileInp => {
+          fileInp.addEventListener('change', (e) => {
+            let el = fileInp.nextElementSibling,
+                path = fileInp.value.split('\\'),
+                pathName = path[path.length - 1].split('');
+            
+            pathName.length >= 30 ? 
+              pathName = pathName.slice(0, 28).join('') + '...' :
+              pathName = pathName.join('')
+            
+            el.textContent = pathName;
+            el.classList.add('choosed');
+          })
+        });
+        
+        commonFileDelete.forEach(fileDelete => {
+          fileDelete.addEventListener('click', (e) => {
+            let el = fileDelete.previousElementSibling,
+                fileInput = fileDelete.previousElementSibling.previousElementSibling;
+            el.textContent = el.getAttribute('data-default');
+            fileInput.value = '';
+            el.classList.remove('choosed');
+          })
+        });
+      }
+      
+      forms.forEach( form => { 
         form.addEventListener('submit', e => !_th.checkForm(form) && e.preventDefault())
       })
 			
-			for (let selector of selectors){ // навешиваем select обвес
+			for (let selector of selectors){ 
         let choice = new Choices(selector, {
           searchEnabled: false,
           itemSelectText: '',
@@ -108,7 +150,7 @@
         choicesArr.push(choice);
       }
 			
-			for (let digitInput of digitsInput){ // ввод только чисел в инпуты
+			for (let digitInput of digitsInput){ 
         digitInput.addEventListener('keydown', (e) => {
           let validArr = [46, 8, 9, 27, 13, 110, 190];
           if (validArr.indexOf(e.keyCode) !== -1 ||
@@ -132,7 +174,7 @@
       if (warningElems.length)
         warningElems.forEach( warningElem => 
           warningElem.classList.remove('warning')
-        );
+        )
       
       form.querySelectorAll('input, textarea, select').forEach((elem) => {
         if (elem.getAttribute('data-req')) {
@@ -140,21 +182,27 @@
             case 'tel':
               var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
               if (!re.test(elem.value)) {
-                elem.classList.add('warning');
-                checkResult = false;
+                elem.classList.add('warning')
+                checkResult = false
               }
               break;
             case 'email':
               var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
               if (!re.test(elem.value)) {
-                elem.classList.add('warning');
-                checkResult = false;
+                elem.classList.add('warning')
+                checkResult = false
+              }
+              break;
+            case 'file':
+              if (elem.value.trim() === '') {
+                elem.parentNode.classList.add('warning')
+                checkResult = false
               }
               break;
             default:
               if (elem.value.trim() === '') {
-                elem.classList.add('warning');
-                checkResult = false;
+                elem.classList.add('warning')
+                checkResult = false
               }
               break;
           }
@@ -162,11 +210,11 @@
       });
       form.querySelectorAll('input[name^=agreement]').forEach((item) => {
 				if (!item.checked) {
-					item.classList.add('warning');
-					checkResult = false;
+					item.classList.add('warning')
+					checkResult = false
 				}
 			});
-      return checkResult;
+      return checkResult
     }
 
   }).init()
@@ -466,7 +514,7 @@
 
       const burgerEl = document.querySelector('.js-burger'),
             html = document.querySelector('html'),
-            elemsToCheck = ['.news__grid_page .news__elem-imgover']
+            elemsToCheck = ['.news__grid_page .news__elem-imgover', '.js-scroll-imgover']
       
       burgerEl.addEventListener('click', (e) => {
         html.classList.toggle('burgeropen')
@@ -498,7 +546,7 @@
         });
       }
       
-      if (window.touch && window.xsHeight && window.innerHeight < window.innerWidth) {
+      if (document.querySelector('.js-icar') && window.touch && window.xsHeight && window.innerHeight < window.innerWidth) {
         document.querySelector('html').classList.add('lock')
 			}
       
@@ -510,7 +558,7 @@
       
 			window.addEventListener('orientationchange', () => {
 				setTimeout(function(){
-					if (window.touch && window.xsHeight && window.innerHeight < window.innerWidth) {
+					if (document.querySelector('.js-icar') && window.touch && window.xsHeight && window.innerHeight < window.innerWidth) {
 						document.querySelector('html').classList.add('lock')
 					} else {
 						document.querySelector('html').classList.remove('lock')

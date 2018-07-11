@@ -25,6 +25,8 @@ body
       opacity .5
       background url('../i/inner-bg.jpg') no-repeat center
       background-size cover
+    &.career:before
+      background url('../i/career-bg.jpg') no-repeat center
   
 .container
   w 100%
@@ -127,7 +129,7 @@ body
     @media $lDesktopSmall
       fontify 17px 400 24px
   a:not([class])
-    color $orange
+    color $green
     border-bottom 1px solid
     transition .5s border
     &:hover
@@ -179,13 +181,12 @@ div[class\^="table-scroller"]
   letter-spacing .1em
   text-transform uppercase;
   padding 0 20px
-  transition .7s background, .7s color, .7s box-shadow
+  transition .7s background, .7s color
   @media $lDesktopMedium
     fontify 12px 700 34px
   &:hover
     bgc $green
     color white
-    box-shadow 0 0 15px 0 alpha($green, 0.8)
     
 .common
   &__title
@@ -201,31 +202,41 @@ div[class\^="table-scroller"]
     fontify 23px 400 21px
     border-bottom 1px solid alpha($dark, .25)
     transition .5s border
+    &_white
+      color white
+      border-bottom 1px solid alpha(white, .25)
     @media $LandscapeMedium
       fontify 17px 400 21px
       ml 41px
-    &:hover
-      border-color transparent
     &:before
       content ""
       pos absolute
       l -56px
       t -1px
       size 27px 25px
-      background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAZCAMAAAD3wqVsAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAilBMVEUAAAAYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgAAAB/9PyuAAAALHRSTlMAPqs86j0550A25kQz6Ucx6Eku5U0s5FEpVCfjViThWyLgX8MjJVoqUy9MOiH9lbcAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAAeklEQVQoz33S2xqBYBSE4cmuhEo/RRJtJOr+r48zB55vzen7rJM1I/3izUSZL5ZEKz8gWocbou0uIoqTPVHqDkTHLCc6hWei4lISXasb0b1u8FPthFFn3OlR9YxFVjI+3cBo/EV6uTej0cO3vyRiNHqXRt6LubP/fX4AUgwJ4Furtv8AAAAASUVORK5CYII=") no-repeat center
+      background url('../i/arleft_black.png') no-repeat 0 -756px
       @media $LandscapeMedium
         l -41px
+    &_white
+      &:before
+        background-image url('../i/arleft_white.png')
+    &:hover
+      border-color transparent
+      &:before
+        animation arrAnimation 1s steps(28)
   &__input
     w 100%
     h 48px
-    padding 0 18px
-    border 2px solid #ececec
+    border 0
+    border-bottom 1px solid white
     bgc transparent
-    color $dark
+    color white
     font-family $os
-    font-size 14px
+    font-size 17px
     line-height 400
     transition .5s border
+    @media $lDesktopSmall
+      font-size 14px
     &:focus + ^[0]__placeholder,
     &.notempty + ^[0]__placeholder
       dn()
@@ -245,8 +256,8 @@ div[class\^="table-scroller"]
     &.notempty + ^[0]__placeholder
       dn()
   &__sbm
-    padding 0 42px
-    font-family FiraSans
+    font-family $os
+    mt 5px
   &__select
     h 36px
     bgc #fff
@@ -261,32 +272,50 @@ div[class\^="table-scroller"]
     z-index -1
     l 0 
     t 0
-    pl 20px
-    color alpha($dark, .5)
-    fontify 14px 400 50px
+    color white
+    fontify 14px 700 50px
+    letter-spacing .1em
+    text-transform uppercase
     text-overflow ellipsis
     white-space nowrap
     overflow hidden
     max-width 100%
+    @media $lDesktopSmall
+      fontify 12px 700 50px
     span
-      color $orange
+      fontify 23px 400 50px
+      pos relative
+      t 0
   &__col
-    w calc(50% - 14px)
-    &_iroad
-      max-width 510px
-      @media $LandscapeMedium
-        w 100%
-        &:first-child
-          dn()
+    w calc(50% - 25px)
+    &_wide
+      w calc(100% - 212px)
+    &_short
+      w 162px
+    @media $LandscapeMedium
+      w 100%
+      & + &
+        mt 22px
   &__row
     display flex
     justify-content space-between
     pos relative
     w 100%
+    @media $LandscapeMedium
+      flex-direction column
     & + &
-      mt 20px
+      mt 32px
+      @media $LandscapeMedium
+        mt 22px
   &__fileover
+    w 100%
     pos relative
+    pt 14px
+    pb 14px
+    border-bottom 1px solid white
+    transition .5s border
+    &.warning
+      border-color #ed1c24
     & + &
       mt 20px
   &__file
@@ -301,42 +330,62 @@ div[class\^="table-scroller"]
       pos relative
       l 26px
       cursor pointer
-      color $dark
-      fontify 14px 400 18px
-      border-bottom 2px dotted $orange
+      color white
+      fontify 14px 700 14px
+      letter-spacing .1em
+      text-transform uppercase
+      border-bottom 1px solid alpha(white, .25)
       transition .5s border
+      @media $lDesktopSmall
+        font-size 12px
       &.choosed,
       &:hover
         border-color transparent
+      &:after
+        content "*"
+        pos absolute
+        r -11px
+        fontify 23px 400 14px
+        t -3px
       &:before
         content ""
         pos absolute
         l -24px
-        t 6px
+        t 3px
         size 16px 8px
-        background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAICAMAAADHqI+lAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAflBMVEUiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiL////BkM1AAAAAKHRSTlMAFJLi/uaFBRrhukMXERM+1IeisgE0t8xM8EeJRFvnRmnsaKQ1uVUVNSas3QAAAAFiS0dEKcq3hSQAAAAJcEhZcwAACxIAAAsSAdLdfvwAAABYSURBVAjXRc1ZEkAwEATQJvZ9jxC74P4nRATvr6eqewBNJ8ahmJYNx/X8IHxEcZIiywuUFZWAmoE1AGm5BHQ92PAf+DjNWK7KqipUbLhGxTcKadfJ+/WOJ3rfCXxQ+WZgAAAAAElFTkSuQmCC") no-repeat center
+        background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAICAMAAADHqI+lAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAe1BMVEX////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////QYBnOAAAAKHRSTlMAFJLi/uaFBRrhukMXERM+1IeisgE0t8xM8EeJRFvnRmnsaKQ1uVUVNSas3QAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxIAAAsSAdLdfvwAAABYSURBVAjXRc1ZEkAwEATQJvZ9jxC74P4nRATvr6eqewBNJ8ahmJYNx/X8IHxEcZIiywuUFZWAmoE1AGm5BHQ92PAf+DjNWK7KqipUbLhGxTcKadfJ+/WOJ3rfCXxQ+WZgAAAAAElFTkSuQmCC") no-repeat center
       &.choosed + ^[-1]delete
         visibility visible
         cursor pointer
+      &.choosed:after
+        content ""
     &delete
       ib()
       visibility hidden
-      mt 5px
+      mt 3px
       ml 32px
       size 9px
-      background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJBAMAAAASvxsjAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAALVBMVEUiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiL////wlQZJAAAADXRSTlMA0Do74eI5bGtqOM7MEv0urwAAAAFiS0dEDm+9ME8AAAAJcEhZcwAACxIAAAsSAdLdfvwAAAA3SURBVAjXYxBiYGAWYFBRYDBNYGByYg5jYGBQLU0Akhw3GUDsKQoMDExRTE4MDKYLQMp2AbkHAKcGB4WerKhTAAAAAElFTkSuQmCC") no-repeat center
+      background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJBAMAAAASvxsjAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAKlBMVEX///////////////////////////////////////////////////////9q+00tAAAADXRSTlMA0Do74eI5bGtqOM7MEv0urwAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAA3SURBVAjXYxBiYGAWYFBRYDBNYGByYg5jYGBQLU0Akhw3GUDsKQoMDExRTE4MDKYLQMp2AbkHAKcGB4WerKhTAAAAAElFTkSuQmCC") no-repeat center
       
 .page
+  &__whitebg
+    bgc white
+    pt 74px
+    pb 24px
+    @media $desktopMax
+      pt 40px
+    @media $LandscapeMedium
+      pt 40px
   &__top
     mb 65px
     padding 0 85px
-    &_pzero
-      padding 0
     @media $desktopMax
       padding 0 50px
     @media $LandscapeMedium
       padding 0
       mb 45px
+    &_pzero
+      padding 0
   &__withside
     display flex
     flex-direction row-reverse
@@ -346,6 +395,8 @@ div[class\^="table-scroller"]
       db()
   &__content
     bgc white
+    &_transparent
+      bgc transparent
     padding 74px 85px 24px
     @media $desktopMax
       padding 40px 50px 24px
@@ -379,9 +430,10 @@ div[class\^="table-scroller"]
 .fakecheckbox
   ib()
   pos relative
+  margin 10px 0
   &__label
     ib()
-    color $dark
+    color white
     fontify 14px 400 24px
     pos relative
     pl 37px
@@ -390,16 +442,16 @@ div[class\^="table-scroller"]
       content ""
       pos absolute
       l 0px
-      t 7px
+      t 8px
       size 20px
-      border 2px solid #ececec
+      border 1px solid #ececec
       cursor pointer
       transition .5s border
     &:after
       content ""
       pos absolute
       size 16px 13px
-      background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAANBAMAAABSlfMXAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAHlBMVEXnbxfnbxfnbxfnbxfnbxfnbxfnbxfnbxfnbxf///+QQS04AAAACHRSTlMAAyio8Dc4NlLA1+AAAAABYktHRAnx2aXsAAAACXBIWXMAAAsSAAALEgHS3X78AAAAOUlEQVQI12NgAANGBQjNIOwKFbCAMoRbArAIMAlABUIMoSpSmgUhKlg9jKFaQjqgWlhdAqDGl4JJAP/cCjh7XMPDAAAAAElFTkSuQmCC") no-repeat center
+      background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAANBAMAAABSlfMXAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAG1BMVEX///////////////////////////////////8HBRbfAAAACHRSTlMAAyio8Dc4NlLA1+AAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAAOUlEQVQI12NgAANGBQjNIOwKFbCAMoRbArAIMAlABUIMoSpSmgUhKlg9jKFaQjqgWlhdAqDGl4JJAP/cCjh7XMPDAAAAAElFTkSuQmCC") no-repeat center
       l 4px
       t 13px
       opacity 0

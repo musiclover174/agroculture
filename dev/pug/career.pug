@@ -1,0 +1,39 @@
+doctype html
+html
+  head(lang="ru")
+    include layout/__head
+  body(data-color="light").inner.career
+    include layout/__header
+    section.content
+      section.container
+        section.page__top.page__top_pzero
+          h1 Карьера
+          section.breadcrumbs
+            a(href="#").breadcrumbs__href Главная
+            span.breadcrumbs__delim /
+          p.career__subtitle Основной руководящий состав и штат специалистов сформирован из профессионалов, имеющих профильное высшее образование и релевантный опыт работы. Коллектив хозяйства включает преимущественно местное население.
+      section.page__whitebg
+        section.container
+          section.career__about
+            p.career__about-text На сегодняшний день в&nbsp;тепличном комплексе работают более 800 сотрудников.
+            .career__about-imgs
+              .career__about-img.career__about-img_img1.js-scroll-imgover
+              .career__about-img.career__about-img_img2.js-scroll-imgover
+          section.career__vacancy
+            p.career__vacancy-title На данный момент у нас открыты следующие вакансии
+            ul.career__vacancy-list
+              li.career__vacancy-item
+                a(href="#").career__vacancy-href Бригадир
+              li.career__vacancy-item
+                a(href="#").career__vacancy-href Заправщик минеральных удобрений
+              li.career__vacancy-item
+                a(href="#").career__vacancy-href Овощевод
+              li.career__vacancy-item
+                a(href="#").career__vacancy-href Рабочий по защите растений
+              li.career__vacancy-item
+                a(href="#").career__vacancy-href Слесарь КИПиА
+          include blocks/footer
+          -var data = {}
+          +footer(data)
+    
+    include layout/__scripts

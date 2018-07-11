@@ -1,0 +1,220 @@
+.career
+  &__subtitle
+    color white
+    fontify 26px 400 33px
+    max-width 770px
+    mt 57px
+    pb 130px
+    @media $lDesktopSmall
+      fontify 23px 400 30px
+      max-width 675px
+      mt 60px
+      pb 150px
+    @media $desktopMin
+      fontify 20px 400 27px
+      max-width 540px
+      pb 160px
+    @media $LandscapeMedium
+      pb 40px
+  &__about
+    display flex
+    align-items stretch
+    justify-content space-between
+    mt -74px
+    @media $desktopMin
+      mt 74px
+      flex-direction column
+      align-items flex-start
+      justify-content flex-start
+    @media $LandscapeMedium
+      mt 44px
+      dn()
+    &-text
+      color $dark
+      fontify 42px 400 46px
+      w calc(50% - 21px)
+      max-width 462px
+      align-self center
+      @media $lDesktopSmall
+        fontify 36px 400 40px
+        max-width 380px
+      @media $desktopMin
+        align-self flex-start
+        fontify 30px 400 34px
+        max-width 460px
+        w 100%
+    &-imgs
+      pos relative
+      z-index 1
+      h 734px
+      w calc(50% - 21px)
+      display flex
+      align-content flex-end
+      align-items flex-end
+      @media $lDesktopMedium
+        h 580px
+      @media $desktopMin
+        h auto
+        pt 340px
+        w 100%
+        mt 114px
+    &-img
+      &over
+        overflow hidden
+        w 0
+      &_img1
+        background url('../i/career1.jpg') no-repeat top left
+        size 0 648px
+        transition .7s width
+        @media $lDesktopMedium
+          h 452px
+          background-size 361px 452px
+        @media $desktopMin
+          size 458px 574px
+          background-size 458px 574px
+        &.visible
+          w 518px
+          @media $lDesktopMedium
+            w 361px
+          @media $desktopMin
+            w 485px
+      &_img2
+        background url('../i/career2.jpg') no-repeat top left
+        size 0 918px
+        pos absolute
+        z-index -1
+        l 152px
+        t -305px
+        transition .7s width
+        @media $lDesktopMedium
+          h 640px
+          t -140px
+          l 106px
+          background-size 437px 640px
+        @media $desktopMin
+          r 0
+          l auto
+          t 0
+          size 554px 814px
+          background-size 554px 814px
+        &.visible
+          w 627px
+          @media $lDesktopMedium
+            w 437px
+          @media $desktopMin
+            w 554px
+  &__vacancy
+    mt 113px
+    mb -30px
+    @media $desktopMin
+      mb -70px
+    @media $LandscapeMedium
+      mt 44px
+      mb -36px
+    &-title
+      color $dark
+      fontify 42px 400 46px
+      mb 71px
+      max-width 560px
+      @media $lDesktopSmall
+        fontify 36px 400 40px
+        max-width 480px
+      @media $desktopMin
+        fontify 30px 400 34px
+        max-width 400px
+        mb 75px
+      @media $LandscapeMedium
+        fontify 23px 400 27px
+    &-list
+      ml -50px
+      w calc(100% + 50px)
+      display flex
+      flex-wrap wrap
+      @media $desktopMin
+        flex-direction column
+    &-item
+      ib()
+      w calc(100% / 3 - 50px)
+      ml 50px
+      mb 41px
+      border-top 1px solid #181818
+      pos relative
+      z-index 1
+      padding 33px 100px 33px 40px
+      @media $lDesktopSmall
+        w calc(50% - 50px)
+      @media $desktopMin
+        w calc(100% - 50px)
+        mb 76px
+      @media $LandscapeMedium
+        mb 36px
+      @media $PortraitMedium
+        pl 0
+    &-href
+      color $dark
+      fontify 30px 400 34px
+      @media $LandscapeMedium
+        fontify 23px 400 27px
+      &:before
+        content ""
+        pos absolute
+        z-index -1
+        bgc #fbfbfb
+        w 100%
+        h 0
+        t 0
+        l 0
+        transition .7s height
+      &:after
+        content ""
+        pos absolute
+        z-index 1
+        w 27px
+        h 25px
+        t 38px
+        r 36px
+        background url('../i/arright_black.png') no-repeat 0 -756px
+        transition .5s visible, .5s opacity
+      &:hover
+        &:after
+          animation arrAnimation 1s steps(28)
+        &:before
+          h 100%
+  &__elem
+    pb 50px
+    &-row
+      display flex
+      @media $LandscapeMedium
+        flex-direction column
+      & + &
+        mt 50px
+        @media $LandscapeMedium
+          mt 40px
+    &-title
+      w 150px
+      mr 50px
+      color $dark
+      fontify 14px 700 27px
+      text-transform uppercase
+      letter-spacing .1em
+      @media $lDesktopSmall
+        fontify 12px 700 24px
+      @media $LandscapeMedium
+        w 100%
+        mb 10px
+    &-value
+      w calc(100% - 200px)
+      @media $LandscapeMedium
+        w 100%
+  &__form
+    mb 6px
+    &-title
+      color white
+      fontify 30px 400 34px
+      mb 40px
+    &-subtitle
+      color white
+      fontify 17px 400 24px
+      mb 30px
+      span
+        font-size 17px
