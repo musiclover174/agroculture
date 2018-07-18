@@ -2,7 +2,38 @@ html,
 body
   font-family $os
 body
-  overflow-x: hidden
+  overflow-x hidden
+  &:not(.pace-done)
+    overflow hidden
+  &
+    .header,
+    .content,
+    .footer,
+    .swiper-buttons
+      opacity 0
+      transition .7s opacity
+    .content
+      z-index -5
+      pos relative
+    .header,
+    .footer,
+    .swiper-buttons
+      transition-delay .7s
+  &.pace-done
+    .header,
+    .content,
+    .footer,
+    .swiper-buttons
+      opacity 1
+    .content
+      z-index auto
+    .pace
+      dn()
+  &.inner.pace-running
+    bgc white
+  &.inner.pace-done
+    &:before
+      opacity .5
   &.inner
     pos relative
     bgc $dark
@@ -22,12 +53,25 @@ body
       w 100vw
       h 100vh
       z-index -1
-      opacity .5
+      opacity 0
       background url('../i/inner-bg.jpg') no-repeat center
       background-size cover
     &.career:before
       background url('../i/career-bg.jpg') no-repeat center
-  
+    &.contacts:before
+      background url('../i/contacts-bg.jpg') no-repeat center
+
+.pace
+  &-activity
+    size 190px 220px
+    background url('../i/preloader.gif') no-repeat center
+    pos fixed
+    z-index 10
+    top 50%
+    l 50%
+    ml -95px
+    mt -110px
+      
 .container
   w 100%
   max-width 1600px
@@ -223,7 +267,7 @@ div[class\^="table-scroller"]
     &:hover
       border-color transparent
       &:before
-        animation arrAnimation 1s steps(28)
+        animation arrAnimation 5s steps(28)
   &__input
     w 100%
     h 48px
@@ -368,6 +412,23 @@ div[class\^="table-scroller"]
       background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJBAMAAAASvxsjAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAKlBMVEX///////////////////////////////////////////////////////9q+00tAAAADXRSTlMA0Do74eI5bGtqOM7MEv0urwAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAA3SURBVAjXYxBiYGAWYFBRYDBNYGByYg5jYGBQLU0Akhw3GUDsKQoMDExRTE4MDKYLQMp2AbkHAKcGB4WerKhTAAAAAElFTkSuQmCC") no-repeat center
       
 .page
+  &__subtitle
+    color white
+    fontify 26px 400 33px
+    max-width 770px
+    mt 57px
+    pb 130px
+    @media $lDesktopSmall
+      fontify 23px 400 30px
+      max-width 675px
+      mt 60px
+      pb 150px
+    @media $desktopMin
+      fontify 20px 400 27px
+      max-width 540px
+      pb 160px
+    @media $LandscapeMedium
+      pb 40px
   &__whitebg
     bgc white
     pt 74px
@@ -538,6 +599,18 @@ textarea.warning
     border-top-color white
     
 @keyframes arrAnimation {
-  0% { background-position: 0 0; }
-  100% { background-position: 0 -756px; }
+  0% { 
+    background-position: 0 0;
+  }
+  100% { 
+    background-position: 0 -756px;
+  }
+}
+@keyframes preloadAnimation {
+  0% { 
+    background-position: 0 0;
+  }
+  100% { 
+    background-position: 0 -15314px;
+  }
 }

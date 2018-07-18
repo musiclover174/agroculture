@@ -1,10 +1,0 @@
-File from: [dev/i/eggplant-hover.png]
-
-File to: [prod/static/i/eggplant-hover.png]
-
-Compression algorithm: [pngquant]
-
-============== LOG ============== 
-Error: Command failed: D:\work\!nick\Агрокультура\node_modules\pngquant-bin\vendor\pngquant.exe --quality=30-60 -o prod/static/i/eggplant-hover.png dev/i/eggplant-hover.png
-  error: failed writing image to prod/static/i/eggplant-hover.png
-================================= 

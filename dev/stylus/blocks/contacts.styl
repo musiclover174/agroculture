@@ -1,3 +1,202 @@
+.contacts
+  &__about
+    display flex
+    align-items stretch
+    justify-content space-between
+    mt -74px
+    @media $desktopMin
+      mt 74px
+      flex-direction column
+      align-items flex-start
+      justify-content flex-start
+    @media $LandscapeMedium
+      mt 44px
+    &-textarea
+      color $dark
+      fontify 26px 400 33px
+      w calc(50% - 21px)
+      max-width 462px
+      align-self center
+      @media $lDesktopSmall
+        fontify 23px 400 30px
+        max-width 380px
+      @media $desktopMin
+        fontify 20px 400 27px
+        align-self flex-start
+        max-width 460px
+        w 100%
+      span
+        db()
+        fontify 42px 400 46px
+        mb 40px
+        @media $lDesktopSmall
+          fontify 36px 400 40px
+        @media $desktopMin
+          fontify 30px 400 34px
+          mb 20px
+    &-imgs
+      pos relative
+      z-index 1
+      h 430px
+      w calc(50% - 21px)
+      display flex
+      @media $desktopMax
+        h 460px
+      @media $LandscapeMedium
+        dn()
+    &-img
+      background url('../i/contacts1.jpg') no-repeat top left
+      size 0 389px
+      pos absolute
+      z-index -1
+      l 0
+      t -130px
+      transition .7s width
+      @media $desktopMax
+        t -100px
+      @media $lDesktopMedium
+        h 330px
+        background-size 543px 330px
+      @media $desktopMin
+        t 0
+        mt 40px
+      &.visible
+        w 648px
+        @media $lDesktopMedium
+          w 543px
+  &__info
+    display flex
+    justify-content space-between
+    @media $desktopMin
+      flex-direction column
+    @media $LandscapeMedium
+      mt 50px
+  &__col
+    @media $desktopMin
+      & + &
+        mt 60px
+    &_wide
+      w 740px
+      @media $desktopMax
+        w 620px
+      @media $desktopMedium
+        w 550px
+      @media $desktopMin
+        w 100%
+    &_short
+      w 546px
+      @media $lDesktopSmall
+        w 346px
+      @media $desktopMin
+        w 100%
+  &__row
+    & + &
+      mt 80px
+      @media $desktopMin
+        mt 30px
+  &__phone
+    ib()
+    color $dark
+    fontify 100px 400 90px
+    @media $desktopMax
+      fontify 86px 400 79px
+    @media $desktopMedium
+      fontify 70px 400 69px
+    @media $LandscapeMedium
+      fontify 47px 400 47px
+    @media $PortraitMedium
+      fontify 30px 400 30px
+    &-title
+      color $dark
+      mb 10px
+      fontify 26px 400 33px
+      @media $lDesktopSmall
+        fontify 23px 400 30px
+      @media $desktopMin
+        fontify 20px 400 27px
+  &__email
+    ib()
+    color $dark
+    fontify 26px 400 33px
+    border-bottom 1px solid alpha($dark, .25)
+    transition .7s border
+    &:hover
+      border-color transparent
+    @media $lDesktopSmall
+      fontify 23px 400 30px
+    @media $desktopMin
+      fontify 20px 400 27px
+    &-title
+      fontify 42px 400 46px
+      mb 30px
+      @media $lDesktopSmall
+        fontify 36px 400 40px
+      @media $desktopMin
+        fontify 30px 400 34px
+  &__socials
+    pos relative
+    color $dark
+    fontify 26px 400 33px
+    pt 7px
+    @media $lDesktopSmall
+      fontify 23px 400 30px
+    @media $desktopMin
+      fontify 20px 400 27px
+    &-elem
+      color $dark
+      fontify 26px 400 33px
+      white-space nowrap
+      pos relative
+      @media $lDesktopSmall
+        fontify 23px 400 30px
+      @media $desktopMin
+        fontify 20px 400 27px
+      &:after
+        content ""
+        pos absolute
+        bgc alpha($dark, .25)
+        h 1px
+        b 0
+        r 0
+        transition .7s background, .7s bottom
+      &:hover:after
+        bgc transparent
+        b -2px
+      &:hover
+        border-color transparent
+      &:before
+        content ""
+        ib()
+        mr 7px
+      &[data-type="inst"]:before
+        size 17px
+        mt 9px
+        background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAXVBMVEUYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBj///8/ATimAAAAHXRSTlMACYXjiQsKxcaEmC2l4h0s4WZEgxaR/gFlRojEhklyL88AAAABYktHRB5yCiArAAAACXBIWXMAAAsSAAALEgHS3X78AAAAeUlEQVQY033PSxKDIBAE0FYQRk0MauIvzv2vGQSCyMJeDa+6gAGKUvA/QlaA0pyGFOrk2LQPrvFMpMOLDUK5H3ri8f3hyYucAczSzU7oAEsUZYHPEmUNst50dLhHR+Etf8u27H++bpog+BqDPZMRivLdUclzWbMr/ADjcxfe9IRZagAAAABJRU5ErkJggg==") no-repeat center
+        @media $desktopMin
+          mt 5px
+      &[data-type="inst"]:after
+        l 19px
+      &[data-type="fb"]:before
+        size 11px 20px
+        mt 7px
+        background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAUBAMAAACpAtpbAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAKlBMVEWAgIAYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBj///88f1/kAAAADHRSTlMAEUQzu2bMVZl3It0rAU2IAAAAAWJLR0QN9rRh9QAAAAlwSFlzAAALEgAACxIB0t1+/AAAAERJREFUCNdjYGBgEFIGEgwiZ84EAKkcMMV+5syZAgYGjjOHQFIcZw4gKM1pZ07OXMAwB6jiDJRiAFOn0VWSQDGHAm0DAMz4KRfg0dYlAAAAAElFTkSuQmCC") no-repeat center
+        @media $desktopMin
+          mt 5px
+      &[data-type="fb"]:after
+        l 14px
+  &__mapover
+    mt 140px
+    mb -40px
+    w 100vw
+    h 60vh
+    pos relative
+    l 50%
+    transform translateX(-50%)
+    @media $desktopMax
+      mt 90px
+  &__map
+    w 100%
+    h 100%
 .iroad
   &__title
     pos relative

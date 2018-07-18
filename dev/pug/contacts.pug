@@ -1,0 +1,48 @@
+doctype html
+html
+  head(lang="ru")
+    include layout/__head
+  body(data-color="light").inner.contacts
+    include layout/__header
+    section.content
+      section.container
+        section.page__top.page__top_pzero
+          h1 Контакты
+          section.breadcrumbs
+            a(href="#").breadcrumbs__href Главная
+            span.breadcrumbs__delim /
+          p.page__subtitle Тепличный комплекс ООО «Агрокультура групп» расположен в Каширском районе Московской области в 130 километрах от центра Москвы, что позволяет в течение 3 часов доставлять товар конечному потребителю.
+      section.page__whitebg
+        section.container
+          section.contacts__about
+            p.contacts__about-textarea
+              span Адрес комплекса
+              | Московская область, Каширский район, поселок Новосёлки, улица Лазарева
+            .contacts__about-imgs
+              .contacts__about-img.js-scroll-imgover
+          section.contacts__info
+            .contacts__col.contacts__col_wide
+              .contacts__row
+                p.contacts__phone-title Тепличный комплекс в городе Кашира
+                a(href="tel:+74951234001").contacts__phone (495) 123-40-01
+              .contacts__row
+                p.contacts__phone-title Офис в Москве
+                a(href="tel:+74996492000").contacts__phone (499) 649-20-00
+            .contacts__col.contacts__col_short
+              .contacts__row
+                p.contacts__email-title Электронная почта
+                a(href="mailto:info@agrokg.ru").contacts__email info@agrokg.ru
+              .contacts__row
+                p.contacts__socials Так же вся новая и актуальная информация публикуется в наш паблик в 
+                  a(href="#", target="_blank", data-type="fb").contacts__socials-elem Facebook 
+                  | и ленту 
+                  a(href="#", target="_blank", data-type="inst").contacts__socials-elem Instagram
+                  | . Подписывайтесь.
+          section.contacts__mapover
+            script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU")
+            .contacts__map#contacts-map.js-contacts-map
+          include blocks/footer
+          -var data = {}
+          +footer(data)
+    
+    include layout/__scripts

@@ -1,11 +1,0 @@
-File from: [dev/i/burger-bg.png]
-
-File to: [prod/static/i/burger-bg.png]
-
-Compression algorithm: [pngquant]
-
-============== LOG ============== 
-Error: Command failed: D:\work\!nick\Агрокультура\node_modules\pngquant-bin\vendor\pngquant.exe --quality=30-60 -o prod/static/i/burger-bg.png dev/i/burger-bg.png
-  error: Read error
-  error: rwpng_read_image() error 25
-================================= 

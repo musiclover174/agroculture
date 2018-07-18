@@ -75,7 +75,7 @@
         transition .7s width
       &.active
         color $yellow
-      &:hover:after
+      &:not(.active):hover:after
         w 100%
   &__phones
     mt -2px
@@ -113,12 +113,6 @@
         size 7px 13px
         background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAANBAMAAACX52mGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAHlBMVEX///////////////////////////////////////8V2MxSAAAACXRSTlMAEardd2bumbuE/Rs4AAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEgAACxIB0t1+/AAAACxJREFUCNdjYBCaOYGBQRNEzDQJABIKDAxKM5MKGGbOnGkAIhogYliJtAIGAA1bDqr8bfauAAAAAElFTkSuQmCC") no-repeat center
 
-body[data-color="dark"]
-  .burger__button
-    &:before,
-    &:after,
-    &-meat
-      bgc white
 
 body[data-color="light"]
   .burger__button
@@ -127,7 +121,21 @@ body[data-color="light"]
     &-meat
       bgc $dark
       
+body[data-color="dark"],
+body:not(.index)
+  .burger__button
+    &:before,
+    &:after,
+    &-meat
+      bgc white
 
+body:not(.index)[data-color="light"]
+  .burger__button
+    &:before,
+    &:after,
+    &-meat
+      bgc $dark
+  
 .burger
   &__bg
     pos absolute
@@ -369,8 +377,6 @@ body[data-color="light"]
         background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAANBAMAAACX52mGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAHlBMVEX///////////////////////////////////////8V2MxSAAAACXRSTlMAEardd2bumbuE/Rs4AAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEgAACxIB0t1+/AAAACxJREFUCNdjYBCaOYGBQRNEzDQJABIKDAxKM5MKGGbOnGkAIhogYliJtAIGAA1bDqr8bfauAAAAAElFTkSuQmCC") no-repeat center
       &[data-type="fb"]:after
         l 14px
-        
-
 
 @keyframes burger-hover
   0%

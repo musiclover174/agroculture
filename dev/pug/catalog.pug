@@ -1,0 +1,738 @@
+doctype html
+html
+  head(lang="ru")
+    include layout/__head
+  body(data-color="dark")
+    include layout/__header
+    section.content.catalogpage
+      .swiper-container.catalog.js-car
+        .swiper-wrapper
+          .swiper-slide(data-color="dark")
+            section.container
+              section.catalog__top
+                h1 Продукция
+                section.breadcrumbs
+                  a(href="#").breadcrumbs__href Главная
+                  span.breadcrumbs__delim /
+            section.catalog__white
+              section.container
+                section.catalog__about
+                  .catalog__about-text 
+                    p Под маркой «Зеленый Стандарт» мы выпускаем наши томаты, огурцы, перцы и баклажаны.
+                    p Все овощи выращиваются в закрытом грунте с соблюдением всех норм и конечно же проходят строгий санитарный контроль.
+                  .catalog__about-imgover
+                    img(src="img/catalog-logo.png").catalog__about-img
+          .swiper-slide(data-color="light")
+            section.catalog__hrefs
+              .catalog__vegs
+                span(data-type="tomatos").catalog__veg.veg1.js-catalog-veg
+                span(data-type="eggplant").catalog__veg.veg2.js-catalog-veg
+                span(data-type="peppers").catalog__veg.veg3.js-catalog-veg
+                span(data-type="peppers", data-variant="variant2").catalog__veg.veg4.js-catalog-veg
+                span(data-type="cucumbers").catalog__veg.veg5.js-catalog-veg
+                span(data-type="peppers", data-variant="variant3").catalog__veg.veg6.js-catalog-veg
+                span(data-type="tomatos", data-variant="variant2").catalog__veg.veg7.js-catalog-veg
+                span(data-type="peppers").catalog__veg.veg8.js-catalog-veg
+                span(data-type="peppers", data-variant="variant3").catalog__veg.veg9.js-catalog-veg
+                span(data-type="tomatos").catalog__veg.veg10.js-catalog-veg
+                span(data-type="cucumbers", data-variant="variant2").catalog__veg.veg11.js-catalog-veg
+                span(data-type="eggplant").catalog__veg.veg12.js-catalog-veg
+                span(data-type="peppers", data-variant="variant2").catalog__veg.veg13.js-catalog-veg
+                span(data-type="cucumbers").catalog__veg.veg14.js-catalog-veg
+                span(data-type="peppers", data-variant="variant2").catalog__veg.veg15.js-catalog-veg
+                span(data-type="peppers", data-variant="variant3").catalog__veg.veg16.js-catalog-veg
+                span(data-type="tomatos", data-variant="variant2").catalog__veg.veg17.js-catalog-veg
+                span(data-type="peppers").catalog__veg.veg18.js-catalog-veg
+                span(data-type="tomatos").catalog__veg.veg19.js-catalog-veg
+                span(data-type="eggplant").catalog__veg.veg20.js-catalog-veg
+                span(data-type="cucumbers").catalog__veg.veg21.js-catalog-veg
+                span(data-type="peppers", data-variant="variant3").catalog__veg.veg22.js-catalog-veg
+                span(data-type="eggplant").catalog__veg.veg23.js-catalog-veg
+                span(data-type="peppers").catalog__veg.veg24.js-catalog-veg
+                span(data-type="tomatos").catalog__veg.veg25.js-catalog-veg
+                span(data-type="cucumbers", data-variant="variant2").catalog__veg.veg26.js-catalog-veg
+                span(data-type="peppers").catalog__veg.veg27.js-catalog-veg
+                span(data-type="peppers", data-variant="variant2").catalog__veg.veg28.js-catalog-veg
+              .catalog__types-over
+                ul.catalog__types-list
+                  li.catalog__types-item 
+                    a(href="#", data-type="tomatos").catalog__types-href.js-catalog-toslide Томаты
+                  li.catalog__types-item 
+                    a(href="#", data-type="cucumbers").catalog__types-href.js-catalog-toslide Огурцы
+                  li.catalog__types-item 
+                    a(href="#", data-type="peppers").catalog__types-href.js-catalog-toslide Перцы
+                  li.catalog__types-item 
+                    a(href="#", data-type="eggplant").catalog__types-href.js-catalog-toslide Баклажаны
+          .swiper-slide(data-color="light", data-slide="tomatos")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide.active Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 1/7
+                p.catalog__elem-sort Мерлис
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog3.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog4.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog2.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog1.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Томат «Мерлис» — сочный томат с плотной текстурой.
+                  .catalog__elem-text
+                    p Потребляют томаты этого сорта в свежем виде. Можно делать из плодов вкусный томатный сок.
+                    p Идеально подходят для приготовления салатов, бутербродов и украшения блюд.
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide.active Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 2/7
+                p.catalog__elem-sort Т-34
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog3.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog1.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Мини томат сливовидной формы с удивительно сладким, свежим вкусом.
+                  .catalog__elem-text
+                    p Благодаря приятному аромату -  являют собой вкус сенсации для томатных знатоков.
+                    p Тонкий, заманчиво сочный вкус — делает совершенным сорт для салатов и многих других блюд.
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide.active Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 3/7
+                p.catalog__elem-sort Тореро
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog3.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog1.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Томат красивого красного цвета и привлекательной сливовидной формы.
+                  .catalog__elem-text
+                    p Отличный сладкий вкус. Идеально подходит для различных салатов, соков и томатных паст.  
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide.active Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 4/7
+                p.catalog__elem-sort Таганка
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog3.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog1.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Вкус еще слаще, чем у обычных томатов!
+                  .catalog__elem-text
+                    p Томат необычного зеленовато -коричневого цвета обладает прекрасным вкусом. Вкус у него слаще, чем у обычных красных томатов. Таганку необходимо обязательно попробовать!
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide.active Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 5/7
+                p.catalog__elem-sort Розарио
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog3.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Сочный оранжевый томат с сладким вкусом.
+                  .catalog__elem-text
+                    p Оранжевый томат сливовидной формы. Вкус сочный, сладкий. Отлично подходит для потребления в свежем виде.
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide.active Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 6/7
+                p.catalog__elem-sort Органза
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog3.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Мини томат, имеет изысканный, с фруктовой сладостью, вкус.
+                  .catalog__elem-text
+                    p Мини томат имеет интенсивный, свежий, изысканный с фруктовой сладостью вкус. Очень полезен из-за повышенной концентрации ликопина в мякоти. Идеально подходит для салатов, употребления в свежем виде.
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide.active Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 7/7
+                p.catalog__elem-sort Атракси
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog3.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Сочный оранжевый томат с сладким вкусом.
+                  .catalog__elem-text
+                    p Оранжевый томат сливовидной формы. Вкус сочный, сладкий. Отлично подходит для потребления в свежем виде.
+          .swiper-slide(data-color="light", data-slide="cucumbers")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide.active Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 1/8
+                p.catalog__elem-sort Мева
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog5.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog6.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog7.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Очень вкусный, хрустящий коктейльный огурчик.
+                  .catalog__elem-text
+                    p Очень вкусный, хрустящий коктейльный огурчик. Идеально подходит для салатов и употребления в свежем виде.
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide.active Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 2/8
+                p.catalog__elem-sort Лоэнгрин
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog5.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog6.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog7.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Сочный, гладкий огурец с мягким вкусом.
+                  .catalog__elem-text
+                    p Сочный, гладкий огурец с мягким вкусом. Отличается отсутствием семян. Прекрасно подходит для употребления в свежем виде или маринования.
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide.active Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 3/8
+                p.catalog__elem-sort Орзу
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog5.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog6.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog7.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Очень вкусный, хрустящий коктейльный огурчик.
+                  .catalog__elem-text
+                    p Очень вкусный, хрустящий коктейльный огурчик. Идеально подходит для салатов и употребления в свежем виде.
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide.active Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 4/8
+                p.catalog__elem-sort Ларино
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog5.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog6.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog7.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Сочный, гладкий огурец с мягким вкусом.
+                  .catalog__elem-text
+                    p Сочный, гладкий огурец с мягким вкусом. Отличается отсутствием семян. Прекрасно подходит для употребления в свежем виде или маринования.
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide.active Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 5/8
+                p.catalog__elem-sort Имеа
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog5.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog6.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog7.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Очень вкусный, хрустящий коктейльный огурчик.
+                  .catalog__elem-text
+                    p Очень вкусный, хрустящий коктейльный огурчик. Идеально подходит для салатов и употребления в свежем виде.
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide.active Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 6/8
+                p.catalog__elem-sort Раис
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog5.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog6.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog7.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Сочный, гладкий огурец с мягким вкусом.
+                  .catalog__elem-text
+                    p Сочный, гладкий огурец с мягким вкусом. Отличается отсутствием семян. Прекрасно подходит для употребления в свежем виде или маринования.
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide.active Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 7/8
+                p.catalog__elem-sort Кибрия
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog5.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog6.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog7.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Очень вкусный, хрустящий коктейльный огурчик.
+                  .catalog__elem-text
+                    p Очень вкусный, хрустящий коктейльный огурчик. Идеально подходит для салатов и употребления в свежем виде.
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide.active Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 8/8
+                p.catalog__elem-sort Карамболь
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog5.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog6.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog7.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Сочный, гладкий огурец с мягким вкусом.
+                  .catalog__elem-text
+                    p Сочный, гладкий огурец с мягким вкусом. Отличается отсутствием семян. Прекрасно подходит для употребления в свежем виде или маринования.
+          .swiper-slide(data-color="light", data-slide="peppers")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide.active Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 1/5
+                p.catalog__elem-sort Стаер
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog8.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog9.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog10.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Очень вкусный, хрустящий перчик.
+                  .catalog__elem-text
+                    p Очень вкусный, хрустящий коктейльный перчик. Идеально подходит для салатов и употребления в свежем виде.
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide.active Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 2/5
+                p.catalog__elem-sort Нагано
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog8.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog9.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog10.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Сочный, гладкий перец с мягким вкусом.
+                  .catalog__elem-text
+                    p Очень вкусный, хрустящий коктейльный перчик. Идеально подходит для салатов и употребления в свежем виде.
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide.active Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 3/5
+                p.catalog__elem-sort Атланте
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog8.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog9.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog10.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Очень вкусный, хрустящий перчик.
+                  .catalog__elem-text
+                    p Очень вкусный, хрустящий коктейльный перчик. Идеально подходит для салатов и употребления в свежем виде.
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide.active Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 4/5
+                p.catalog__elem-sort Палермо
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog8.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog9.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog10.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Сочный, гладкий перец с мягким вкусом.
+                  .catalog__elem-text
+                    p Очень вкусный, хрустящий коктейльный перчик. Идеально подходит для салатов и употребления в свежем виде.
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide.active Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 5/5
+                p.catalog__elem-sort Маранелло
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog8.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog9.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog10.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Очень вкусный, хрустящий перчик.
+                  .catalog__elem-text
+                    p Очень вкусный, хрустящий коктейльный перчик. Идеально подходит для салатов и употребления в свежем виде.
+          .swiper-slide(data-color="light", data-slide="eggplant")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide.active Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 1/2
+                p.catalog__elem-sort Барток
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog11.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog12.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog13.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Мини баклажан имеет изысканный, с фруктовой сладостью, вкус.
+                  .catalog__elem-text
+                    p Мини баклажан имеет интенсивный, свежий, изысканный с фруктовой сладостью вкус. Очень полезен из-за повышенной концентрации ликопина в мякоти. Идеально подходит для салатов, употребления в свежем виде.
+          .swiper-slide(data-color="light")
+            .catalog__categories
+              .container
+                button(type="button", data-type="tomatos").catalog__categories-elem.js-catalog-toslide Томаты
+                button(type="button", data-type="cucumbers").catalog__categories-elem.js-catalog-toslide Огурцы
+                button(type="button", data-type="peppers").catalog__categories-elem.js-catalog-toslide Перцы
+                button(type="button", data-type="eggplant").catalog__categories-elem.js-catalog-toslide.active Баклажаны
+            .catalog__elem-info
+              .container
+                p.catalog__car-counter 2/2
+                p.catalog__elem-sort Бионсе
+            .catalog__buttons
+              .container
+                .swiper-buttons
+                  .swiper-button-prev
+                  .swiper-button-next
+            .catalog__main
+              .container
+                section.catalog__car-over
+                  .swiper-container.catalog__car.js-catalog-car(dir="rtl")
+                    .swiper-wrapper
+                      .swiper-slide
+                        img(src="img/catalog11.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog12.jpg").catalog__car-img
+                      .swiper-slide
+                        img(src="img/catalog13.jpg").catalog__car-img
+                aside.catalog__elem
+                  p.catalog__elem-name Мини баклажан имеет изысканный, с фруктовой сладостью, вкус.
+                  .catalog__elem-text
+                    p Мини баклажан имеет интенсивный, свежий, изысканный с фруктовой сладостью вкус. Очень полезен из-за повышенной концентрации ликопина в мякоти. Идеально подходит для салатов, употребления в свежем виде.
+            include blocks/footer
+            -var data = {}
+            +footer(data)
+    
+    include layout/__scripts

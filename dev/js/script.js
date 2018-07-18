@@ -1,6 +1,6 @@
 (function () {
 
-  window.xs = window.innerWidth <= 960 ? true : false
+  window.xs = window.innerWidth <= 1024 ? true : false
   
   window.mobile = window.innerWidth <= 480 ? true : false
   
@@ -241,12 +241,13 @@
       }
       
       const mainVertSwiper = new Swiper ('.js-icar', {
-        loop: false,
         speed: 1500,
         direction: 'vertical',
         slidesPerView: 1,
         spaceBetween: 0,
-        mousewheel: true,
+        mousewheel: {
+          releaseOnEdges: true
+        },
         allowTouchMove: window.xs && window.touch
       })
 
@@ -259,7 +260,7 @@
           window.agroculture.obj.progressUpdate(0)
         }
 
-        if (this.activeIndex !== 1) {
+        if (areaOverEl && this.activeIndex !== 1) {
           areaOverEl.classList.remove('changed')
         }
 
@@ -269,7 +270,7 @@
           bodyEl.setAttribute('data-color', slideColor)
         }
 
-      });
+      })
     },
     
     indexBannerCarousel: () => {
@@ -277,7 +278,7 @@
             toggleOver = document.querySelector('.js-area-over')
       
       const bannerSwiper = new Swiper ('.js-ibanner', {
-        loop: true,
+        loop: false,
         speed: 800,
         slidesPerView: 1,
         spaceBetween: 0,
@@ -304,7 +305,7 @@
             mapAreaOver = document.querySelector('.js-slide-mapper')
       
       function init() {
-        var multiRoute = new ymaps.multiRouter.MultiRoute({
+        let multiRoute = new ymaps.multiRouter.MultiRoute({
           referencePoints: [
             [55.727888, 37.564603],
             [54.832774, 38.294106]
@@ -316,7 +317,7 @@
           boundsAutoApply: false
         })
 
-        var myMap = new ymaps.Map('iroad-map', {
+        const myMap = new ymaps.Map('iroad-map', {
           center: [55.051641, 38.714763],
           zoom: 9,
           controls: ['smallMapDefaultSet']
@@ -324,14 +325,45 @@
 
         myMap.geoObjects.add(multiRoute)
         myMap.behaviors.disable('scrollZoom')
-    }
+      }
+      
+      function wantInit() {
+        mapButton.addEventListener('click', () => {
+          mapAreaOver.classList.toggle('showmap')
+          init()
+        })
+      }
+      
+      ymaps.ready(wantInit)
+    },
+    
+    contactsMap: () => {
+      
+      function init() {
+        
+        const myMap = new ymaps.Map('contacts-map', {
+          center: [54.830497, 38.306856],
+          zoom: window.innerWidth <= 1000 ? 13 : 15,
+          controls: ['smallMapDefaultSet']
+        })
+        
+        let myPlacemark = new ymaps.Placemark([54.828410, 38.289115], {}, {
+          preset: 'islands#redIcon',
+          iconColor: '#ff3f33'
+        })
+        
+        let myPlacemark2 = new ymaps.Placemark([54.827684, 38.321429], {}, {
+          preset: 'islands#redIcon',
+          iconColor: '#ff3f33'
+        })
+
+        myMap.behaviors.disable('scrollZoom')
+        myMap.geoObjects
+          .add(myPlacemark)
+          .add(myPlacemark2)
+      }
       
       ymaps.ready(init)
-      
-      mapButton.addEventListener('click', () => {
-        mapAreaOver.classList.toggle('showmap')
-      })
-      
     },
     
     indexVegetables: () => {
@@ -484,6 +516,93 @@
       
     },
     
+    catalogCars: () => {
+      const catalogCars = document.querySelectorAll('.js-catalog-car'),
+            headerEl = document.querySelector('.header'),
+            bodyEl = document.querySelector('body'),
+            carElemCount = document.querySelector('.js-car .swiper-wrapper').children.length,
+            hrefToSlide = document.querySelectorAll('.js-catalog-toslide')
+      
+      let bodyElColor = bodyEl.getAttribute('data-color')
+      
+      catalogCars.forEach(item => {
+        let parentSlide = item.closest('.swiper-slide'),
+            carElemCount = item.querySelector('.swiper-wrapper').children.length
+        let bannerSwiper = new Swiper (item, {
+          loop: carElemCount > 1 ? true : false,
+          speed: 800,
+          slidesPerView: 2,
+          spaceBetween: 42,
+          navigation: {
+            nextEl: parentSlide.querySelector('.swiper-button-next'),
+            prevEl: parentSlide.querySelector('.swiper-button-prev'),
+          },
+          breakpoints: {
+            960: {
+              slidesPerView: 1
+            }
+          },
+          allowTouchMove: window.xs && window.touch
+        })
+      })
+      
+      const carVertSwiper = new Swiper ('.js-car', {
+        speed: 1500,
+        direction: 'vertical',
+        slidesPerView: 1,
+        spaceBetween: -1,
+        mousewheel: {
+          releaseOnEdges: true
+        },
+        allowTouchMove: window.xs && window.touch
+      })
+
+      carVertSwiper.on('slideChangeTransitionStart', function () {
+        if (this.activeIndex) {
+          headerEl.classList.add('hidden')
+          window.agroculture.obj.progressUpdate(Math.floor((this.activeIndex + 1) * 100 / carElemCount))
+        } else {
+          headerEl.classList.remove('hidden')
+          window.agroculture.obj.progressUpdate(0)
+        }
+        
+        let slideColor = this.slides[this.activeIndex].getAttribute('data-color')
+        if (slideColor != bodyElColor) {
+          bodyElColor = slideColor
+          bodyEl.setAttribute('data-color', slideColor)
+        }
+      })
+      
+      hrefToSlide.forEach(item => {
+        item.addEventListener('click', () => {
+          let type = item.getAttribute('data-type'),
+              slideIndex = $(`.js-car .swiper-slide[data-slide="${type}"]`).index()
+          carVertSwiper.slideTo(slideIndex, 1500)
+        })
+      })
+      
+    },
+    
+    catalogVegetables: () => {
+      const hrefs = document.querySelectorAll('.js-catalog-toslide'),
+            vegs = document.querySelectorAll('.js-catalog-veg');
+
+      for (let href of hrefs) {
+        href.addEventListener('mouseover', () => {
+          let curType = href.getAttribute('data-type')
+          vegs.forEach(item => item.classList.remove('hidden'))
+          vegs.forEach(item => {
+            if (item.getAttribute('data-type') !== curType) {
+              item.classList.add('hidden')
+            }
+          })
+        })
+        href.addEventListener('mouseout', () => {
+          vegs.forEach(item => item.classList.remove('hidden'))
+        })
+      }
+    },
+    
     resizeWatcher: () => {
       const tableSel = document.querySelectorAll('table'),
             scrollArray = [];
@@ -536,6 +655,12 @@
       if (document.querySelector('.js-mapshower')) this.indexShowMap()
       
       if (document.querySelector('.js-iveg-href')) this.indexVegetables()
+      
+      if (!window.mobile && document.querySelector('.js-catalog-veg')) this.catalogVegetables()
+      
+      if (document.querySelector('.js-catalog-car')) this.catalogCars()
+      
+      if (document.querySelector('.js-contacts-map')) this.contactsMap()
 
       if (document.querySelector('.js-aside-sticky')) {
         const sidebar = new StickySidebar('.js-aside-sticky',{
@@ -580,15 +705,21 @@
 			
       //$('[data-fancybox]').fancybox(); // fancy init
 
-      this.resizeWatcher();
+      this.resizeWatcher()
       
-      let eventResize = new Event('resize');
-      window.dispatchEvent(eventResize);
-      let eventScroll = new Event('scroll');
-      window.dispatchEvent(eventScroll);
+      let eventResize = new Event('resize')
+      window.dispatchEvent(eventResize)
+      let eventScroll = new Event('scroll')
+      window.dispatchEvent(eventScroll)
       
       return this
     }
-  }).init();
+  });
+  
+  Pace.on('hide', () => {
+    setTimeout(() => {
+      window.agroculture.obj.init()
+    }, 200)
+  })
 
 })();

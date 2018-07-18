@@ -1,0 +1,26 @@
+doctype html
+html
+  head(lang="ru")
+    include layout/__head
+  body(data-color="light").inner
+    include layout/__header
+    section.content
+      section.container
+        section.page__top.page__top_pzero
+          h1 Компания
+          section.breadcrumbs
+            a(href="#").breadcrumbs__href Главная
+            span.breadcrumbs__delim /
+          p.page__subtitle Мы обеспечиваем стабильно высокий уровень сбора и качества урожая за счет применения самых современных технологий, экологических методов защиты растений, а также осуществления строгого санитарного контроля.
+      section.page__whitebg
+        section.container
+          section.career__about
+            p.career__about-text На сегодняшний день в&nbsp;тепличном комплексе работают более 800 сотрудников.
+            .career__about-imgs
+              .career__about-img.career__about-img_img1.js-scroll-imgover
+              .career__about-img.career__about-img_img2.js-scroll-imgover
+          include blocks/footer
+          -var data = {}
+          +footer(data)
+    
+    include layout/__scripts

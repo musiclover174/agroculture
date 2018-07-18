@@ -529,3 +529,567 @@
         transition .7s width
       &:hover:after
         w 0
+
+.catalog
+  h 100vh
+  &page
+    pos relative
+    z-index 1
+    bgc $dark
+    &:before
+      content ""
+      position fixed
+      l 0
+      t 0
+      w 100vw
+      h 100vh
+      z-index 0
+      opacity .5
+      background url('../i/inner-bg.jpg') no-repeat center
+      background-size cover
+  > .swiper-wrapper
+    transition-timing-function cubic-bezier(0.86, 0, 0.07, 1)
+  .swiper-slide
+    bgc white
+    h 100%
+    pos relative
+    z-index 1
+    overflow hidden
+    &:first-child
+      bgc transparent
+      display flex
+      flex-direction column
+    &-active
+      & ^[0]
+        &__top
+          opacity 1
+          b 0
+          transition-delay .8s
+        &__about-text
+          opacity 1
+          b 0
+          transition-delay 1.2s
+        &__about-imgover
+          opacity 1
+          b 0
+          transition-delay 1.4s
+        &__types-over
+          opacity 1
+          b 0
+          transition-delay 1.8s
+        &__hrefs
+          opacity 1
+          b 0
+          transition-delay 1.2s
+        &__categories
+          opacity 1
+          t 25px
+          transition-delay .8s
+        &__elem
+          &-sort
+            opacity 1
+            b 0
+            transition-delay 1s
+          &-name
+            opacity 1
+            b 0
+            transition-delay 1.2s
+          &-text
+            opacity 1
+            b 0
+            transition-delay 1.4s
+            &:before
+              w 70px
+              transition-delay 1.6s
+        &__car-over,
+        &__car-counter
+          opacity 1
+          b 0
+          transition-delay 1s
+        &__buttons
+          opacity 1
+          b 70px
+          transition-delay 1s
+          @media $LandscapeMedium
+            b 35px
+          @media $PortraitMedium
+            b 115px
+  &__top
+    padding 190px 0 170px
+    pos relative
+    b -20px
+    opacity 0
+    transition .7s opacity, .7s bottom
+    @media $lDesktopSmall
+      padding 190px 0 64px
+    @media $LandscapeMedium
+      padding 150px 0 35px
+    .breadcrumbs
+      mb 0
+  &__about
+    display flex
+    justify-content space-between
+    &-text
+      pos relative
+      w calc(100% - 504px)
+      max-width 880px
+      pt 115px
+      mr 42px
+      b -20px
+      opacity 0
+      transition .7s opacity, .7s bottom
+      @media $lDesktopSmall
+        w calc(100% - 404px)
+        pt 76px
+      @media $desktopMin
+        pt 55px
+        w calc(100% - 270px)
+      @media $LandscapeMedium
+        w 100%
+        pt 35px
+        mr 0
+      p:not([class])
+        fontify 26px 400 33px
+        @media $lDesktopSmall
+          fontify 23px 400 30px
+        @media $desktopMedium
+          fontify 20px 400 27px
+        @media $lDesktopMedium
+          fontify 14px 400 21px
+    &-imgover
+      pos relative
+      mt -123px
+      w 462px
+      text-align center
+      b -20px
+      opacity 0
+      transition .7s opacity, .7s bottom
+      @media $lDesktopSmall
+        w 344px
+        mt -95px
+      @media $desktopMin
+        w 240px
+        mt -55px
+      @media $LandscapeMedium
+        dn()
+    &-img
+      max-width 80%
+  &__white
+    bgc white
+    flex-grow 1 
+  &__hrefs
+    display flex
+    h 100vh
+    align-content center
+    pos relative
+    z-index 1
+    b -20px
+    opacity 0
+    transition .7s opacity, .7s bottom
+  &__vegs
+    pos absolute
+    z-index -1
+    t 50%
+    l 50%
+    w 1850px
+    h 890px
+    ml -925px
+    mt -445px
+    will-change transform
+    @media $lDesktopSmall
+      l 66%
+    @media $desktopMax
+      l 50%
+    @media $desktopMedium
+      l -390px
+      ml 0
+      transform scale(.8)
+    @media $desktopMin
+      transform scale(.6)
+      l -515px
+    @media $PortraitMedium
+      transform scale(.45)
+      l -620px
+  &__veg
+    pos absolute
+    transform scale(1)
+    will-change transform
+    transition .7s transform, .7s opacity
+    &.hidden
+      transform scale(.5)
+      opacity .3
+    &[data-type="tomatos"]
+      size 94px 90px
+      background url('../i/vegs/tomato.png') no-repeat center
+      &[data-variant="variant2"]
+        size 81px 81px
+        background url('../i/vegs/tomato2.png') no-repeat center
+    &[data-type="eggplant"]
+      size 69px 161px
+      background url('../i/vegs/eggplant.png') no-repeat center
+    &[data-type="cucumbers"]
+      size 30px 168px
+      background url('../i/vegs/cucumber.png') no-repeat center
+      &[data-variant="variant2"]
+        size 168px 30px
+        background url('../i/vegs/cucumber2.png') no-repeat center
+    &[data-type="peppers"]
+      size 88px 95px
+      background url('../i/vegs/pepper.png') no-repeat center
+      &[data-variant="variant2"]
+        size 95px 93px
+        background url('../i/vegs/pepper2.png') no-repeat center
+      &[data-variant="variant3"]
+        size 67px 66px
+        background url('../i/vegs/pepper3.png') no-repeat center
+    &.veg1
+      t 36px
+      l 44px
+    &.veg2
+      t 2px
+      l 296px
+    &.veg3
+      t 34px
+      l 526px
+    &.veg4
+      t 34px
+      l 765px
+    &.veg5
+      t 0
+      l 1036px
+    &.veg6
+      t 48px
+      l 1258px
+    &.veg7
+      t 42px
+      l 1492px
+    &.veg8
+      t 36px
+      l 1727px
+    &.veg9
+      t 289px
+      l 57px
+    &.veg10
+      t 280px
+      l 764px
+    &.veg11
+      t 306px
+      l 967px
+    &.veg12
+      t 241px
+      l 1257px
+    &.veg13
+      t 275px
+      l 1484px
+    &.veg14
+      t 238px
+      l 1757px
+    &.veg15
+      t 516px
+      l 44px
+    &.veg16
+      t 528px
+      l 778px
+    &.veg17
+      t 523px
+      l 1011px
+    &.veg18
+      t 516px
+      l 1247px
+    &.veg19
+      t 518px
+      l 1484px
+    &.veg20
+      t 483px
+      l 1737px
+    &.veg21
+      t 719px
+      l 76px
+    &.veg22
+      t 768px
+      l 298px
+    &.veg23
+      t 723px
+      l 537px
+    &.veg24
+      t 753px
+      l 767px
+    &.veg25
+      t 756px
+      l 1005px
+    &.veg26
+      t 786px
+      l 1207px
+    &.veg27
+      t 756px
+      l 1487px
+    &.veg28
+      t 756px
+      l 1724px
+  &__types
+    &-item
+      & + &
+        mt 60px
+        @media $lDesktopSmall
+          mt 44px
+        @media $desktopMedium
+          mt 30px
+        @media $desktopMin
+          mt 20px
+        @media $PortraitMedium
+          mt 15px
+    &-href
+      pos relative
+      l 0
+      color $dark
+      fontify 72px 400 48px
+      transition .7s color, .7s left
+      @media $lDesktopSmall
+        fontify 60px 400 48px
+      @media $desktopMedium
+        fontify 50px 400 48px
+      @media $desktopMin
+        fontify 36px 400 40px
+      @media $PortraitMedium
+        fontify 30px 400 35px
+      &:hover
+        color $green
+        left 15px
+    &-over
+      align-self center
+      max-width 1226px
+      w 100%
+      margin 0 auto
+      display flex
+      justify-content space-between
+      align-items stretch
+      pos relative
+      z-index 1
+      b -20px
+      opacity 0
+      transition .7s opacity, .7s bottom
+      @media $lDesktopSmall
+        max-width 861px
+      @media $desktopMax
+        max-width 100%
+        padding 0 30px
+      @media $LandscapeMedium
+        padding 0 20px
+      @media $LandscapeMedium
+        flex-direction column
+  &__buttons
+    w 100%
+    pos absolute
+    z-index 2
+    b 45px
+    opacity 0
+    r 0
+    transition .7s bottom, .7s opacity
+    @media $LandscapeMedium
+      b 10px
+    @media $PortraitMedium
+      b 30px
+    @media $PortraitMedium
+      b 90px
+      dn()
+    .container
+      display flex
+      justify-content flex-end
+    .swiper-buttons
+      w 85px
+      display flex
+      justify-content space-between
+      pos relative
+      h 27px
+      @media $desktopMax
+        l auto
+        b auto
+      @media $LandscapeMedium
+        w 65px
+      @media $PortraitMedium
+        w 100%
+    .swiper-button-prev
+      background-image url(../i/arleft_black.png)
+      l 0
+      @media $PortraitMedium
+        l 50%
+        ml -35px
+    .swiper-button-next
+      background-image url(../i/arright_black.png)
+      r 0
+      @media $PortraitMedium
+        r 50%
+        mr -35px
+  &__categories
+    w 100%
+    pos absolute
+    z-index 2
+    l 0
+    opacity 0
+    t 45px
+    transition .7s opacity, .7s top
+    @media $PortraitMin
+      dn()
+    &-elem
+      cursor pointer
+      color $dark
+      fontify 26px 400 30px
+      transition .7s color
+      @media $lDesktopMedium
+        fontify 23px 400 30px
+      @media $LandscapeMedium
+        fontify 18px 400 24px
+      @media $LandscapeMedium
+        fontify 14px 400 14px
+      & + &
+        ml 32px
+        @media $desktopMin
+          ml 22px
+        @media $LandscapeMedium
+          ml 15px
+        @media $PortraitMin
+          ml 5px
+      &:hover,
+      &.active
+        color $green
+  &__elem
+    w 462px
+    pt 70px
+    @media $lDesktopMedium
+      w 350px
+    @media $desktopMin
+      pt 0
+      display flex
+      flex-direction column
+      justify-content center
+    @media $LandscapeMedium
+      dn()
+    &-name
+      pos relative
+      b -25px
+      opacity 0
+      color $dark
+      fontify 42px 400 46px
+      transition .7s opacity, .7s bottom
+      @media $lDesktopMedium
+        fontify 36px 400 40px
+      @media $desktopMin
+        fontify 30px 400 34px
+      @media $PortraitMedium
+        fontify 24px 400 30px
+    &-text
+      mt 39px
+      pl 99px
+      pos relative
+      b -25px
+      opacity 0
+      transition .7s opacity, .7s bottom
+      @media $desktopMin
+        pl 0
+      @media $desktopMin
+        mt 19px
+      p:not([class])
+        fontify 16px 400 23px
+        margin 13px 0
+        @media $lDesktopMedium
+          fontify 14px 400 21px
+      &:before
+        content ""
+        pos absolute
+        l 0
+        t 11px
+        w 0
+        h 1px
+        bgc $dark
+        transition .7s width
+        @media $desktopMin
+          dn()
+    &-info
+      w 100%
+      pos absolute
+      z-index 2
+      b 66px
+      l 0
+      @media $LandscapeMedium
+        b 30px
+    &-sort
+      pos relative
+      b -25px
+      opacity 0
+      color $dark
+      fontify 120px 400 108px
+      font-size 120px
+      font-weight 400
+      line-height 118px
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
+      transition .7s opacity, .7s bottom
+      @media $lDesktopMedium
+        fontify 100px 400 108px
+      @media $desktopMin
+        fontify 80px 400 84px
+      @media $LandscapeMedium
+        fontify 60px 400 64px
+      @media $PortraitMedium
+        fontify 45px 400 45px
+  &__car
+    h 100%
+    &-over
+      ml -160px
+      w calc(100% - 302px)
+      h 100vh
+      pos relative
+      b -25px
+      opacity 0
+      transition .7s opacity, .7s bottom
+      @media $lDesktopMedium
+        w calc(100% - 229px)
+        ml -115px
+      @media $desktopMin
+        w calc(100% - 350px)
+        ml 0
+      @media $LandscapeMedium
+        w 100%
+      .swiper-slide
+        display flex
+        align-items center
+        justify-content center
+        transition .7s width
+        &-active
+          .catalog__car-img
+            max-width 60%
+      .swiper-slide-duplicate-active
+        .catalog__car-img
+          max-width 60%
+    &-counter
+      pos relative
+      b -25px
+      opacity 0
+      color $dark
+      fontify 42px 400 42px
+      mb 3px
+      transition .7s opacity, .7s bottom
+      @media $lDesktopMedium
+        fontify 36px 400 42px
+        mb 0
+      @media $desktopMin
+        fontify 30px 400 34px
+      @media $LandscapeMedium
+        fontify 23px 400 23px
+        mb 3px
+    &-img
+      max-width 30%
+      transition .7s max-width
+  &__main
+    .container
+      display flex
+      justify-content space-between
+  .footer
+    pos absolute
+    z-index 11
+    b 17px
+    r 30px
+    l 30px
+    @media $LandscapeMedium
+      dn()

@@ -1,10 +1,0 @@
-File from: [dev/i/tomato-seq.png]
-
-File to: [prod/static/i/tomato-seq.png]
-
-Compression algorithm: [pngquant]
-
-============== LOG ============== 
-Error: Command failed: D:\work\!nick\Агрокультура\node_modules\pngquant-bin\vendor\pngquant.exe --quality=30-60 -o prod/static/i/tomato-seq.png dev/i/tomato-seq.png
-  error: failed writing image to prod/static/i/tomato-seq.png
-================================= 

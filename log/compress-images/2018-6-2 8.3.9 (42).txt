@@ -1,28 +1,0 @@
-File from: [dev/img/iemp-bg.jpg]
-
-File to: [prod/img/iemp-bg.jpg]
-
-Compression algorithm: [jpegtran]
-
-============== LOG ============== 
-Error: Command failed: D:\work\!nick\Агрокультура\node_modules\jpegtran-bin\vendor\jpegtran.exe -trim -progressive -copy none -optimize -outfile prod/img/iemp-bg.jpg dev/img/iemp-bg.jpg
-Empty input file
-================================= File from: [dev/img/iemp-bg.jpg]
-
-File to: [prod/img/iemp-bg.jpg]
-
-Compression algorithm: [jpegtran]
-
-============== LOG ============== 
-Error: Command failed: D:\work\!nick\Агрокультура\node_modules\jpegtran-bin\vendor\jpegtran.exe -trim -progressive -copy none -optimize -outfile prod/img/iemp-bg.jpg dev/img/iemp-bg.jpg
-Empty input file
-================================= File from: [dev/img/iemp-bg.jpg]
-
-File to: [prod/img/iemp-bg.jpg]
-
-Compression algorithm: [jpegtran]
-
-============== LOG ============== 
-Error: Command failed: D:\work\!nick\Агрокультура\node_modules\jpegtran-bin\vendor\jpegtran.exe -trim -progressive -copy none -optimize -outfile prod/img/iemp-bg.jpg dev/img/iemp-bg.jpg
-Empty input file
-================================= 
