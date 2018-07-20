@@ -283,14 +283,6 @@
   &__type
     *
       user-select none
-    &:before
-      content attr(data-percent)
-      color $green
-      fontify 14px 400 20px
-      pos absolute
-      t 30px
-      l 50%
-      transform translateX(-50%)
     .h-step1
       pos relative
       t 0
@@ -324,6 +316,9 @@
         pos relative
         b 0
         opacity 1
+      & ^[0]__type-dots
+        opacity 0
+        transition-delay 0s
     &.step1-starter
       .h-step2
         b -20px
@@ -359,6 +354,11 @@
           opacity 1
           b 0
           transition-delay 1.2s
+    &:not(.hide):not(.step2)
+      & ^[0]__type
+        &-dots
+          opacity 1
+          transition-delay .6s
     &-anim
       pos absolute
       t 52%
@@ -501,6 +501,7 @@
       //margin 0 auto
       //text-align center
       mt 90px
+      max-width 160px
       
       b -20px
       opacity 0
@@ -510,8 +511,8 @@
       &:before
         content ""
         pos absolute
-        size 80px 38px
-        t -50px
+        size 97px 21px
+        t -31px
         //l 50%
         //ml -40px
         l 0
@@ -557,6 +558,127 @@
       &:hover:after
         w 0
 
+    &-dots
+      pos absolute
+      z-index 2
+      t 50%
+      l 50%
+      opacity 0
+      transition .7s opacity
+      //bgc alpha(yellow, .2)
+    &-start
+      pos absolute
+      cursor pointer
+      size 40px
+      background-color #9caf35
+      border-radius 50%
+    &-end
+      pos absolute
+      size 40px
+      border 2px solid #9caf35
+      border-radius 50%
+    &[data-type="tomato"]
+      & ^[0]__type
+        &-dots
+          w 592px
+          h 206px
+          mt -103px
+          ml -296px
+          @media $lDesktopMax
+            w 492px
+            ml -246px
+          @media $lDesktopSmall
+            w 400px
+            ml -200px
+        &-start
+          l 27px
+          t 164px
+        &-end
+          r 23px
+          t 0
+    &[data-type="cucumber"]
+      & ^[0]__type
+        &-dots
+          w 592px
+          h 860px
+          mt -430px
+          ml -296px
+          @media $lDesktopMax
+            w 492px
+            ml -246px
+            h 660px
+            mt -330px
+          @media $lDesktopSmall
+            w 450px
+            ml -225px
+          @media $desktopMax
+            h 560px
+            mt -280px
+        &-start
+          l 106px
+          t 820px
+          @media $lDesktopMax
+            t 620px
+          @media $desktopMax
+            t 520px
+        &-end
+          r 73px
+          t 0  
+    &[data-type="peppers"]
+      & ^[0]__type
+        &-dots
+          w 592px
+          h 206px
+          mt -103px
+          ml -296px
+          @media $lDesktopMax
+            w 492px
+            ml -246px
+          @media $lDesktopSmall
+            w 400px
+            ml -200px
+        &-start
+          l 27px
+          t 164px
+        &-end
+          r 23px
+          t 0
+    &[data-type="eggplant"]
+      & ^[0]__type
+        &-dots
+          w 592px
+          h 860px
+          mt -430px
+          ml -296px
+          @media $lDesktopMax
+            w 532px
+            ml -266px
+            h 660px
+            mt -350px
+          @media $lDesktopSmall
+            w 450px
+            ml -225px
+            mt -360px
+          @media $desktopMax
+            h 560px
+            mt -300px
+        &-start
+          l 106px
+          t 820px
+          @media $lDesktopMax
+            t 620px
+            l 136px
+          @media $desktopMax
+            t 520px
+          @media $desktopMax
+            l 106px
+        &-end
+          r 73px
+          t 0  
+          @media $lDesktopMax
+            r 43px
+          @media $desktopMax
+            r 73px
 .catalog
   h 100vh
   &page

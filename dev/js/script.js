@@ -372,36 +372,11 @@
             backHrefs = document.querySelectorAll('.js-iveg-back')
       
       let step = 0,
-          vegBlock, vegEl,
+          vegBlock, vegEl, startDot, endDot, startDistance,
           clientX = 0,
           vegWidth, vegFrames, vegFrameHeight,
-          minL = Infinity, maxL = 0,
           startWatcher = false,
           vegStepEnd = false
-      
-      let vegListener = (event) => {
-        if (startWatcher) {
-          if (event.offsetX < minL)
-            minL = event.offsetX
-          if (event.offsetX > maxL)
-            maxL = event.offsetX
-          
-          let percent = Math.floor((maxL - minL) * 200 / vegWidth)
-          
-          if (percent < 0) percent = 0
-          if (percent > 100) {
-            percent = 100
-            vegStepEnd = true
-          }
-          
-          if (percent > 0 && percent <= 100)
-            vegBlock.setAttribute('data-percent', percent)
-          
-          let newSlide = Math.floor(vegFrames * percent / 100)
-          
-          vegEl.style.backgroundPositionY = `-${newSlide * vegFrameHeight}px`
-        }
-      }
       
       let vegToStart = (curSlide) => {
         if (curSlide === 0) return
@@ -412,26 +387,56 @@
         }, 10)
       }
       
-      let watcherSetter = () => {
-        startWatcher = true
+      let dotListener = (event) => {
+        if (startWatcher) {
+          startDot.style.left = event.clientX - startDot.parentNode.offsetLeft - startDot.offsetWidth / 2 + 'px'
+          startDot.style.top = event.clientY - startDot.parentNode.offsetTop - startDot.offsetHeight / 2 + 'px'
+          
+          let distance = Math.sqrt(Math.pow(endDot.offsetLeft - startDot.offsetLeft, 2) + Math.pow(endDot.offsetTop - startDot.offsetTop, 2))
+          
+          let percent = Math.floor((startDistance - distance) * 100 / startDistance) + 5
+          
+          if (percent < 0) {
+            percent = 0
+          }
+          
+          if (percent > 100) {
+            percent = 100
+            vegStepEnd = true
+            startDot.style.left = endDot.offsetLeft + 'px'
+            startDot.style.top = endDot.offsetTop + 'px'
+            ;['mousemove', 'touchmove'].forEach(function(e) {
+              startDot.parentNode.removeEventListener(e, dotListener)
+            });
+          }
+          
+          let newSlide = Math.floor(vegFrames * percent / 100)
+          
+          vegEl.style.backgroundPositionY = `-${newSlide * vegFrameHeight}px`
+        }
       }
       
       let interactiveEnd = () => {
-        minL = Infinity
-        maxL = 0
         if (!vegStepEnd){
           vegToStart(Math.abs(parseInt(getComputedStyle(vegEl)['backgroundPositionY'])) / vegFrameHeight)
+          startDot.removeAttribute('style')
         } else {
           step++
-          vegBlock.classList.add('step2-starter');
+          vegBlock.classList.add('step2-starter')
           setTimeout(() => {
-            vegBlock.classList.remove('step2-starter');
-            vegBlock.classList.add('step2');
+            vegBlock.classList.remove('step2-starter')
+            vegBlock.classList.add('step2')
+            setTimeout(() => {
+              startDot.removeAttribute('style')
+            }, 700)
           }, 700)
           docListenerRemove()
         }
-        vegBlock.removeAttribute('data-percent')
         startWatcher = false
+      }
+      
+      let watcherSetter = () => {
+        startWatcher = true
       }
       
       let docListenerRemove = () => {
@@ -439,27 +444,27 @@
           document.removeEventListener(e, watcherSetter)
         });
           
+        ['mousemove', 'touchmove'].forEach(function(e) {
+          startDot.parentNode.removeEventListener(e, dotListener)
+        });
+        
         ['mouseup', 'touchend'].forEach(function(e) {
           document.removeEventListener(e, interactiveEnd);
         });
-        
-        ['mousemove', 'touchmove'].forEach(function(e) {
-          vegEl.removeEventListener(e, vegListener)
-        })
       }
       
       let docListener = () => {
-        ['mousemove', 'touchmove'].forEach(function(e) {
-          vegEl.addEventListener(e, vegListener)
-        });
-
         ['mousedown', 'touchstart'].forEach(function(e) {
           document.addEventListener(e, watcherSetter)
         });
+        
+        ['mousemove', 'touchmove'].forEach(function(e) {
+          startDot.parentNode.addEventListener(e, dotListener)
+        });
 
         ['mouseup', 'touchend'].forEach(function(e) {
-          document.addEventListener(e, interactiveEnd);
-        })
+          document.addEventListener(e, interactiveEnd)
+        });
       }
       
       // && window.touch
@@ -471,9 +476,12 @@
             vegBlock = document.querySelector(`.iveg__type[data-type="${hrefType}"]`)
 
             vegEl = vegBlock.querySelector('.iveg__type-anim')
+            startDot = vegBlock.querySelector('.js-iveg-start')
+            endDot = vegBlock.querySelector('.js-iveg-end')
+            startDistance = Math.sqrt(Math.pow(endDot.offsetLeft - startDot.offsetLeft, 2) + Math.pow(endDot.offsetTop - startDot.offsetTop, 2))
             vegWidth = vegEl.clientWidth
             vegFrames = vegEl.getAttribute('data-frames')
-            vegFrameHeight = vegEl.getAttribute('data-frameheight');
+            vegFrameHeight = vegEl.getAttribute('data-frameheight')
 
             docListener()
 
