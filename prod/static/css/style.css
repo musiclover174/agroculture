@@ -2790,6 +2790,7 @@ html.touchevents .burger__button:not(.open):hover .burger__button-meat {
 body[data-color="dark"] .footer {
   color: #fff;
 }
+body[data-color="dark"].inner .footer,
 body[data-color="light"] .footer {
   color: #181818;
 }
