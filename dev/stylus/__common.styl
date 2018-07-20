@@ -15,10 +15,11 @@ body
     .content
       z-index -5
       pos relative
+      transition-delay 0.3s
     .header,
     .footer,
     .swiper-buttons
-      transition-delay .7s
+      transition-delay 0.8s
   &.pace-done
     .header,
     .content,
@@ -29,12 +30,7 @@ body
       z-index auto
     .pace
       dn()
-  &.inner.pace-running
-    bgc white
-  &.inner.pace-done
-    &:before
-      opacity .5
-  &.inner
+  &.inner:not(.about)
     pos relative
     bgc $dark
     .content
@@ -60,17 +56,40 @@ body
       background url('../i/career-bg.jpg') no-repeat center
     &.contacts:before
       background url('../i/contacts-bg.jpg') no-repeat center
+  &.inner.about
+    pos relative
+    bgc $dark
+    .content
+      pt 190px
+    .header
+      pos absolute
+    &:before
+      content ""
+      position fixed
+      l 0
+      t 0
+      w 100vw
+      h 100vh
+      z-index -1
+      opacity 0
+      background url('../i/about-bg.jpg') no-repeat center    
+      background-size cover
+  &.inner.pace-running
+    bgc white
+  &.inner.pace-done
+    &:before
+      opacity .5
 
 .pace
   &-activity
-    size 190px 220px
-    background url('../i/preloader.gif') no-repeat center
+    size 222px 426px
+    background url('../i/opening.gif') no-repeat center
     pos fixed
     z-index 10
     top 50%
     l 50%
-    ml -95px
-    mt -110px
+    ml -111px
+    mt -213px
       
 .container
   w 100%

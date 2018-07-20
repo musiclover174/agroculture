@@ -1,0 +1,765 @@
+.about
+  .page__subtitle
+    pb 445px
+    @media $lDesktopSmall
+      pb 152px
+    @media $desktopMin
+      pb 490px
+    @media $LandscapeMedium
+      pb 0
+  &__top
+    display flex
+    align-items stretch
+    justify-content space-between
+    mt -74px
+    @media $desktopMin
+      flex-direction column
+      mt 0
+    &-col
+      w calc(50% - 21px)
+      &:last-child
+        display flex
+        flex-direction column
+        justify-content flex-end
+        @media $desktopMin
+          justify-content flex-start
+      @media $desktopMin
+        w 100%
+    &-brand
+      color $dark
+      fontify 26px 400 33px
+      pl 202px
+      mb 245px
+      @media $lDesktopSmall
+        pl 107px
+        fontify 23px 400 30px
+        max-width 430px
+        mb 248px
+      @media $desktopMin
+        pl 0
+        fontify 20px 400 27px
+        mb 36px
+        max-width 560px
+    &-place
+      color $dark
+      fontify 42px 400 46px
+      mb 21px
+      @media $lDesktopSmall
+        mb 0
+        fontify 36px 400 40px
+        max-width 540px
+      @media $desktopMin
+        fontify 30px 400 34px
+        max-width 610px
+      @media $LandscapeMedium
+        fontify 27px 400 31px
+    &-imgs
+      pos relative
+      z-index 1
+      h 818px
+      display flex
+      align-content flex-end
+      align-items flex-end
+      @media $lDesktopSmall
+        h 831px
+        pb 60px
+      @media $desktopMin
+        h 593px
+        pb 0
+        mb 74px
+      @media $LandscapeMedium
+        dn()
+    &-img
+      &_img1
+        background url('../i/about2.jpg') no-repeat top left
+        size 0 632px
+        transition .7s width
+        @media $lDesktopSmall
+          size 0 452px
+        @media $desktopMin
+          size 448px 560px
+          background-size 448px 560px
+        &.visible
+          w 504px
+          @media $lDesktopSmall
+            w 361px
+          @media $desktopMin
+            w 448px
+      &_img2
+        background url('../i/about1.jpg') no-repeat top left
+        size 0 794px
+        pos absolute
+        z-index -1
+        l 148px
+        t -438px
+        transition .7s width
+        @media $lDesktopSmall
+          l 106px
+          t -145px
+          size 0 546px
+        @media $desktopMin
+          t -554px
+          l auto
+          r 0
+          size 563px 737px
+        &.visible
+          w 631px
+          @media $lDesktopSmall
+            w 437px
+          @media $desktopMin
+            w 563px
+  &__info
+    margin 240px 0 230px
+    @media $lDesktopSmall
+      margin 170px 0 168px
+    @media $desktopMin
+      margin 146px 0 152px
+    @media $LandscapeMedium
+      margin 70px 0 50px
+    &-line
+      db()
+      h 258px
+      background url('../i/vegs-line1.png') repeat-x 85px 0 
+      w 100vw
+      pos relative
+      left 50%
+      margin 33px 0 75px -50vw
+      will-change transform
+      @media $lDesktopSmall
+        transform scale(.55)
+        w 200vw
+        ml -100vw
+      @media $desktopMin
+        mb 90px
+        mt 71px
+      @media $LandscapeMedium
+        mt 0
+        mb 0
+      &:first-child
+        mt 0
+      &:last-child
+        mb 0
+        background-position -652px 0
+    &-over
+      display flex
+      justify-content space-between
+    &-left
+      w calc(100% - 504px)
+      mr 42px
+      @media $desktopMin
+        w calc(50% - 25px)
+        mr 0
+      @media $LandscapeMedium
+        w 100%
+    &-text
+      pos relative
+      max-width 880px
+      mb 37px
+      @media $lDesktopSmall
+        pt 0
+      @media $desktopMin
+        w 100%
+      p:not([class])
+        fontify 26px 400 33px
+        @media $lDesktopSmall
+          fontify 23px 400 30px
+        @media $desktopMedium
+          fontify 20px 400 27px
+    &-href
+      pos relative
+      color $dark
+      fontify 14px 700 23px
+      text-transform uppercase
+      letter-spacing .1em
+      border-bottom 1px solid alpha($dark, .25)
+      transition .7s border
+      @media $lDesktopMedium
+        fontify 12px 700 21px
+      &:hover
+        border-color transparent
+    &-right
+      pos relative
+      mt -40px
+      w 462px
+      text-align center
+      @media $lDesktopSmall
+        mt -41px
+      @media $desktopMin
+        w calc(50% - 25px)
+        mt -6px
+      @media $LandscapeMedium
+        dn()
+    &-logo
+      max-width 60% 
+      @media $desktopMin
+        max-width 80%
+  &__steps
+    &-text
+      max-width 920px
+      color $dark
+      fontify 42px 400 46px
+      mb 105px
+      @media $lDesktopSmall
+        fontify 36px 400 40px
+        max-width 660px
+        mb 70px
+      @media $desktopMin
+        fontify 30px 400 34px
+      @media $LandscapeMedium
+        fontify 27px 400 31px
+    &-over
+      max-width 1360px
+      margin 0 auto
+      display flex
+      justify-content space-between
+      align-items flex-end
+      @media $lDesktopSmall
+        max-width 1140px
+        ml 0
+      @media $desktopMin
+        flex-direction column
+        align-items flex-start
+    &-elem
+      w 364px
+      text-align center
+      pos relative
+      opacity 0
+      r -20px
+      transition .7s opacity, .7s right
+      @media $LandscapeMedium
+        align-self center
+      @media $PortraitMedium
+        w 100%
+      &.visible
+        opacity 1
+        r 0
+      &_first
+        w 265px
+        display flex
+        flex-wrap wrap
+      &_second
+        transition-delay .4s
+        @media $desktopMedium
+          ml 10px
+        @media $desktopMin
+          align-self flex-end
+          ml 0
+          transition-delay 0s
+        @media $LandscapeMedium
+          align-self center
+      &_third
+        transition-delay .8s
+        @media $desktopMedium
+          ml 10px
+        @media $desktopMin
+          ml 0
+          transition-delay 0s
+      @media $desktopMin
+        & + &
+          mt -16px
+          @media $LandscapeMedium
+            mt 70px
+    &-col
+      w calc(50% - 10px)
+      display flex
+      flex-direction column
+      & + &
+        ml 20px
+    &-square
+      color $dark
+      fontify 26px 400 40px
+      mb 4px
+      mt 17px
+      span
+        color $green
+      @media $LandscapeMedium
+        fontify 17px 400 24px
+        mb 8px
+    &-img
+      max-width 100%
+    &-year
+      w 100%
+      color $dark
+      fontify 20px 400 27px
+      @media $desktopMin
+        fontify 17px 400 24px
+      @media $LandscapeMedium
+        fontify 14px 400 21px
+    &-queue
+      w 100%
+      color $dark
+      fontify 20px 400 27px
+      mb 32px
+      span
+        color $green
+      @media $desktopMin
+        fontify 17px 400 24px
+      @media $LandscapeMedium
+        fontify 14px 400 21px
+  &__cars
+    mt 225px
+    @media $desktopMin
+      mt 65px
+    &-top
+      display flex
+      align-content stretch
+      mb 133px
+      @media $desktopMin
+        flex-direction column
+        align-content flex-start
+        mb 0
+    &-text
+      max-width 980px
+      color $dark
+      fontify 42px 400 46px
+      @media $lDesktopSmall
+        fontify 36px 400 40px
+        max-width 660px
+      @media $desktopMin
+        fontify 30px 400 34px
+        max-width 100%
+      @media $LandscapeMedium
+        fontify 27px 400 31px
+    &-tabs
+      display flex
+      align-items flex-end
+      justify-content flex-end
+      flex-grow 1
+      @media $desktopMin
+        dn()
+    &-tab
+      cursor pointer
+      color $dark
+      fontify 26px 400 30px
+      transition .7s color
+      &:hover,
+      &.active
+        color $green
+      & + &
+        ml 38px
+    &-infotabs
+      mt 72px
+      @media $desktopMin
+        dn()
+    &-infotab
+      dn()
+      justify-content space-between
+      &:first-child
+        display flex
+    &-tonns
+      display flex
+      w 836px
+      &-elem
+        flex-grow 1
+        color $dark
+        fontify 42px 400 46px
+        @media $lDesktopSmall
+          fontify 36px 400 40px
+        span
+          db()
+          color $dark
+          fontify 26px 400 27px
+          mt 6px
+          @media $lDesktopSmall
+            fontify 23px 400 24px
+    &-count
+      w 577px
+      color $dark
+      fontify 26px 400 33px
+      @media $lDesktopSmall
+        w 331px
+        fontify 23px 400 30px
+    &-theatre
+      overflow hidden
+      height 85px
+      border-bottom 2px solid black
+      display flex
+      justify-content space-around
+      pos relative
+      z-index 1
+      @media $desktopMedium
+        justify-content space-between
+      @media $desktopMin
+        dn()
+      &:before
+        content ""
+        pos absolute
+        l 0
+        t 0
+        z-index -2
+        w 200%
+        h 100%
+        background url('../i/theatre-trees.png') repeat-x 0 -2px
+        animation 6s linear infinite treeAnimation
+      &:after
+        content ""
+        pos absolute
+        l 0
+        t 0
+        z-index -1
+        w 200%
+        h 100%
+        background url('../i/theatre-trees1.png') repeat-x 0 -2px
+        animation 5s linear infinite treeAnimation
+    &-truck
+      size 318px 85px
+      background url('../i/truck.png') no-repeat center
+      @media $desktopMedium
+        size 280px 75px
+        mt 10px
+        background-size cover
+  &__standarts
+    h 100vh
+    pt 111px
+    pos relative
+    mt 220px
+    z-index 1
+    @media $desktopMin
+      mt 177px
+      min-height 600px
+    @media $LandscapeMedium
+      min-height 450px
+      pt 65px
+    &:before
+      content ""
+      pos absolute
+      z-index -1
+      w 100vw
+      h 100%
+      l 50%
+      t 0
+      ml -50vw
+      background url('../i/standarts-bg.jpg') no-repeat center
+      background-size cover
+    &-title
+      color $dark
+      fontify 42px 400 46px
+      max-width 600px
+      @media $lDesktopSmall
+        fontify 36px 400 40px
+        max-width 580px
+      @media $desktopMin
+        fontify 30px 400 34px
+        max-width 480px
+    &-over
+      display flex
+      align-items stretch
+      justify-content space-between
+      @media $desktopMin
+        flex-direction column-reverse
+    &-col
+      w calc(50% - 21px)
+      @media $desktopMin
+        w 100%
+      &:first-child
+        display flex
+        flex-direction column
+        justify-content flex-start
+    &-text
+      pt 193px
+      max-width 500px
+      @media $lDesktopSmall
+        max-width 410px
+      @media $desktopMin
+        pt 0
+        mt 34px
+        max-width 620px
+      @media $LandscapeMedium
+        mt 50px
+      p:not([class])
+        fontify 26px 400 33px
+        @media $lDesktopSmall
+          fontify 23px 400 30px
+        @media $desktopMedium
+          fontify 20px 400 27px
+    &-imgs
+      pos relative
+      z-index 1
+      h 851px
+      display flex
+      align-content flex-end
+      align-items flex-end
+      @media $lDesktopSmall
+        h 560px
+      @media $desktopMin
+        h 815px
+      @media $LandscapeMedium
+        dn()
+    &-img
+      &_img1
+        background url('../i/standarts2.jpg') no-repeat top left
+        size 0 650px
+        transition .7s width
+        @media $lDesktopMedium
+          h 452px
+          background-size 361px 452px
+        @media $desktopMin
+          size 461px 574px
+          background-size 461px 574px
+        &.visible
+          w 520px
+          @media $lDesktopMedium
+            w 361px
+          @media $desktopMin
+            w 461px
+            mb 40px
+      &_img2
+        background url('../i/standarts1.jpg') no-repeat top left
+        size 0 794px
+        pos absolute
+        z-index -1
+        l 148px
+        t -357px
+        transition .7s width
+        @media $lDesktopMedium
+          h 640px
+          t -140px
+          l 106px
+          background-size 437px 640px
+        @media $lDesktopSmall
+          t -280px
+        @media $desktopMin
+          r 0
+          l auto
+          t -294px
+          size 559px 697px
+          background-size 559px 697px
+        &.visible
+          w 631px
+          @media $lDesktopMedium
+            w 437px
+          @media $desktopMin
+            w 559px
+  &__personal
+    mt 240px
+    @media $lDesktopSmall
+      mt 200px
+    @media $desktopMin
+      mt 195px
+    @media $LandscapeMedium
+      mt 110px
+    &-car
+      h 790px
+      @media $lDesktopSmall
+        h 640px
+      &over
+        pos relative
+        @media $desktopMin
+          ml -30px
+          w calc(100% + 60px)
+        .swiper-slide
+          overflow hidden
+          &-active
+            & ^[1]-img
+              transform translate(-50%, -50%) scale(1.04)
+              @media $desktopMin
+                transform none
+        .swiper-buttons
+          pos absolute
+          w 100vw
+          l 50%
+          ml -50vw
+          h 0
+          t 50%
+          @media $desktopMax
+            pos relative
+            ml -50px
+            mt 48px
+            t 0
+            w 100px
+            mb 72px
+            h 27px
+          @media $LandscapeMedium
+            mb 52px
+            mt 30px
+        .swiper-button-prev
+          background-image url("../i/arleft_black.png")
+        .swiper-button-next
+          background-image url("../i/arright_black.png")
+    &-img
+      imgCenteringMin()
+      transition 7s transform
+      @media $desktopMin
+        pos relative
+        l 0
+        t 0
+        w 100%
+        min-height inherit
+        transform none
+    &-content
+      mt 72px
+      display flex
+      justify-content space-between
+      @media $LandscapeMedium
+        flex-direction column
+      @media $LandscapeMedium
+        mt 0
+    &-consist
+      color $dark
+      fontify 26px 400 33px
+      max-width 575px
+      @media $lDesktopSmall
+        fontify 23px 400 30px
+        max-width 545px
+      @media $desktopMin
+        w calc(50% - 25px)
+        fontify 20px 400 27px
+      @media $LandscapeMedium
+        w 100%
+    &-info
+      max-width 850px
+      w calc(100% - 660px)
+      @media $lDesktopSmall
+        w calc(100% - 580px)
+      @media $desktopMin
+        w calc(50% - 25px)
+      @media $LandscapeMedium
+        w 100%
+    &-text
+      color $dark
+      fontify 42px 400 46px
+      mb 36px
+      @media $lDesktopSmall
+        fontify 36px 400 40px
+      @media $desktopMin
+        fontify 30px 400 34px
+    &-href
+      pos relative
+      color $dark
+      fontify 14px 700 23px
+      text-transform uppercase
+      letter-spacing .1em
+      border-bottom 1px solid alpha($dark, .25)
+      transition .7s border
+      @media $lDesktopMedium
+        fontify 12px 700 21px
+      @media $LandscapeMedium
+        dn()
+      &:hover
+        border-color transparent
+  &__clients
+    mt 390px
+    display flex
+    align-items stretch
+    justify-content space-between
+    @media $lDesktopSmall
+      mt 289px
+    @media $desktopMin
+      flex-direction column
+      mt 195px
+    @media $LandscapeMedium
+      mt 110px
+    &-col
+      w calc(50% - 21px)
+      @media $desktopMin
+        w 100%
+      &:last-child
+        pl 205px
+        @media $lDesktopSmall
+          pl 103px
+        @media $desktopMin
+          pl 0
+    &-title
+      color $dark
+      fontify 42px 400 46px
+      mb 94px
+      @media $lDesktopSmall
+        fontify 36px 400 40px
+        mb 75px
+      @media $desktopMin
+        fontify 30px 400 34px
+        mt 71px
+      @media $LandscapeMedium
+        mt 0
+    &-imgs
+      pos relative
+      z-index 1
+      h 100%
+      display flex
+      align-content flex-end
+      align-items flex-end
+      @media $lDesktopSmall
+        h 768px
+      @media $desktopMin
+        h 1098px
+      @media $LandscapeMedium
+        dn()
+    &-img
+      &_img1
+        background url('../i/clients2.jpg') no-repeat top left
+        size 0 650px
+        transition .7s width
+        @media $lDesktopSmall
+          size 0px 452px
+        @media $desktopMin
+          size 447px 560px
+          background-size 447px 560px
+        &.visible
+          w 520px
+          @media $lDesktopSmall
+            w 361px
+          @media $desktopMin
+            w 447px
+      &_img2
+        background url('../i/clients1.jpg') no-repeat top left
+        size 0 794px
+        pos absolute
+        z-index -1
+        l 148px
+        t -111px
+        transition .7s width
+        @media $lDesktopSmall
+          l 106px
+          size 0 544px
+        @media $desktopMin
+          r 0
+          l auto
+          t 0
+          size 562px 698px
+          background-size 562px 698px
+        &.visible
+          w 631px
+          @media $lDesktopSmall
+            w 436px
+          @media $desktopMin
+            w 562px
+    &-list
+      display flex
+      flex-wrap wrap
+      pb 90px
+      max-width 510px
+      @media $lDesktopSmall
+        pb 0
+      @media $desktopMin
+        max-width none
+    &-item
+      display flex
+      w 50%
+      align-items center
+      mb 80px
+      @media $lDesktopSmall
+        mb 62px
+      @media $desktopMin
+        w calc(100% / 3)
+        justify-content center
+      @media $LandscapeMin
+        w 50%
+      &-img
+        max-width 100%
+        filter grayscale(100%)
+        transition .7s filter
+        @media $desktopMin
+          filter grayscale(0%)
+        @media $PortraitMedium
+          max-width 90%
+        &:hover
+          filter grayscale(0%)
+          
+@keyframes treeAnimation {
+  0% { 
+    l 0
+  }
+  100% { 
+    l -100%
+  }
+}

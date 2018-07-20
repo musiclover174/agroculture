@@ -157,19 +157,19 @@
       @media $desktopMin
         t 26px
     &[data-type="cucumber"]:before
-      size 75px 173px
+      size 80px 173px
       background url('../i/cucumber-hover.png') no-repeat center
       background-size 100% 100%
       l 150px
       t 37px
       @media $lDesktopMax
-        size 56px 130px
+        size 60px 130px
         l 124px
       @media $lDesktopMedium
-        size 48px 110px
+        size 51px 110px
         l 110px
       @media $desktopMax
-        size 39px 90px
+        size 42px 90px
         l 77px
     &[data-type="cucumber"]:hover:before
       t 27px
@@ -178,19 +178,19 @@
       @media $desktopMax
         t 26px
     &[data-type="peppers"]:before
-      size 113px 122px
+      size 122px 120px
       background url('../i/pepper-hover.png') no-repeat center
       background-size 100% 100%
       l 150px
       t 37px
       @media $lDesktopMax
-        size 93px 100px
+        size 102px 100px
         l 124px
       @media $lDesktopMedium
-        size 74px 80px
+        size 82px 80px
         l 110px
       @media $desktopMax
-        size 56px 60px
+        size 61px 60px
         l 84px
     &[data-type="peppers"]:hover:before
       t 27px
@@ -199,18 +199,18 @@
       @media $desktopMax
         t 26px
     &[data-type="eggplant"]:before
-      size 77px 179px
+      size 72px 187px
       background url('../i/eggplant-hover.png') no-repeat center
       background-size 100% 100%
       r -28px
       t 13px
       @media $lDesktopMax
-        size 56px 130px
+        size 56px 145px
         r -16px
       @media $lDesktopMedium
-        size 47px 110px
+        size 47px 122px
       @media $desktopMax
-        size 39px 90px
+        size 39px 101px
         r -12px
     &[data-type="eggplant"]:hover:before
       t 3px
@@ -364,24 +364,44 @@
       t 52%
       l 50%
       z-index 1
-      transform translate(-54%, -54%)
+      transform translate(-50%, -50%)
       opacity 0
+      size 998px 944px
       transition .7s opacity, .7s top
       @media $lDesktopMax
-        transform translate(-50%, -50%) scale(.9)
-      @media $lDesktopMedium
         transform translate(-50%, -50%) scale(.8)
+      @media $lDesktopMedium
+        transform translate(-50%, -50%) scale(.65)
       @media $desktopMax
-        transform translate(-50%, -50%) scale(.7)
+        transform translate(-50%, -50%) scale(.55)
       &[data-type="tomato"]
-        size 565px 806px
         background url('../i/tomato-seq.png') no-repeat 0 0
+        transform translate(-52%, -50%)
+        @media $lDesktopMax
+          transform translate(-52%, -50%) scale(.8)
+        @media $lDesktopMedium
+          transform translate(-52%, -50%) scale(.65)
+        @media $desktopMax
+          transform translate(-52%, -50%) scale(.55)
+      &[data-type="cucumber"]
+        background url('../i/cucumber-seq.png') no-repeat 0 0
+      &[data-type="peppers"]
+        background url('../i/pepper-seq.png') no-repeat 0 0
+      &[data-type="eggplant"]
+        background url('../i/eggplant-seq.png') no-repeat 0 0
+        transform translate(-50%, -50%)
+        @media $lDesktopMax
+          transform translate(-44%, -53%) scale(.8)
+        @media $lDesktopMedium
+          transform translate(-45%, -53%) scale(.65)
+        @media $desktopMax
+          transform translate(-46%, -52%) scale(.55)
     &-title
       color #181818
       fontify 240px 700 173px
       text-align center
       mb 50px
-      pl 17px
+      pl 17px 
       pos relative
       b -20px
       opacity 0
@@ -409,8 +429,10 @@
       opacity 0
       transition .7s opacity, .7s bottom
       @media $lDesktopMax
-        fontify 100px 400 82px
+        fontify 98px 400 82px
         mb 35px
+      @media $lDesktopSmall
+        fontify 84px 400 82px
       @media $desktopMax
         fontify 76px 400 82px
       &-sub
@@ -422,8 +444,8 @@
         b -20px
         opacity 0
         transition .7s opacity, .7s bottom
-        @media $lDesktopMax
-          fontify 36px 400 40px
+        @media $lDesktopSmall
+          fontify 32px 400 36px
         @media $lDesktopMedium
           mb 45px
         @media $desktopMax
@@ -437,8 +459,8 @@
       b -20px
       opacity 0
       transition .7s opacity, .7s bottom
-      @media $lDesktopMax
-        fontify 36px 400 40px
+      @media $lDesktopSmall
+        fontify 32px 400 36px
       @media $lDesktopMedium
         pt 94px
       @media $desktopMax
@@ -476,8 +498,10 @@
       fontify 16px 400 23px
       pos relative
       max-width 220px
-      margin 0 auto
-      text-align center
+      //margin 0 auto
+      //text-align center
+      mt 90px
+      
       b -20px
       opacity 0
       transition .7s opacity, .7s bottom
@@ -488,15 +512,18 @@
         pos absolute
         size 80px 38px
         t -50px
-        l 50%
-        ml -40px
+        //l 50%
+        //ml -40px
+        l 0
         background url('../i/cut-icon.gif') no-repeat center
     &-mainfeat
       color $dark
       fontify 120px 700 124px
       mb 58px
       @media $lDesktopMax
-        fontify 100px 700 104px
+        fontify 98px 700 104px
+      @media $lDesktopSmall
+        fontify 84px 700 82px
       @media $desktopMax
         fontify 76px 400 72px
         mb 38px
@@ -725,7 +752,7 @@
         size 81px 81px
         background url('../i/vegs/tomato2.png') no-repeat center
     &[data-type="eggplant"]
-      size 69px 161px
+      size 72px 187px
       background url('../i/vegs/eggplant.png') no-repeat center
     &[data-type="cucumbers"]
       size 30px 168px

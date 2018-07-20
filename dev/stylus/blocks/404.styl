@@ -1,0 +1,102 @@
+.page404
+  display flex
+  h calc(100vh - 48px)
+  align-items center
+  @media $desktopMin
+    //height auto
+    pt 100px
+    min-height 600px
+  &__over
+    display flex
+    @media $desktopMax
+      align-items center
+    @media $desktopMin
+      align-items flex-start
+      flex-direction column
+      w 100%
+  &__digits
+    pl 108px
+    color $dark
+    fontify 360px 400 256px
+    mr 32px
+    letter-spacing .1em
+    @media $lDesktopSmall
+      pl 0
+    @media $desktopMax
+      fontify 320px 400 230px
+    @media $desktopMedium
+      fontify 260px 400 230px
+    @media $desktopMin
+      fontify 200px 400 160px
+      mr 0
+      mb 40px
+    @media $PortraitMedium
+      fontify 150px 400 125px
+    span
+      color white
+      pos relative
+      @media $desktopMin
+        color $dark
+      &:before
+        content ""
+        size 222px 426px
+        background url('../i/opening.gif') no-repeat center
+        pos absolute
+        z-index 1
+        top 50%
+        l 50%
+        ml -111px
+        mt -213px
+        @media $desktopMedium
+          size 180px 345px
+          mt -172px
+          ml -100px
+        @media $desktopMin
+          dn()
+  &__title
+    fontify 42px 400 46px
+    @media $lDesktopSmall
+      fontify 36px 400 40px
+      max-width 660px
+    @media $desktopMin
+      fontify 30px 400 34px
+      max-width 100%
+    @media $LandscapeMedium
+      fontify 27px 400 31px
+  &__text
+    max-width 410px
+    mt 35px
+    pl 102px
+    pos relative
+    @media $desktopMax
+      pl 0
+    &:before
+      content ""
+      pos absolute
+      l 6px
+      t 11px
+      w 70px
+      h 1px
+      bgc $dark
+      @media $desktopMax
+        dn()
+    p:not([class])
+      fontify 16px 400 23px
+      @media $lDesktopMedium
+        fontify 14px 400 21px
+        
+body.body404
+  .header
+    pos absolute
+  .header__phones-elem,
+  .header__menu-href:not(.active)
+    color $dark
+  .header__menu-href
+    &:hover
+      color $yellow
+  .header__socials-elem
+    filter invert(100%)
+  .footer
+    mt 0
+    @media $PortraitMedium
+      mb 10px

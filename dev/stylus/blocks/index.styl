@@ -17,7 +17,6 @@
     &-active
       & ^[0]
         &__bg
-          transition 7s transform
           transform translate(-50%, -50%) scale(1.08)
         &__area
           &-title
@@ -121,6 +120,7 @@
     opacity .5
     z-index -1
     imgCenteringMin()
+    transition 7s transform
   &__area
     &-over
       &.changed
@@ -150,8 +150,16 @@
             transition .7s opacity, .7s right
             &_second
               transition-delay .7s
+              @media $desktopMedium
+                ml 10px
+              @media $desktopMin
+                ml 0
             &_third
               transition-delay 1.4s
+              @media $desktopMedium
+                ml 10px
+              @media $desktopMin
+                ml 0
     &_more
       max-height 0
       overflow hidden

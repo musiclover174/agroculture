@@ -10,12 +10,12 @@
   
 	window.animation = {}
 	
-	window.animation.fadeIn = (elem, ms, cb) => {
+	window.animation.fadeIn = (elem, ms, cb, d = 'block') => {
     if (!elem)
       return;
 
     elem.style.opacity = 0;
-    elem.style.display = "block";
+    elem.style.display = d;
 
     if (ms) {
       var opacity = 0;
@@ -74,8 +74,8 @@
   window.animation.visChecker = (el) => {
     let rect = el.getBoundingClientRect()
     return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
+      //rect.top >= 0 &&
+      //rect.left >= 0 &&
       rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && 
       rect.right <= (window.innerWidth || document.documentElement.clientWidth) 
     )
@@ -386,7 +386,7 @@
           if (event.offsetX > maxL)
             maxL = event.offsetX
           
-          let percent = Math.floor((maxL - minL) * 150 / vegWidth)
+          let percent = Math.floor((maxL - minL) * 200 / vegWidth)
           
           if (percent < 0) percent = 0
           if (percent > 100) {
@@ -420,7 +420,7 @@
         minL = Infinity
         maxL = 0
         if (!vegStepEnd){
-          vegToStart(Math.abs(parseInt(getComputedStyle(document.querySelector('.iveg__type-anim'))['backgroundPositionY'])) / vegFrameHeight)
+          vegToStart(Math.abs(parseInt(getComputedStyle(vegEl)['backgroundPositionY'])) / vegFrameHeight)
         } else {
           step++
           vegBlock.classList.add('step2-starter');
@@ -462,9 +462,8 @@
         })
       }
       
-      if (window.xs && window.touch) {
-        
-      } else {
+      // && window.touch
+      if (!window.xs) {
         for (let vegHref of vegHrefs) {
           vegHref.addEventListener('click', (e) => {
             const hrefType = vegHref.getAttribute('data-type')
@@ -629,11 +628,91 @@
       
     },
     
+    aboutCar: () => {
+      const personalSwiper = new Swiper ('.js-about-car', {
+        loop: true,
+        speed: 800,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        navigation: {
+          nextEl: '.js-about-car ~ .swiper-buttons .swiper-button-next',
+          prevEl: '.js-about-car ~ .swiper-buttons .swiper-button-prev',
+        },
+        breakpoints: {
+          960: {
+            autoHeight: true
+          }
+        }
+      })
+    },
+    
+    aboutLines: () => {
+      const lines = document.querySelectorAll('.js-about-line'),
+            koef = .45
+      
+      lines.forEach(line => {
+        line.setAttribute('data-width', getComputedStyle(line)['background-position'].split('px ')[0])
+      })
+      
+      window.addEventListener('scroll', () => {
+        lines.forEach(line => {
+          let rect = line.getBoundingClientRect()
+          if (
+            rect.top >= 0 && 
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+          ) {
+            let diff = rect.bottom - (window.innerHeight || document.documentElement.clientHeight)
+            
+            line.style.backgroundPositionX = +line.getAttribute('data-width') + diff * koef + 'px'
+          }
+        })
+      })
+    },
+    
+    aboutTheatre: () => {
+      const tabs = document.querySelectorAll('.js-about-tab'),
+            cars = document.querySelectorAll('.about__cars-truck')
+      
+      for (let tab of tabs) {
+        tab.addEventListener('click', (e) => {
+          if (tab.classList.contains('active')){
+            e.preventDefault()
+            return
+          }
+          
+          let curTab = document.querySelector('.js-about-tab.active'),
+              curTabYear = curTab.getAttribute('data-year'),
+              newTabYear = tab.getAttribute('data-year'),
+              curInfoTab = document.querySelector(`.about__cars-infotab[data-year="${curTabYear}"]`),
+              newInfoTab = document.querySelector(`.about__cars-infotab[data-year="${newTabYear}"]`)
+          
+          for (let car of cars) {
+            let carYear = car.getAttribute('data-year')
+            
+            if (+carYear > +newTabYear) {
+              window.animation.fadeOut(car, 200)
+            } else if (car.offsetParent === null) {
+              window.animation.fadeIn(car, 200)
+            }
+          }
+          
+          window.animation.fadeOut(curInfoTab, 200, () => {
+            window.animation.fadeIn(newInfoTab, 200, () => {}, 'flex')
+          })
+          
+          curTab.classList.remove('active')
+          tab.classList.add('active')
+          
+          e.preventDefault()
+        })
+      }
+    },
+    
     init: function () {
 
       const burgerEl = document.querySelector('.js-burger'),
             html = document.querySelector('html'),
-            elemsToCheck = ['.news__grid_page .news__elem-imgover', '.js-scroll-imgover']
+            elemsToCheck = ['.news__grid_page .news__elem-imgover', '.js-scroll-imgover', '.about__steps-elem']
       
       burgerEl.addEventListener('click', (e) => {
         html.classList.toggle('burgeropen')
@@ -661,6 +740,12 @@
       if (document.querySelector('.js-catalog-car')) this.catalogCars()
       
       if (document.querySelector('.js-contacts-map')) this.contactsMap()
+      
+      if (document.querySelector('.js-about-car')) this.aboutCar()
+      
+      if (document.querySelector('.js-about-line')) this.aboutLines()
+      
+      if (document.querySelector('.js-about-tab')) this.aboutTheatre()
 
       if (document.querySelector('.js-aside-sticky')) {
         const sidebar = new StickySidebar('.js-aside-sticky',{
@@ -671,7 +756,7 @@
         });
       }
       
-      if (document.querySelector('.js-icar') && window.touch && window.xsHeight && window.innerHeight < window.innerWidth) {
+      if ((document.querySelector('.js-icar') || document.querySelector('.js-car')) && window.touch && window.xsHeight && window.innerHeight < window.innerWidth) {
         document.querySelector('html').classList.add('lock')
 			}
       

@@ -1,0 +1,26 @@
+doctype html
+html
+  head(lang="ru")
+    include layout/__head
+  body(data-color="light").body404
+    include layout/__header
+    section.content
+      section.container
+        .page404
+          .page404__over
+            .page404__digits 4
+              span 0
+              | 4
+            .page404__info
+              p.page404__title Страница не найдена
+              .page404__text
+                p Вы неправильно набрали адрес. Возможно такой страницы больше не существует. Воспользуйтесь главным меню, чтобы перейти на другую страницу.
+                p Вы также можете вернуться на 
+                  a(href="#") главную страницу
+                  |  сайта.
+        include blocks/footer
+        -var data = {}
+        +footer(data)
+
+    script(type="text/javascript", src="static/js/vendor.js")
+    script(type="text/javascript", src="static/js/script.js")

@@ -2,7 +2,7 @@ doctype html
 html
   head(lang="ru")
     include layout/__head
-  body(data-color="light").inner
+  body(data-color="light").inner.about
     include layout/__header
     section.content
       section.container
@@ -14,11 +14,157 @@ html
           p.page__subtitle Мы обеспечиваем стабильно высокий уровень сбора и качества урожая за счет применения самых современных технологий, экологических методов защиты растений, а также осуществления строгого санитарного контроля.
       section.page__whitebg
         section.container
-          section.career__about
-            p.career__about-text На сегодняшний день в&nbsp;тепличном комплексе работают более 800 сотрудников.
-            .career__about-imgs
-              .career__about-img.career__about-img_img1.js-scroll-imgover
-              .career__about-img.career__about-img_img2.js-scroll-imgover
+          section.about__top
+            .about__top-col
+              .about__top-imgs
+                .about__top-img.about__top-img_img1.js-scroll-imgover
+                .about__top-img.about__top-img_img2.js-scroll-imgover
+            .about__top-col
+              p.about__top-brand «Агрокультура Групп» — новый бренд в сфере тепличного строительства и непрерывного выращивания овощных культур в закрытом грунте. 
+              p.about__top-place Комплекс расположен в Каширском районе Московской области, всего в 130 километрах от Москвы, что позволяет в течение 3 часов доставлять товар конечному потребителю.
+          section.about__info
+            span.about__info-line.js-about-line
+            .about__info-over
+              .about__info-left
+                .about__info-text
+                  p Под маркой «Зеленый Стандарт» мы выпускаем наши томаты, огурцы, перцы и баклажаны.
+                  p Все овощи выращиваются в закрытом грунте с соблюдением всех норм и конечно же проходят строгий санитарный контроль.
+                a(href="#").about__info-href Каталог продукции
+              .about__info-right
+                img(src="img/catalog-logo.png").about__info-logo
+            span.about__info-line.js-about-line
+          section.about__steps
+            p.about__steps-text С 2015 года нашей компанией было реализовано три этапа строительства теплиц общей площадью 52 Га и активно ведутся работы по строительству дополнительных 28 Га.
+            .about__steps-over
+              .about__steps-elem.about__steps-elem_first
+                p.about__steps-queue 
+                  span 1 + 2 
+                  | очередь строительства
+                .about__steps-col
+                  img(src="img/step1.png", alt="").about__steps-img
+                  p.about__steps-square 
+                    span 9 Га
+                  p.about__steps-year 2015 год
+                .about__steps-col
+                  img(src="img/step1.png", alt="").about__steps-img
+                  p.about__steps-square 
+                    span 22 Га
+                  p.about__steps-year 2016 год
+              .about__steps-elem.about__steps-elem_second
+                p.about__steps-queue 1 + 2 
+                  span + 3 
+                  | очередь строительства
+                img(src="img/step2.png", alt="").about__steps-img
+                p.about__steps-square 9 Га + 22 Га 
+                  span + 21 Га
+                p.about__steps-year 2017 год
+              .about__steps-elem.about__steps-elem_third
+                p.about__steps-queue 1 + 2 + 3 
+                  span + 4 
+                  | очередь строительства
+                img(src="img/step3.png", alt="").about__steps-img
+                p.about__steps-square 9 Га + 22 Га + 21 Га 
+                  span + 28 Га
+                p.about__steps-year IV квартал 2018 года
+          section.about__cars
+            .about__cars-top
+              p.about__cars-text Дополнительные 28 Га позволят уже в течение 2019 года увеличить объем поставки свежих овощей на прилавки страны до 65000 тонн. 
+              .about__cars-tabs
+                button(type="button", data-year="2019").about__cars-tab.js-about-tab.active 2019
+                button(type="button", data-year="2018").about__cars-tab.js-about-tab 2018
+                button(type="button", data-year="2017").about__cars-tab.js-about-tab 2017
+                button(type="button", data-year="2016").about__cars-tab.js-about-tab 2016
+            .about__cars-theatre
+              span.about__cars-truck(data-year="2016")
+              span.about__cars-truck(data-year="2017")
+              span.about__cars-truck(data-year="2018")
+            .about__cars-infotabs
+              .about__cars-infotab(data-year="2019")
+                .about__cars-tonns
+                  p.about__cars-tonns-elem 20 300 тонн
+                    span Томат
+                  p.about__cars-tonns-elem 20 000 тонн
+                    span Огурец
+                  p.about__cars-tonns-elem 500 тонн
+                    span Перец и баклажан
+                p.about__cars-count Чтобы перевезти такое количество овощей одновременно, потребуется примерно 2000 фур.
+              .about__cars-infotab(data-year="2018")
+                .about__cars-tonns
+                  p.about__cars-tonns-elem 18 300 тонн
+                    span Томат
+                  p.about__cars-tonns-elem 18 000 тонн
+                    span Огурец
+                  p.about__cars-tonns-elem 300 тонн
+                    span Перец и баклажан
+                p.about__cars-count Чтобы перевезти такое количество овощей одновременно, потребуется примерно 1500 фур. 
+              .about__cars-infotab(data-year="2017")
+                .about__cars-tonns
+                  p.about__cars-tonns-elem 10 300 тонн
+                    span Томат
+                  p.about__cars-tonns-elem 9 800 тонн
+                    span Огурец
+                p.about__cars-count Чтобы перевезти такое количество овощей одновременно, потребуется примерно 1200 фур. 
+              .about__cars-infotab(data-year="2016")
+                .about__cars-tonns
+                  p.about__cars-tonns-elem 3 300 тонн
+                    span Томат
+                  p.about__cars-tonns-elem 2 800 тонн
+                    span Огурец
+                p.about__cars-count Чтобы перевезти такое количество овощей одновременно, потребуется примерно 400 фур. 
+          section.about__standarts
+            p.about__standarts-title В наших теплицах овощи выращиваются с соблюдением всех экологических стандартов.
+          section.about__standarts-over
+            .about__standarts-col
+              .about__standarts-text
+                p Теплицы оснашены капельной системой полива и системой контроля климата.
+                p Овощи выращиваются по принципу «интерплантинг».
+                p Используются только безопасные методы защиты растений
+            .about__standarts-col
+              .about__standarts-imgs
+                .about__standarts-img.about__standarts-img_img1.js-scroll-imgover
+                .about__standarts-img.about__standarts-img_img2.js-scroll-imgover
+          section.about__personal
+            .about__personal-carover
+              .swiper-container.about__personal-car.js-about-car
+                .swiper-wrapper
+                  .swiper-slide
+                    img(src="img/personal1.jpg").about__personal-img
+                  .swiper-slide
+                    img(src="img/personal1.jpg").about__personal-img
+              .swiper-buttons
+                .swiper-button-prev
+                .swiper-button-next
+            .about__personal-content
+              .about__personal-info 
+                p.about__personal-text На сегодняшний день в тепличном комплексе работают более 800 сотрудников.
+                a(href="#").about__personal-href Вакансии
+              p.about__personal-consist Основной руководящий состав и штат специалистов сформирован из профессионалов, имеющих профильное высшее образование и релевантный опыт работы. Коллектив хозяйства включает преимущественно местное население.
+          section.about__clients
+            .about__clients-col
+              .about__clients-imgs
+                .about__clients-img.about__clients-img_img1.js-scroll-imgover
+                .about__clients-img.about__clients-img_img2.js-scroll-imgover
+            .about__clients-col
+              p.about__clients-title Продукция поставляется в крупнейшие торговые сети во многие города России.
+              .about__clients-list
+                li.about__clients-item
+                  img(src="img/clients1.png").about__clients-item-img
+                li.about__clients-item
+                  img(src="img/clients2.jpg").about__clients-item-img
+                li.about__clients-item
+                  img(src="img/clients3.jpg").about__clients-item-img
+                li.about__clients-item
+                  img(src="img/clients4.png").about__clients-item-img
+                li.about__clients-item
+                  img(src="img/clients5.png").about__clients-item-img
+                li.about__clients-item
+                  img(src="img/clients6.png").about__clients-item-img
+                li.about__clients-item
+                  img(src="img/clients7.jpg").about__clients-item-img
+                li.about__clients-item
+                  img(src="img/clients8.jpg").about__clients-item-img
+                li.about__clients-item
+                  img(src="img/clients9.png").about__clients-item-img
           include blocks/footer
           -var data = {}
           +footer(data)

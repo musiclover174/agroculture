@@ -1,0 +1,44 @@
+doctype html
+html
+  head(lang="ru")
+    include layout/__head
+  body(data-color="light").inner
+    include layout/__header
+    section.content
+      section.container
+        section.page__top
+          h1 Довольно-таки большой заголовок первого уровня
+          section.breadcrumbs
+            a(href="#").breadcrumbs__href Главная
+            span.breadcrumbs__delim /
+            a(href="#").breadcrumbs__href Компания
+            span.breadcrumbs__delim /
+        section.page__withside
+          aside.page__aside
+          section.page__content
+            ul
+              li
+                a(href="/index.html") Главная
+              li
+                a(href="/404.html") 404
+              li
+                a(href="/about.html") О компании
+              li
+                a(href="/career.html") Карьера
+              li
+                a(href="/career-inner.html") Карьера (внутренняя)
+              li
+                a(href="/catalog.html") Каталог
+              li
+                a(href="/contacts.html") Контакты
+              li
+                a(href="/news.html") Новости
+              li
+                a(href="/news-inner.html") Новости (внутренняя)
+              li
+                a(href="/text.html") Типовая текстовая
+            include blocks/footer
+            -var data = {}
+            +footer(data)
+            
+    include layout/__scripts
