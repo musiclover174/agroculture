@@ -198,6 +198,20 @@
     w 100%
     h 100%
 .iroad
+  &__back
+    cursor pointer
+    pos absolute
+    w 27px
+    h 25px
+    l 10px
+    t 30px
+    opacity 0
+    z-index 30
+    visibility hidden
+    background url('../i/arleft_white.png') no-repeat 0 -756px
+    transition .5s left, .5s opacity
+    &:hover
+      animation arrAnimation 1s steps(28)
   &__title
     pos relative
     color white
@@ -305,8 +319,13 @@
     opacity 0
     visibility hidden
     transition .7s opacity, .7s visibility
+    filter: saturate(150%) brightness(83%)
 .showmap
   .iroad__map
     opacity 1
     visibility visible
     z-index 2
+  .iroad__back
+    opacity 1
+    l 30px
+    visibility visible

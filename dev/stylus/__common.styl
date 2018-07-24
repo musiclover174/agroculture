@@ -185,6 +185,8 @@ body
     pr 9px
     color $orange
     fontify 20px 400 27px
+    @media $lDesktopSmall
+      fontify 17px 400 24px
   p:not([class])
     color $dark
     fontify 20px 400 27px
@@ -263,11 +265,7 @@ div[class\^="table-scroller"]
     ml 56px
     color $dark
     fontify 23px 400 21px
-    border-bottom 1px solid alpha($dark, .25)
     transition .5s border
-    &_white
-      color white
-      border-bottom 1px solid alpha(white, .25)
     @media $LandscapeMedium
       fontify 17px 400 21px
       ml 41px
@@ -283,10 +281,24 @@ div[class\^="table-scroller"]
     &_white
       &:before
         background-image url('../i/arleft_white.png')
-    &:hover
-      border-color transparent
-      &:before
-        animation arrAnimation 5s steps(28)
+    &:after
+      content ""
+      pos absolute
+      bgc alpha($dark, .25)
+      w 100%
+      h 1px
+      b 0
+      l 50%
+      transform translateX(-50%)
+      transition .7s width
+    &_white
+      color white
+      &:after
+        bgc alpha(white, .25)
+    &:hover:after
+      w 0
+    &:hover:before
+      animation arrAnimation 1s steps(28)
   &__input
     w 100%
     h 48px
@@ -355,6 +367,10 @@ div[class\^="table-scroller"]
       w calc(100% - 212px)
     &_short
       w 162px
+    &_iroad
+      @media $LandscapeMedium
+        &:first-child
+          dn()
     @media $LandscapeMedium
       w 100%
       & + &
@@ -602,6 +618,12 @@ input.warning,
 textarea.warning
   border-color #ff3a0f
 
+.common__form-result,
+form.success
+  dn()
+form.success + .common__form-result
+  db()
+  
 .hidden-block
   display none
   

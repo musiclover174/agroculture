@@ -115,7 +115,10 @@
     @media $desktopMin
       margin 146px 0 152px
     @media $LandscapeMedium
-      margin 70px 0 50px
+      margin 70px 0 50px -20px
+      w calc(100% + 40px)
+      padding 0 20px
+      overflow hidden
     &-line
       db()
       h 258px
@@ -143,6 +146,8 @@
     &-over
       display flex
       justify-content space-between
+      @media $LandscapeMedium
+        flex-direction column-reverse
     &-left
       w calc(100% - 504px)
       mr 42px
@@ -171,12 +176,21 @@
       fontify 14px 700 23px
       text-transform uppercase
       letter-spacing .1em
-      border-bottom 1px solid alpha($dark, .25)
       transition .7s border
       @media $lDesktopMedium
         fontify 12px 700 21px
-      &:hover
-        border-color transparent
+      &:after
+        content ""
+        pos absolute
+        bgc alpha($dark, .25)
+        w 100%
+        h 1px
+        b 0
+        l 50%
+        transform translateX(-50%)
+        transition .7s width
+      &:hover:after
+        w 0
     &-right
       pos relative
       mt -40px
@@ -188,7 +202,9 @@
         w calc(50% - 25px)
         mt -6px
       @media $LandscapeMedium
-        dn()
+        mt 0
+        w 100%
+        mb 30px
     &-logo
       max-width 60% 
       @media $desktopMin
@@ -387,20 +403,22 @@
         l 0
         t 0
         z-index -2
-        w 200%
+        w 400%
         h 100%
         background url('../i/theatre-trees.png') repeat-x 0 -2px
-        animation 6s linear infinite treeAnimation
+        animation 12s linear infinite treeAnimation
+        will-change transform
       &:after
         content ""
         pos absolute
         l 0
         t 0
         z-index -1
-        w 200%
+        w 400%
         h 100%
         background url('../i/theatre-trees1.png') repeat-x 0 -2px
-        animation 5s linear infinite treeAnimation
+        animation 16s linear infinite treeAnimation
+        will-change transform
     &-truck
       size 318px 85px
       background url('../i/truck.png') no-repeat center
@@ -429,8 +447,9 @@
       l 50%
       t 0
       ml -50vw
-      background url('../i/standarts-bg.jpg') no-repeat center
-      background-size cover
+      //background url('../i/standarts-bg.jpg') no-repeat center
+      background url('../i/standarts-bg.jpg') no-repeat top center
+      //background-size cover
     &-title
       color $dark
       fontify 42px 400 46px
@@ -547,6 +566,9 @@
         @media $desktopMin
           ml -30px
           w calc(100% + 60px)
+        @media $LandscapeMedium
+          ml -20px
+          w calc(100% + 40px)
         .swiper-slide
           overflow hidden
           &-active
@@ -745,21 +767,21 @@
       @media $LandscapeMin
         w 50%
       &-img
-        max-width 100%
+        max-width 70%
         filter grayscale(100%)
-        transition .7s filter
+        opacity .5
+        transition .7s filter, .7s opacity
         @media $desktopMin
           filter grayscale(0%)
-        @media $PortraitMedium
-          max-width 90%
         &:hover
           filter grayscale(0%)
+          opacity 1
           
 @keyframes treeAnimation {
   0% { 
-    l 0
+    transform translate3d(0, 0, 0)
   }
   100% { 
-    l -100%
+    transform translate3d(-75%, 0, 0)
   }
 }

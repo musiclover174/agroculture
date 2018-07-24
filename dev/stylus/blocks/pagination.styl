@@ -39,15 +39,25 @@
       @media $desktopMin
         ml 18px
     &-href
+      pos relative
       display inline-block
       vertical-align middle
       color $dark
       fontify 23px 400 21px
-      border-bottom 1px solid alpha($dark, .25)
       transition .7s border
-      &:not(a)
-        border-bottom none
-      &:hover
-        border-color transparent
+      &:after
+        content ""
+        pos absolute
+        bgc alpha($dark, .25)
+        w 100%
+        h 1px
+        b 0
+        l 50%
+        transform translateX(-50%)
+        transition .7s width
+      &:hover:after
+        w 0
+      &:not(a):after
+        dn()
       ^[-1].active &
         color $green

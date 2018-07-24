@@ -76,7 +76,7 @@
     return (
       //rect.top >= 0 &&
       //rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && 
+      rect.bottom - el.offsetHeight * .35 <= (window.innerHeight || document.documentElement.clientHeight) && 
       rect.right <= (window.innerWidth || document.documentElement.clientWidth) 
     )
   }
@@ -138,7 +138,7 @@
       }
       
       forms.forEach( form => { 
-        form.addEventListener('submit', e => !_th.checkForm(form) && e.preventDefault())
+        form.addEventListener('submit', e => !_th.checkForm(form) && e.preventDefault() && e.stopPropagation())
       })
 			
 			for (let selector of selectors){ 
@@ -165,6 +165,8 @@
           }
         });
       }
+    
+      return this
     },
 
     checkForm: function (form) {
@@ -302,7 +304,8 @@
     
     indexShowMap: () => {
       const mapButton = document.querySelector('.js-mapshower'),
-            mapAreaOver = document.querySelector('.js-slide-mapper')
+            mapAreaOver = document.querySelector('.js-slide-mapper'),
+            roadBack = document.querySelector('.js-iroad-back')
       
       function init() {
         let multiRoute = new ymaps.multiRouter.MultiRoute({
@@ -320,8 +323,10 @@
         const myMap = new ymaps.Map('iroad-map', {
           center: [55.051641, 38.714763],
           zoom: 9,
-          controls: ['smallMapDefaultSet']
+          controls: []
         })
+        
+        myMap.controls.add('zoomControl');
 
         myMap.geoObjects.add(multiRoute)
         myMap.behaviors.disable('scrollZoom')
@@ -331,6 +336,9 @@
         mapButton.addEventListener('click', () => {
           mapAreaOver.classList.toggle('showmap')
           init()
+        })
+        roadBack.addEventListener('click', () => {
+          mapAreaOver.classList.toggle('showmap')
         })
       }
       
@@ -435,8 +443,10 @@
         startWatcher = false
       }
       
-      let watcherSetter = () => {
-        startWatcher = true
+      let watcherSetter = (e) => {
+        if (e.target.classList.contains('js-iveg-start')){
+          startWatcher = true
+        }
       }
       
       let docListenerRemove = () => {
@@ -666,12 +676,16 @@
         lines.forEach(line => {
           let rect = line.getBoundingClientRect()
           if (
-            rect.top >= 0 && 
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+            rect.top + 258 >= 0 && 
+            rect.bottom - 258 <= (window.innerHeight || document.documentElement.clientHeight) 
           ) {
-            let diff = rect.bottom - (window.innerHeight || document.documentElement.clientHeight)
+            let diff = rect.bottom - 258 - (window.innerHeight || document.documentElement.clientHeight)
             
-            line.style.backgroundPositionX = +line.getAttribute('data-width') + diff * koef + 'px'
+            if (line.getAttribute('data-reverse')){
+              line.style.backgroundPositionX = +line.getAttribute('data-width') - diff * koef + 'px'
+            } else {
+              line.style.backgroundPositionX = +line.getAttribute('data-width') + diff * koef + 'px'
+            }
           }
         })
       })

@@ -203,6 +203,7 @@ html
                       p.iveg__type-square-sub Мерлис, Т-34, Тореро, Таганка, Розарио, Органза, Атракси
                       a(href="#").iveg__type-tocat Перейти в каталог
           .swiper-slide.swiper-no-swiping.js-slide-mapper(data-color="dark")
+            button(type="button").iroad__back.js-iroad-back
             section.iroad__mapover
               script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU")
               .iroad__map#iroad-map
@@ -239,10 +240,12 @@ html
               -newsArray.push({img: 'img/inews1.jpg', date: "15 мая 2018", href: "«Агрокультура Групп» – это максимально эффективная адаптация к изменениям", mainNews: 'true'})
               -newsArray.push({img: 'img/inews2.jpg', date: "12 января 2018", href: "«Агрокультура Групп» запустил третью очередь теплиц"})
               -newsArray.push({img: 'img/inews3.jpg', date: "6 декабря 2017", href: "Бренд «Зелёный Стандарт» стал лауреатом премии «Здоровое питание»"})
-
+              
               section.news__grid
                 for news in newsArray
-                  +newsElem(news)
+                  +newsElem(news)  
+                a(href="#").news__href Все новости
+              
     include blocks/footer
     -var data = {index: 'true'}
     +footer(data)
